@@ -2,6 +2,8 @@ package com.example.ttogilgi.Activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.ttogilgi.Data.ListViewModel
 import com.example.ttogilgi.Fragment.GraphFragment
 import com.example.ttogilgi.Fragment.ListFragment
 import com.example.ttogilgi.Fragment.SettingFragment
@@ -10,6 +12,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var viewModel: ListViewModel? = null
 
     private val FRAG_LIST = 0
     private val FRAG_GRAPH = 1
@@ -22,9 +26,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(mainActivityToolbar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         setFragment()
         setBottomNavigation()
+
+        viewModel = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(ListViewModel::class.java)
+        }
     }
 
     private fun setFragment() {
@@ -49,11 +60,11 @@ class MainActivity : AppCompatActivity() {
                         switchFragement(FRAG_LIST)
                         true
                     }
-                    R.id.graph_tab -> {
+                    R.id.searchButton -> {
                         switchFragement(FRAG_GRAPH)
                         true
                     }
-                    R.id.setting_tab -> {
+                    R.id.addButton -> {
                         switchFragement(FRAG_SETTING)
                         true
                     }
@@ -83,4 +94,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }

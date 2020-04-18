@@ -1,11 +1,37 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Date_TextView_style">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:text"> 0418 </item>
+    </style>
+
+    <style name="DayOfTheWeek_TextView_style">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:text"> SAT </item>
+    </style>
+
+    <style name="Summary_TextView_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text"> 요약 내용 </item>
     </style>
 
 </resources>
