@@ -1,20 +1,19 @@
-package com.example.ttogilgi.Fragment
+package com.example.ttogilgi.fragment
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ttogilgi.Data.DiaryData
-import com.example.ttogilgi.Data.DiaryListAdapter
-import com.example.ttogilgi.Data.ListViewModel
 import com.example.ttogilgi.R
+import com.example.ttogilgi.activity.DetailActivity
+import com.example.ttogilgi.activity.EditActivity
+import com.example.ttogilgi.data.DiaryListAdapter
+import com.example.ttogilgi.data.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
-import java.util.*
 
 class ListFragment : Fragment() {
 
@@ -43,6 +42,11 @@ class ListFragment : Fragment() {
                 listAdapter = DiaryListAdapter(it)
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
+                listAdapter.itemClickListener = {
+                    val intent = Intent(activity, DetailActivity::class.java)
+                    intent.putExtra("DIARY_ID", it)
+                    startActivity(intent)
+                }
             }
             it.diaryLiveData.observe(this,
                 Observer {
@@ -57,7 +61,6 @@ class ListFragment : Fragment() {
         activity!!.menuInflater.inflate(R.menu.list_fragment_toolbar_menu, menu)
     }
 
-    @SuppressLint("MissingPermission")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
@@ -65,18 +68,15 @@ class ListFragment : Fragment() {
 
             }
             R.id.addButton -> {
-                // viewModel?.addOrUpdateDiary(this)
-                viewModel!!.let {
-                    var diaryData = DiaryData()
-                    diaryData.summary = "오늘은 냉면을 먹었다. 너무 시원했다 ㅎㅎ 역시 냉면은 물냉이랑 비냉을 같이 시켜야 해!!"
-                    diaryData.createdAt = Date()
-
-                    it.addDiary(diaryData)
-                }
-                Toast.makeText(context,
-                    "저장 완료", Toast.LENGTH_LONG).show()
+                val intent = Intent(activity!!.applicationContext, EditActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        listAdapter.notifyDataSetChanged()
     }
 }

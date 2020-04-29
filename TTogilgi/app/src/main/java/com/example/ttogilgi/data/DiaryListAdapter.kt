@@ -1,4 +1,4 @@
-package com.example.ttogilgi.Data
+package com.example.ttogilgi.data
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

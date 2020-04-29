@@ -1,13 +1,13 @@
-package com.example.ttogilgi.Activity
+package com.example.ttogilgi.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.ttogilgi.Data.ListViewModel
-import com.example.ttogilgi.Fragment.GraphFragment
-import com.example.ttogilgi.Fragment.ListFragment
-import com.example.ttogilgi.Fragment.SettingFragment
 import com.example.ttogilgi.R
+import com.example.ttogilgi.data.ListViewModel
+import com.example.ttogilgi.fragment.GraphFragment
+import com.example.ttogilgi.fragment.ListFragment
+import com.example.ttogilgi.fragment.SettingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 

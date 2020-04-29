@@ -1,4 +1,4 @@
-package com.example.ttogilgi.Activity
+package com.example.ttogilgi.activity
 
 import android.content.Intent
 import android.os.Bundle
