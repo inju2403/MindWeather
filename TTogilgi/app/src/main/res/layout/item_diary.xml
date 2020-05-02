@@ -23,18 +23,20 @@
                 android:id="@+id/diaryCardImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="26dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/line_icon" />
+                app:srcCompat="@drawable/ic_smile" />
 
             <TextView
                 android:id="@+id/dateView"
                 style="@style/Date_TextView_style"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toEndOf="@+id/diaryCardImage"
                 app:layout_constraintTop_toTopOf="parent" />
