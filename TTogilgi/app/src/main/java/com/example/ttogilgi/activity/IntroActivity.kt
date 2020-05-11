@@ -28,7 +28,7 @@ class IntroActivity : AppCompatActivity() {
         super.onResume()
 
         runnable = Runnable {
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
         }
         handler = Handler()

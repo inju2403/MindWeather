@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RegisterActivity">
-
+    tools:context=".activity.SignUpActivity">
     <EditText
         android:id="@+id/idEdit"
         android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idEdit" />
 
     <EditText
-        android:id="@+id/passwordCheckBtn"
+        android:id="@+id/passwordCheckEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -43,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
 
     <Button
-        android:id="@+id/registerRequestBtn"
+        android:id="@+id/signUpRequestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -52,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordCheckBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckEdit" />
 
     <Button
         android:id="@+id/goBackBtn"
@@ -64,7 +63,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="돌아가기"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/registerRequestBtn"
-        app:layout_constraintTop_toBottomOf="@+id/passwordCheckBtn" />
+        app:layout_constraintStart_toEndOf="@+id/signUpRequestBtn"
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

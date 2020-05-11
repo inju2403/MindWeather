@@ -2,18 +2,17 @@ package com.example.ttogilgi.retrofit
 
 import com.google.gson.JsonElement
 import retrofit2.Call
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
-    @POST("auth/registration/")
-    fun postRegister()
+    @POST("auth/registration/") // 회원가입
+    @FormUrlEncoded
+    fun signUp(@Field("username") username: String, @Field("password") password: String): Call<Void>
 
-    @POST("auth/login/")
-    fun postLogin()
+    @POST("auth/login/") // 로그인
+    @FormUrlEncoded
+    fun login(@Field("username") username: String, @Field("password") password: String): Call<Void>
 
     @POST("auth/logout/")
     fun postLogout()

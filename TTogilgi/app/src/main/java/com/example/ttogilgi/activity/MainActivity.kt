@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val PREFERENCE = "template.android.TTogilgi"
+
     private var viewModel: ListViewModel? = null
 
     private val FRAG_LIST = 0
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainActivityToolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        var pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+        var username = pref.getString("username", "")
 
         setFragment()
         setBottomNavigation()

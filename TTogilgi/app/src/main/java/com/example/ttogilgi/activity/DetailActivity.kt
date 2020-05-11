@@ -45,8 +45,9 @@ class DetailActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_modify -> {
                 val tag = intent.getStringExtra("DIARY_ID")
-                val intent = Intent(applicationContext, EditActivity::class.java)
-                intent.putExtra("DIARY_ID", tag)
+                val intent = Intent(applicationContext, EditActivity::class.java).apply {
+                    putExtra("DIARY_ID", tag)
+                }
                 startActivity(intent)
                 finish()
             }

@@ -43,8 +43,9 @@ class ListFragment : Fragment() {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
                 listAdapter.itemClickListener = {
-                    val intent = Intent(activity, DetailActivity::class.java)
-                    intent.putExtra("DIARY_ID", it)
+                    val intent = Intent(activity, DetailActivity::class.java).apply {
+                        putExtra("DIARY_ID", it)
+                    }
                     startActivity(intent)
                 }
             }

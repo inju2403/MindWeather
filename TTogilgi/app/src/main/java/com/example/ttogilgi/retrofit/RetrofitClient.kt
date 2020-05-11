@@ -5,7 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 //RetrofitClient Class with Singleton Pattern
 object RetrofitClient {
-    val TAG: String = "로그"
 
     //레트로핏 클라이언트 선언
     private var retrofitClient: Retrofit? = null
