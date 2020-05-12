@@ -1,6 +1,7 @@
 package com.example.ttogilgi.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
@@ -31,8 +32,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mainActivityToolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        var pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-        var username = pref.getString("username", "")
+        val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+        val token = pref.getString("token", "")
+        Toast.makeText(this@MainActivity, "토큰 : ${token}", Toast.LENGTH_LONG).show()
 
         setFragment()
         setBottomNavigation()

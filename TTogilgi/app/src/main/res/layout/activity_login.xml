@@ -7,7 +7,7 @@
     tools:context=".activity.LoginActivity">
 
     <EditText
-        android:id="@+id/idEdit"
+        android:id="@+id/usernameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -28,7 +28,7 @@
         android:hint="비밀번호"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameEdit" />
 
     <Button
         android:id="@+id/loginBtn"

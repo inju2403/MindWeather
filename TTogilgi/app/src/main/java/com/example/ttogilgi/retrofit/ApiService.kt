@@ -1,18 +1,20 @@
 package com.example.ttogilgi.retrofit
 
+import com.example.ttogilgi.pojo.LoginRequestPOJO
+import com.example.ttogilgi.pojo.Login_SignUP_ReturnPOJO
+import com.example.ttogilgi.pojo.SignUpRequsetPOJO
 import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.http.*
 
+
 interface ApiService {
 
     @POST("auth/registration/") // 회원가입
-    @FormUrlEncoded
-    fun signUp(@Field("username") username: String, @Field("password") password: String): Call<Void>
+    fun signUp(@Body signUpRequsetPOJO: SignUpRequsetPOJO) : Call<Login_SignUP_ReturnPOJO>
 
     @POST("auth/login/") // 로그인
-    @FormUrlEncoded
-    fun login(@Field("username") username: String, @Field("password") password: String): Call<Void>
+    fun login(@Body loginRequestPOJO: LoginRequestPOJO): Call<Login_SignUP_ReturnPOJO>
 
     @POST("auth/logout/")
     fun postLogout()

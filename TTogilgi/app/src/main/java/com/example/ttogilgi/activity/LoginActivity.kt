@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ttogilgi.R
+import com.example.ttogilgi.pojo.LoginRequestPOJO
+import com.example.ttogilgi.pojo.Login_SignUP_ReturnPOJO
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
 import com.example.ttogilgi.utils.Constants.API_BASE_URL
@@ -23,33 +25,28 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var username = idEdit.text.toString().trim()
-        var password = passwordEdit.text.toString().trim()
-
         loginBtn.setOnClickListener {
             val httpCall: ApiService?
                     = RetrofitClient.getClient(API_BASE_URL)!!.create(ApiService::class.java)
 
-            httpCall?.login(username, password)?.enqueue(object :
-                Callback<Void> {
-                override fun onFailure(call: Call<Void>, t: Throwable) {
+            httpCall?.login(LoginRequestPOJO(usernameEdit.text.toString().trim(),
+                passwordEdit.text.toString().trim()))?.enqueue(object :
+                Callback<Login_SignUP_ReturnPOJO> {
+                override fun onFailure(call: Call<Login_SignUP_ReturnPOJO>, t: Throwable) {
                     Log.d(TAG,"login - onFailed() called / t: ${t}")
                 }
 
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                override fun onResponse(call: Call<Login_SignUP_ReturnPOJO>, response: Response<Login_SignUP_ReturnPOJO>) {
                     when (response!!.code()) {
                         200 -> {
                             val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
                             val editor = pref.edit()
-                            editor.putString("username", username)
+                            editor.putString("token",response.body()?.token)
                             editor.commit()
                             finish()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         }
-
-                        305 -> Toast.makeText(this@LoginActivity, "존재하지 않는 닉네임 입니다", Toast.LENGTH_LONG).show()
-                        405 -> Toast.makeText(this@LoginActivity, "비밀번호가 올바르지 않습니다", Toast.LENGTH_LONG).show()
-                        500 -> Toast.makeText(this@LoginActivity, "로그인 실패 : 서버 오류", Toast.LENGTH_LONG).show()
+                        400 -> Toast.makeText(this@LoginActivity, "로그인 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
                     }
                 }
 
