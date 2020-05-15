@@ -11,13 +11,14 @@ import retrofit2.http.*
 interface ApiService {
 
     @POST("auth/registration/") // 회원가입
-    fun signUp(@Body signUpRequsetPOJO: SignUpRequsetPOJO) : Call<Login_SignUP_ReturnPOJO>
+    fun signUp(@Body signUpRequsetPOJO: SignUpRequsetPOJO): Call<Login_SignUP_ReturnPOJO>
 
     @POST("auth/login/") // 로그인
     fun login(@Body loginRequestPOJO: LoginRequestPOJO): Call<Login_SignUP_ReturnPOJO>
 
-    @POST("auth/logout/")
-    fun postLogout()
+    @POST("auth/logout/") // 로그아웃
+    @FormUrlEncoded
+    fun logout(@Field("Authorization") Authorization: String): Call<Void>
 
     @GET("diary/")
     fun getDiary(): Call<JsonElement>
