@@ -32,8 +32,8 @@ class DiaryListAdapter (private val list : MutableList<DiaryData>) : RecyclerVie
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.containerView.summaryView.text = list[position].summary
-        holder.containerView.dateView.text = dateFormat.format(list[position].createdAt)
-        holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(list[position].createdAt)
+        holder.containerView.dateView.text = dateFormat.format(list[position].updatedAt)
+        holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(list[position].updatedAt)
         holder.containerView.tag = list[position].id
     }
 

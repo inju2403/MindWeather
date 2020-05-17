@@ -21,7 +21,11 @@ open class DiaryDao(private val realm : Realm) {
 
     fun addOrUpdateDiary(diaryData : DiaryData)  {
         realm.executeTransaction {
-            diaryData.createdAt = Date()
+            if(diaryData.createdAt.equals("")) {
+                diaryData.createdAt = Date()
+                diaryData.updatedAt = Date()
+            }
+            diaryData.updatedAt = Date()
 
             if(diaryData.content.length > 100)
                 diaryData.summary = diaryData.content.substring(0..100)
