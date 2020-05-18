@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class Login_SignUP_ReturnPOJO (
     @SerializedName("token")
     @Expose
-    var token: String,
+    val token: String,
     @SerializedName("user")
     @Expose
-    var signUpUser: Login_SignUp_UserPOJO
+    val signUpUser: Login_SignUp_UserPOJO
 )

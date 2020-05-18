@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class LoginRequestPOJO (
     @SerializedName("username")
     @Expose
-    var username: String,
+    val username: String,
     @SerializedName("password")
     @Expose
-    var password: String
+    val password: String
 )

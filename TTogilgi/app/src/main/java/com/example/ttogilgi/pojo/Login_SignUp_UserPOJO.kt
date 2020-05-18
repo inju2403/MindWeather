@@ -9,14 +9,14 @@ data class Login_SignUp_UserPOJO (
     val pk: Int,
     @SerializedName("username")
     @Expose
-    var username: String,
+    val username: String,
     @SerializedName("email")
     @Expose
-    var email: String,
+    val email: String,
     @SerializedName("first_name")
     @Expose
-    var firstName: String,
+    val firstName: String,
     @SerializedName("last_name")
     @Expose
-    var lastName: String
+    val lastName: String
 )

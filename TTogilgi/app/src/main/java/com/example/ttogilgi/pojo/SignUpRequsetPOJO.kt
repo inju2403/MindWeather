@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 data class SignUpRequsetPOJO (
     @SerializedName("username")
     @Expose
-    var username: String,
+    val username: String,
     @SerializedName("email")
     @Expose
-    var email: String,
+    val email: String,
     @SerializedName("password1")
     @Expose
-    var password1: String,
+    val password1: String,
     @SerializedName("password2")
     @Expose
-    var password2: String
+    val password2: String
 )
