@@ -49,19 +49,18 @@ class ListFragment : Fragment() {
                     startActivity(intent)
                 }
             }
-            it.diaryLiveData.observe(this,
+            it.diaryLiveData.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.notifyDataSetChanged()
                 })
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
 
         activity!!.menuInflater.inflate(R.menu.list_fragment_toolbar_menu, menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
