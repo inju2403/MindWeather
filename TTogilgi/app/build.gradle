@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 29
@@ -59,4 +60,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.6.0"
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
 }
