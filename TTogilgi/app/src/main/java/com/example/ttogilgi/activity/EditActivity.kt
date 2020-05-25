@@ -21,6 +21,7 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
         setSupportActionBar(editToolbar)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
@@ -52,6 +53,9 @@ class EditActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
             R.id.action_save -> {
                 viewModel?.addOrUpdateDiary(this)
                 Toast.makeText(

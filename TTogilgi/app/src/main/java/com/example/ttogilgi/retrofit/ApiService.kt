@@ -35,4 +35,14 @@ interface ApiService {
     @FormUrlEncoded
     @DELETE("diary/{pk}/") // 일기 삭제
     fun deleteDiary(@Path("pk") pk: Int, @Field("Authorization") Authorization: String): Call<Void>
+
+/*
+    //Dao
+    @GET() // 일기 리스트 받기
+    fun getAllDiaryFromServer() : Call<List<DiaryData>>
+
+    @GET() // 특정 일기 받기
+    fun selectDiaryFromServer() : Call<DiaryData>
+
+*/
 }

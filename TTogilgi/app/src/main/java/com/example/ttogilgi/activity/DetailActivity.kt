@@ -20,6 +20,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setSupportActionBar(detailToolbar)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
@@ -38,11 +39,15 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.detail_activity_toolbar_menu, menu)
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
             R.id.action_modify -> {
                 val tag = intent.getStringExtra("DIARY_ID")
                 val intent = Intent(applicationContext, EditActivity::class.java).apply {
