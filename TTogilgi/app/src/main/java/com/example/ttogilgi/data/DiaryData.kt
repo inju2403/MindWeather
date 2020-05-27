@@ -7,7 +7,6 @@ import java.util.*
 open class DiaryData (
     @PrimaryKey
     var id: String = UUID.randomUUID().toString(),
-    var userName: String = "", //닉네임
     var createdAt: Date = Date(),
     var updatedAt: Date = Date(),
     var content: String = "",
@@ -17,5 +16,6 @@ open class DiaryData (
     var sadness: Int = 0,
     var worry: Int = 0,
     var anger: Int = 0,
-    var qna: String = ""
+    var qna: String = "",
+    var user:Int = 0
 ) : RealmObject()

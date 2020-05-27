@@ -12,7 +12,6 @@ class DetailViewModel : ViewModel() {
             value = diaryData
         }
     }
-
     private val realm : Realm by lazy {
         Realm.getDefaultInstance()
     }
