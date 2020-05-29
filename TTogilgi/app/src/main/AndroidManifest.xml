@@ -20,8 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".login.SignUpActivity"></activity>
+        <activity android:name=".login.LoginActivity" />
         <activity android:name=".diary.diaryDetail.DetailActivity" />
         <activity android:name=".diary.diaryDetail.EditActivity" />
         <activity android:name=".MainActivity" />

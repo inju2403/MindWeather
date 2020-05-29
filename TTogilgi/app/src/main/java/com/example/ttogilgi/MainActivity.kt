@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryList.ListFragment
+import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         setBottomNavigation()
 
         viewModel = application!!.let {
-            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+            ViewModelProvider(this, DiaryListInjector(
+                this.application
+            ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)
         }
     }

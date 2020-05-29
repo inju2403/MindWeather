@@ -16,33 +16,17 @@ class DetailViewModel (
             value = diaryData
         }
     }
-//    private val realm : Realm by lazy {
-//        Realm.getDefaultInstance()
-//    }
-//
-//    private val diaryDao : DiaryDao by lazy {
-//        DiaryDao(realm)
-//    }
-//
-//    override fun onCleared() {
-//        super.onCleared()
-//        realm.close()
-//    }
 
     fun loadDiary(id: String) {
         diaryData = repo.getDiaryById(id)
         diaryLiveData.value = diaryData
-//        diaryData = realm.copyFromRealm(diaryDao.selectDiary(id))
-//        diaryLiveData.value = diaryData
     }
 
     fun addOrUpdateDiary(context: Context) {
         repo.updateDiary(diaryData)
-//        diaryDao.addOrUpdateDiary(diaryData)
     }
 
     fun deleteDiary(id: String) {
         repo.deleteDiary(id)
-//        diaryDao.deleteDiary(id)
     }
 }

@@ -15,12 +15,12 @@ class DiaryDetailInjector(application: Application): AndroidViewModel(applicatio
     private val diaryDao : DiaryDao by lazy {
         DiaryDao(realm)
     }
-    private fun getNoteRepository(): IDiaryRepository {
+    private fun getDiaryRepository(): IDiaryRepository {
         return DiaryRepoImpl(diaryDao)
     }
 
-    fun provideDiaryListViewModelFactory(): DiaryDetailViewModelFactory =
+    fun provideDiaryViewModelFactory(): DiaryDetailViewModelFactory =
         DiaryDetailViewModelFactory(
-            getNoteRepository()
+            getDiaryRepository()
         )
 }

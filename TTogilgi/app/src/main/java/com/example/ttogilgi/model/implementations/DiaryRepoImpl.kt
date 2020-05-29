@@ -6,7 +6,7 @@ import com.example.ttogilgi.model.repository.IDiaryRepository
 
 class DiaryRepoImpl(val local: DiaryDao) : IDiaryRepository {
 
-    override fun getDiarys(): List<DiaryData> {
+    override fun getDiarys(): MutableList<DiaryData> {
         return local.getAllDiary()
     }
 

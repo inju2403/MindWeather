@@ -26,7 +26,7 @@ class EditActivity : AppCompatActivity() {
         viewModel = application!!.let {
             ViewModelProvider(this, DiaryDetailInjector(
                 this.application
-            ).provideDiaryListViewModelFactory())
+            ).provideDiaryViewModelFactory())
                 .get(DetailViewModel::class.java)
         }
 

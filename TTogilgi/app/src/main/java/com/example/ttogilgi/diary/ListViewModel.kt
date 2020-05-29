@@ -1,26 +1,15 @@
 package com.example.ttogilgi.diary
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ttogilgi.model.DiaryDao
 import com.example.ttogilgi.model.DiaryData
-import io.realm.Realm
+import com.example.ttogilgi.model.repository.IDiaryRepository
 
-class ListViewModel : ViewModel() {
+class ListViewModel(
+    val repo: IDiaryRepository
+) : ViewModel() {
 
-    private val realm : Realm by lazy {
-        Realm.getDefaultInstance()
-    }
-
-    private val diaryDao : DiaryDao by lazy {
-        DiaryDao(realm)
-    }
-
-    val diaryLiveData : RealmLiveData<DiaryData> by lazy {
-        RealmLiveData<DiaryData> (diaryDao.getAllDiary())
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        realm.close()
+    val diaryLiveData : MutableLiveData<MutableList<DiaryData>> by lazy {
+        MutableLiveData<MutableList<DiaryData>> (repo.getDiarys())
     }
 }

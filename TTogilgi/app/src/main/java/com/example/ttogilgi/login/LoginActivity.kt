@@ -1,10 +1,12 @@
-package com.example.ttogilgi
+package com.example.ttogilgi.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ttogilgi.MainActivity
+import com.example.ttogilgi.R
 import com.example.ttogilgi.model.pojo.LoginRequestPOJO
 import com.example.ttogilgi.model.pojo.Login_SignUP_ReturnPOJO
 import com.example.ttogilgi.retrofit.ApiService

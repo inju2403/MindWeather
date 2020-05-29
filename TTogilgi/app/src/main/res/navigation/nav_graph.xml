@@ -17,7 +17,7 @@
 
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.example.ttogilgi.LoginActivity"
+        android:name="com.example.ttogilgi.login.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" >
         <action
@@ -30,7 +30,7 @@
 
     <activity
         android:id="@+id/signUpActivity"
-        android:name="com.example.ttogilgi.SignUpActivity"
+        android:name="com.example.ttogilgi.login.SignUpActivity"
         android:label="activity_sign_up"
         tools:layout="@layout/activity_sign_up" />
 

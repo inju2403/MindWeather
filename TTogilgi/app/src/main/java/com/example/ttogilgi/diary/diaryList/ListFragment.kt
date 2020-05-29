@@ -9,9 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ttogilgi.R
+import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryDetail.DetailActivity
 import com.example.ttogilgi.diary.diaryDetail.EditActivity
-import com.example.ttogilgi.diary.ListViewModel
+import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
@@ -33,6 +34,13 @@ class ListFragment : Fragment() {
 
         viewModel = activity!!.application!!.let {
             ViewModelProvider(activity!!.viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(ListViewModel::class.java)
+        }
+
+        viewModel = activity!!.application!!.let {
+            ViewModelProvider(this, DiaryListInjector(
+                requireActivity().application
+            ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)
         }
 
