@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
         val token = pref.getString("token", "")
         val username = pref.getString("username", "")
-        Toast.makeText(this@MainActivity, "토큰 : ${token}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@MainActivity, "${username}님 반갑습니다 :)", Toast.LENGTH_LONG).show()
 
         setFragment()
         setBottomNavigation()
