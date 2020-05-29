@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.example.ttogilgi.data.DetailViewModel
+import com.example.ttogilgi.data.diaryDetail.buildLogic.DiaryDetailInjector
 import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
@@ -25,8 +26,10 @@ class EditActivity : AppCompatActivity() {
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
-            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+            ViewModelProvider(this, DiaryDetailInjector(this.application).provideDiaryListViewModelFactory())
                 .get(DetailViewModel::class.java)
+//            ViewModelProvider(this, DiaryViewModelFactory(diaryRepo)
+//                .get(DetailViewModel::class.java)
         }
 
         viewModel!!.diaryLiveData.observe (this, Observer {

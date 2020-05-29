@@ -6,12 +6,12 @@ import com.example.ttogilgi.model.repository.IDiaryRepository
 
 class DiaryRepoImpl(val local: DiaryDao) : IDiaryRepository {
 
-    override fun getDiarys() {
-        local.getAllDiary()
+    override fun getDiarys(): List<DiaryData> {
+        return local.getAllDiary()
     }
 
-    override fun getDiaryById(diaryId: String) {
-        local.selectDiary(diaryId)
+    override fun getDiaryById(diaryId: String): DiaryData {
+        return local.selectDiary(diaryId)
     }
 
     override fun deleteDiary(diaryId: String) {

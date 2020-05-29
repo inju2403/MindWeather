@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.example.ttogilgi.data.DetailViewModel
+import com.example.ttogilgi.data.diaryDetail.buildLogic.DiaryDetailInjector
+import com.example.ttogilgi.model.implementations.DiaryRepoImpl
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
-    private var viewModel: DetailViewModel? = null
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +25,13 @@ class DetailActivity : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
+        val diaryRepo: DiaryRepoImpl
+
         viewModel = application!!.let {
-            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+            ViewModelProvider(this, DiaryDetailInjector(this.application).provideDiaryListViewModelFactory())
                 .get(DetailViewModel::class.java)
+//            ViewModelProvider(this, DiaryViewModelFactory(diaryRepo)
+//                .get(DetailViewModel::class.java)
         }
 
         viewModel!!.diaryLiveData.observe (this, Observer {
