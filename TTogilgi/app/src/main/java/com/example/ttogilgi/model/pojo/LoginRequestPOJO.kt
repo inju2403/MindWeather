@@ -1,4 +1,4 @@
-package com.example.ttogilgi.pojo
+package com.example.ttogilgi.model.pojo
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

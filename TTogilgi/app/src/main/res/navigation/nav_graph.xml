@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/introActivity"
-        android:name="com.example.ttogilgi.activity.IntroActivity"
+        android:name="com.example.ttogilgi.IntroActivity"
         android:label="activity_intro"
         tools:layout="@layout/activity_intro" >
         <action
@@ -17,7 +17,7 @@
 
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.example.ttogilgi.activity.LoginActivity"
+        android:name="com.example.ttogilgi.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" >
         <action
@@ -30,13 +30,13 @@
 
     <activity
         android:id="@+id/signUpActivity"
-        android:name="com.example.ttogilgi.activity.SignUpActivity"
+        android:name="com.example.ttogilgi.SignUpActivity"
         android:label="activity_sign_up"
         tools:layout="@layout/activity_sign_up" />
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.ttogilgi.activity.MainActivity"
+        android:name="com.example.ttogilgi.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" >
         <action
@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.ttogilgi.fragment.ListFragment"
+        android:name="com.example.ttogilgi.diary.diaryList.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -62,7 +62,7 @@
 
     <activity
         android:id="@+id/detailActivity"
-        android:name="com.example.ttogilgi.activity.DetailActivity"
+        android:name="com.example.ttogilgi.diary.diaryDetail.DetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail" >
         <action
@@ -71,19 +71,19 @@
     </activity>
     <activity
         android:id="@+id/editActivity"
-        android:name="com.example.ttogilgi.activity.EditActivity"
+        android:name="com.example.ttogilgi.diary.diaryDetail.EditActivity"
         android:label="activity_edit"
         tools:layout="@layout/activity_edit" >
     </activity>
 
     <fragment
         android:id="@+id/graphFragment"
-        android:name="com.example.ttogilgi.fragment.GraphFragment"
+        android:name="com.example.ttogilgi.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.ttogilgi.fragment.SettingFragment"
+        android:name="com.example.ttogilgi.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.diary
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

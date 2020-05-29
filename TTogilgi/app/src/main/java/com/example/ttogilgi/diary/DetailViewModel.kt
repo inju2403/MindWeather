@@ -1,8 +1,9 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.diary
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.ttogilgi.model.DiaryData
 import com.example.ttogilgi.model.repository.IDiaryRepository
 
 class DetailViewModel (

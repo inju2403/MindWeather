@@ -1,6 +1,8 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.diary
 
 import androidx.lifecycle.ViewModel
+import com.example.ttogilgi.model.DiaryDao
+import com.example.ttogilgi.model.DiaryData
 import io.realm.Realm
 
 class ListViewModel : ViewModel() {

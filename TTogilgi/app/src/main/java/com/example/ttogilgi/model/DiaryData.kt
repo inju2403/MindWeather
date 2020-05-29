@@ -1,4 +1,4 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.model
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
@@ -10,7 +10,6 @@ open class DiaryData (
     var createdAt: Date = Date(),
     var updatedAt: Date = Date(),
     var content: String = "",
-    var summary: String = "",
     var happiness: Int = 0,
     var neutrality: Int = 0,
     var sadness: Int = 0,

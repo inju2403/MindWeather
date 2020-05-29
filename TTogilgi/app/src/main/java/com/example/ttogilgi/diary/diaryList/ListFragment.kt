@@ -1,4 +1,4 @@
-package com.example.ttogilgi.fragment
+package com.example.ttogilgi.diary.diaryList
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ttogilgi.R
-import com.example.ttogilgi.activity.DetailActivity
-import com.example.ttogilgi.activity.EditActivity
-import com.example.ttogilgi.data.DiaryListAdapter
-import com.example.ttogilgi.data.ListViewModel
+import com.example.ttogilgi.diary.diaryDetail.DetailActivity
+import com.example.ttogilgi.diary.diaryDetail.EditActivity
+import com.example.ttogilgi.diary.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
@@ -39,7 +38,8 @@ class ListFragment : Fragment() {
 
         viewModel!!.let {
             it.diaryLiveData.value?.let {
-                listAdapter = DiaryListAdapter(it)
+                listAdapter =
+                    DiaryListAdapter(it)
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
                 listAdapter.itemClickListener = {

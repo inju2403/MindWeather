@@ -1,6 +1,6 @@
 package com.example.ttogilgi.model.repository
 
-import com.example.ttogilgi.data.DiaryData
+import com.example.ttogilgi.model.DiaryData
 
 interface IDiaryRepository {
     fun getDiarys(): List<DiaryData>

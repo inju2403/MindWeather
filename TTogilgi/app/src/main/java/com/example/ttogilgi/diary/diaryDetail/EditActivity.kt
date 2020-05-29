@@ -1,8 +1,6 @@
-package com.example.ttogilgi.activity
+package com.example.ttogilgi.diary.diaryDetail
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -10,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
-import com.example.ttogilgi.data.DetailViewModel
-import com.example.ttogilgi.data.diaryDetail.buildLogic.DiaryDetailInjector
+import com.example.ttogilgi.diary.DetailViewModel
+import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
 import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
@@ -26,10 +24,10 @@ class EditActivity : AppCompatActivity() {
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
-            ViewModelProvider(this, DiaryDetailInjector(this.application).provideDiaryListViewModelFactory())
+            ViewModelProvider(this, DiaryDetailInjector(
+                this.application
+            ).provideDiaryListViewModelFactory())
                 .get(DetailViewModel::class.java)
-//            ViewModelProvider(this, DiaryViewModelFactory(diaryRepo)
-//                .get(DetailViewModel::class.java)
         }
 
         viewModel!!.diaryLiveData.observe (this, Observer {
@@ -39,14 +37,6 @@ class EditActivity : AppCompatActivity() {
         val diaryId = intent.getStringExtra("DIARY_ID")
         if(diaryId != null) viewModel!!.loadDiary(diaryId)
 
-        contentEdit.addTextChangedListener(object: TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                viewModel!!.diaryData.content = s.toString()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

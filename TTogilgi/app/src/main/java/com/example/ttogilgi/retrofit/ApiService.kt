@@ -1,9 +1,9 @@
 package com.example.ttogilgi.retrofit
 
-import com.example.ttogilgi.pojo.ContentPOJO
-import com.example.ttogilgi.pojo.LoginRequestPOJO
-import com.example.ttogilgi.pojo.Login_SignUP_ReturnPOJO
-import com.example.ttogilgi.pojo.SignUpRequsetPOJO
+import com.example.ttogilgi.model.pojo.ContentPOJO
+import com.example.ttogilgi.model.pojo.LoginRequestPOJO
+import com.example.ttogilgi.model.pojo.Login_SignUP_ReturnPOJO
+import com.example.ttogilgi.model.pojo.SignUpRequsetPOJO
 import retrofit2.Call
 import retrofit2.http.*
 

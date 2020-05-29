@@ -1,8 +1,8 @@
-package com.example.ttogilgi.data.diaryDetail.buildLogic
+package com.example.ttogilgi.diary.diaryDetail.buildlogic
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.ttogilgi.data.DiaryDao
+import com.example.ttogilgi.model.DiaryDao
 import com.example.ttogilgi.model.implementations.DiaryRepoImpl
 import com.example.ttogilgi.model.repository.IDiaryRepository
 import io.realm.Realm
@@ -19,8 +19,8 @@ class DiaryDetailInjector(application: Application): AndroidViewModel(applicatio
         return DiaryRepoImpl(diaryDao)
     }
 
-    fun provideDiaryListViewModelFactory(): DiaryViewModelFactory =
-        DiaryViewModelFactory(
+    fun provideDiaryListViewModelFactory(): DiaryDetailViewModelFactory =
+        DiaryDetailViewModelFactory(
             getNoteRepository()
         )
 }

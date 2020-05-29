@@ -1,11 +1,11 @@
-package com.example.ttogilgi.data.diaryDetail.buildLogic
+package com.example.ttogilgi.diary.diaryDetail.buildlogic
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.ttogilgi.data.DetailViewModel
+import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.model.repository.IDiaryRepository
 
-class DiaryViewModelFactory (
+class DiaryDetailViewModelFactory (
     val diaryRepo: IDiaryRepository
 ):ViewModelProvider.NewInstanceFactory() {
 

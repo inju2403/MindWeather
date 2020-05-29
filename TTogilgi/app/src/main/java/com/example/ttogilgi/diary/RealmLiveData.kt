@@ -1,4 +1,4 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.diary
 
 import androidx.lifecycle.LiveData
 import io.realm.RealmChangeListener

@@ -1,4 +1,4 @@
-package com.example.ttogilgi.fragment
+package com.example.ttogilgi
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.ttogilgi.R
-import com.example.ttogilgi.activity.LoginActivity
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
 import com.example.ttogilgi.utils.Constants

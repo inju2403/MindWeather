@@ -1,11 +1,10 @@
-package com.example.ttogilgi.activity
+package com.example.ttogilgi
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ttogilgi.R
 
 class IntroActivity : AppCompatActivity() {
 

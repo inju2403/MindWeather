@@ -1,7 +1,7 @@
 package com.example.ttogilgi.model.implementations
 
-import com.example.ttogilgi.data.DiaryDao
-import com.example.ttogilgi.data.DiaryData
+import com.example.ttogilgi.model.DiaryDao
+import com.example.ttogilgi.model.DiaryData
 import com.example.ttogilgi.model.repository.IDiaryRepository
 
 class DiaryRepoImpl(val local: DiaryDao) : IDiaryRepository {

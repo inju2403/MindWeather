@@ -1,4 +1,4 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.model
 
 import io.realm.Realm
 import io.realm.RealmResults
@@ -26,12 +26,6 @@ open class DiaryDao(private val realm : Realm) {
                 diaryData.updatedAt = Date()
             }
             diaryData.updatedAt = Date()
-
-            if(diaryData.content.length > 100)
-                diaryData.summary = diaryData.content.substring(0..100)
-            else
-                diaryData.summary = diaryData.content
-
             it.copyToRealmOrUpdate(diaryData)
         }
     }

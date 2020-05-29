@@ -1,4 +1,4 @@
-package com.example.ttogilgi.fragment
+package com.example.ttogilgi
 
 import android.os.Bundle
 import android.view.LayoutInflater

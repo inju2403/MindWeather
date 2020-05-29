@@ -1,9 +1,11 @@
-package com.example.ttogilgi.data
+package com.example.ttogilgi.diary.diaryList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ttogilgi.R
+import com.example.ttogilgi.diary.ItemViewHolder
+import com.example.ttogilgi.model.DiaryData
 import kotlinx.android.synthetic.main.item_diary.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,7 +33,7 @@ class DiaryListAdapter (private val list : MutableList<DiaryData>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.containerView.summaryView.text = list[position].summary
+        holder.containerView.summaryView.text = list[position].content
         holder.containerView.dateView.text = dateFormat.format(list[position].updatedAt)
         holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(list[position].updatedAt)
         holder.containerView.tag = list[position].id

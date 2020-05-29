@@ -1,14 +1,11 @@
-package com.example.ttogilgi.activity
+package com.example.ttogilgi
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.ttogilgi.R
-import com.example.ttogilgi.data.ListViewModel
-import com.example.ttogilgi.fragment.GraphFragment
-import com.example.ttogilgi.fragment.ListFragment
-import com.example.ttogilgi.fragment.SettingFragment
+import com.example.ttogilgi.diary.ListViewModel
+import com.example.ttogilgi.diary.diaryList.ListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,9 +19,12 @@ class MainActivity : AppCompatActivity() {
     private val FRAG_GRAPH = 1
     private val FRAG_SETTING = 2
 
-    private val listFragment: ListFragment = ListFragment()
-    private val graphFragment: GraphFragment = GraphFragment()
-    private val settingFragment: SettingFragment = SettingFragment()
+    private val listFragment: ListFragment =
+        ListFragment()
+    private val graphFragment: GraphFragment =
+        GraphFragment()
+    private val settingFragment: SettingFragment =
+        SettingFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

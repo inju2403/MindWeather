@@ -1,19 +1,22 @@
-package com.example.ttogilgi.pojo
+package com.example.ttogilgi.model.pojo
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class SignUpRequsetPOJO (
+data class Login_SignUp_UserPOJO (
+    @SerializedName("pk")
+    @Expose
+    val pk: Int,
     @SerializedName("username")
     @Expose
     val username: String,
     @SerializedName("email")
     @Expose
     val email: String,
-    @SerializedName("password1")
+    @SerializedName("first_name")
     @Expose
-    val password1: String,
-    @SerializedName("password2")
+    val firstName: String,
+    @SerializedName("last_name")
     @Expose
-    val password2: String
+    val lastName: String
 )

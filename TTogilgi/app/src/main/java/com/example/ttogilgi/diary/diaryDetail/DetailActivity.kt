@@ -1,4 +1,4 @@
-package com.example.ttogilgi.activity
+package com.example.ttogilgi.diary.diaryDetail
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
-import com.example.ttogilgi.data.DetailViewModel
-import com.example.ttogilgi.data.diaryDetail.buildLogic.DiaryDetailInjector
+import com.example.ttogilgi.diary.DetailViewModel
+import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
 import com.example.ttogilgi.model.implementations.DiaryRepoImpl
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -28,10 +28,10 @@ class DetailActivity : AppCompatActivity() {
         val diaryRepo: DiaryRepoImpl
 
         viewModel = application!!.let {
-            ViewModelProvider(this, DiaryDetailInjector(this.application).provideDiaryListViewModelFactory())
+            ViewModelProvider(this, DiaryDetailInjector(
+                this.application
+            ).provideDiaryListViewModelFactory())
                 .get(DetailViewModel::class.java)
-//            ViewModelProvider(this, DiaryViewModelFactory(diaryRepo)
-//                .get(DetailViewModel::class.java)
         }
 
         viewModel!!.diaryLiveData.observe (this, Observer {
