@@ -1,6 +1,6 @@
 package com.example.ttogilgi.retrofit
 
-import com.example.ttogilgi.model.pojo.ContentPOJO
+import com.example.ttogilgi.model.pojo.Diary
 import com.example.ttogilgi.model.pojo.LoginRequestPOJO
 import com.example.ttogilgi.model.pojo.Login_SignUP_ReturnPOJO
 import com.example.ttogilgi.model.pojo.SignUpRequsetPOJO
@@ -20,29 +20,23 @@ interface ApiService {
     @POST("auth/logout/") // 로그아웃
     fun logout(@Field("Authorization") Authorization: String): Call<Void>
 
-    @FormUrlEncoded
-    @GET("diary/{pk}/") // 일기 조회
-    fun getDiary(@Path("pk") pk: Int, @Field("Authorization") Authorization: String): Call<ContentPOJO>
+
+
+    // 일기 리스트 받기, 일기 받기, 일기 수정, 일기 삭제
 
     @FormUrlEncoded
-    @POST("diary/") // 일기 쓰기
-    fun postDiary(@Path("pk") pk: Int, @Field("Authorization") Authorization: String): Call<ContentPOJO>
+    @GET("diary/") // 일기 리스트 받기
+    fun getDiarys(@Field("Authorization") Authorization: String): Call<List<Diary>>
 
     @FormUrlEncoded
-    @PATCH("diary/{pk}/") // 일기 수정
-    fun patchDiary(@Path("pk") pk: Int, @Field("Authorization") Authorization: String): Call<ContentPOJO>
+    @GET("diary/{id}/") // 일기 받기
+    fun getDiaryById(@Path("id") id: Int, @Field("Authorization") Authorization: String): Call<Diary>
+
+    @PATCH("diary/") // 일기 수정
+    fun updateDiary(@Body diary: Diary, @Field("Authorization") Authorization: String): Call<Void>
 
     @FormUrlEncoded
-    @DELETE("diary/{pk}/") // 일기 삭제
-    fun deleteDiary(@Path("pk") pk: Int, @Field("Authorization") Authorization: String): Call<Void>
+    @DELETE("diary/{id}/") // 일기 삭제
+    fun deleteDiary(@Path("id") id: Int, @Field("Authorization") Authorization: String): Call<Void>
 
-/*
-    //Dao
-    @GET() // 일기 리스트 받기
-    fun getAllDiaryFromServer() : Call<List<DiaryData>>
-
-    @GET() // 특정 일기 받기
-    fun selectDiaryFromServer() : Call<DiaryData>
-
-*/
 }

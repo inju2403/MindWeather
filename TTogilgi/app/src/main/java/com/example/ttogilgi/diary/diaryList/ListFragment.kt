@@ -45,7 +45,7 @@ class ListFragment : Fragment() {
         }
 
         viewModel!!.let {
-            it.diaryLiveData.value?.let {
+            it.diaryListLiveData.value?.let {
                 listAdapter =
                     DiaryListAdapter(it)
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -57,7 +57,7 @@ class ListFragment : Fragment() {
                     startActivity(intent)
                 }
             }
-            it.diaryLiveData.observe(viewLifecycleOwner,
+            it.diaryListLiveData.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.notifyDataSetChanged()
                 })

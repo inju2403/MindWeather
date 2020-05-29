@@ -6,11 +6,11 @@ import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.model.repository.IDiaryRepository
 
 class DiaryDetailViewModelFactory (
-    val diaryRepo: IDiaryRepository
+    val repo: IDiaryRepository
 ):ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return DetailViewModel(diaryRepo) as T
+        return DetailViewModel(repo) as T
     }
 }

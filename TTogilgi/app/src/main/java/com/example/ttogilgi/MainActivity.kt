@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-        val token = pref.getString("token", "")
-        val username = pref.getString("username", "")
+        val token = pref.getString("token", "").toString()
+        val username = pref.getString("username", "").toString()
         Toast.makeText(this@MainActivity, "${username}님 반갑습니다 :)", Toast.LENGTH_LONG).show()
 
         setFragment()

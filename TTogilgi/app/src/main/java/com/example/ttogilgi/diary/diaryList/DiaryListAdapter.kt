@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.ItemViewHolder
-import com.example.ttogilgi.model.DiaryData
+import com.example.ttogilgi.model.pojo.Diary
 import kotlinx.android.synthetic.main.item_diary.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DiaryListAdapter (private val list : MutableList<DiaryData>) : RecyclerView.Adapter<ItemViewHolder> () {
+class DiaryListAdapter (private val list : List<Diary>) : RecyclerView.Adapter<ItemViewHolder> () {
 
     private val dateFormat = SimpleDateFormat("MMdd")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
