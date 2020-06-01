@@ -1,6 +1,8 @@
 package com.example.ttogilgi.diary.diaryDetail
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +33,15 @@ class EditActivity : AppCompatActivity() {
 
         viewModel!!.diaryLiveData.observe (this, Observer {
             contentEdit.setText(it.content)
+        })
+
+        contentEdit.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel!!.diary.content = s.toString()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
         })
 
         val diaryId = intent.getStringExtra("DIARY_ID")
