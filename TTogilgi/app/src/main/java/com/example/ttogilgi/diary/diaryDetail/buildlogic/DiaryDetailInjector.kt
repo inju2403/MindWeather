@@ -17,7 +17,7 @@ class DiaryDetailInjector(application: Application): AndroidViewModel(applicatio
 //        DiaryDao(realm)
 //    }
 
-    val app: Application = application
+    val app = application
 
     val httpCall: ApiService?
             = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)

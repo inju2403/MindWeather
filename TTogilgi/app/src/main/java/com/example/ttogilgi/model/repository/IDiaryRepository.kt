@@ -1,12 +1,14 @@
 package com.example.ttogilgi.model.repository
 
+import android.content.Context
+import com.example.ttogilgi.model.pojo.ContentPOJO
 import com.example.ttogilgi.model.pojo.Diary
 
 interface IDiaryRepository {
     fun getDiarys(): List<Diary>
-    fun getDiaryById(diaryId: String): Diary
-    fun updateDiary(diaryId: String)
-    fun deleteDiary(diaryId: String)
+    fun getDiaryById(context: Context, diaryId: String): Diary
+    fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String)
+    fun deleteDiary(context: Context, diaryId: String)
 
 //    fun getDiarys(): List<DiaryData>
 //    fun getDiaryById(diaryId: String): DiaryData

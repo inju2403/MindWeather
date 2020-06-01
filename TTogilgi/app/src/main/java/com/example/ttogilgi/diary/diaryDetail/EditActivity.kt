@@ -3,7 +3,6 @@ package com.example.ttogilgi.diary.diaryDetail
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,7 +19,7 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
         setSupportActionBar(editToolbar)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
@@ -35,7 +34,7 @@ class EditActivity : AppCompatActivity() {
         })
 
         val diaryId = intent.getStringExtra("DIARY_ID")
-        if(diaryId != null) viewModel!!.loadDiary(diaryId)
+        if(diaryId != null) viewModel!!.loadDiary(this, diaryId)
 
     }
 
@@ -51,10 +50,6 @@ class EditActivity : AppCompatActivity() {
             }
             R.id.action_save -> {
                 viewModel?.addOrUpdateDiary(this)
-                Toast.makeText(
-                    this,
-                    "저장 완료", Toast.LENGTH_LONG
-                ).show()
                 finish()
             }
         }

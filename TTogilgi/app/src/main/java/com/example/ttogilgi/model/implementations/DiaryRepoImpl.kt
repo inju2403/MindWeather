@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ttogilgi.model.pojo.ContentPOJO
 import com.example.ttogilgi.model.pojo.Diary
 import com.example.ttogilgi.model.repository.IDiaryRepository
 import com.example.ttogilgi.retrofit.ApiService
@@ -22,7 +23,8 @@ class DiaryRepoImpl(
 
     val PREFERENCE = "template.android.TTogilgi"
     val pref = context.getSharedPreferences(PREFERENCE, AppCompatActivity.MODE_PRIVATE)
-    val token = pref.getString("token", "").toString()
+    val str = pref.getString("token", "").toString()
+    val token = "JWT $str"
 
     override fun getDiarys(): List<Diary> {
         var list: List<Diary> = arrayListOf()
@@ -53,9 +55,9 @@ class DiaryRepoImpl(
         return list
     }
 
-    override fun getDiaryById(diaryId: String): Diary {
+    override fun getDiaryById(context: Context, diaryId: String): Diary {
         lateinit var diary: Diary
-        httpCall?.getDiaryById(diaryId.toInt(), token)?.enqueue(object : Callback<Diary> {
+        httpCall?.getDiaryById(diaryId, token)?.enqueue(object : Callback<Diary> {
             override fun onFailure(call: Call<Diary>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
             }
@@ -63,7 +65,7 @@ class DiaryRepoImpl(
             override fun onResponse(call: Call<Diary>, response: Response<Diary>) {
                 when (response!!.code()) {
                     200 -> diary = response!!.body() as Diary
-                    400 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
+                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -71,8 +73,8 @@ class DiaryRepoImpl(
         return diary
     }
 
-    override fun deleteDiary(diaryId: String) {
-        httpCall?.deleteDiary(diaryId.toInt(), token)?.enqueue(object : Callback<Void> {
+    override fun deleteDiary(context: Context, diaryId: String) {
+        httpCall?.deleteDiary(diaryId, token)?.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
             }
@@ -80,26 +82,27 @@ class DiaryRepoImpl(
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 when (response!!.code()) {
                     200 -> Toast.makeText(context, "삭제 완료", Toast.LENGTH_LONG).show()
-                    400 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
+                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                 }
             }
 
         })
     }
 
-    override fun updateDiary(diaryId: String) {
-        httpCall?.updateDiary(diaryId, token)?.enqueue(object : Callback<Void> {
+    override fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
+        httpCall?.updateDiary(diaryId,contentPOJO, token)?.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 when (response!!.code()) {
-                    200 -> Toast.makeText(context, "저장 완료", Toast.LENGTH_LONG).show()
-                    400 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
+                    200 -> {
+                       // Toast.makeText(context, "저장 완료", Toast.LENGTH_LONG).show()
+                    }
+                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                 }
             }
-
         })
     }
 

@@ -21,7 +21,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setSupportActionBar(detailToolbar)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
         viewModel = application!!.let {
@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         })
 
         val diaryId = intent.getStringExtra("DIARY_ID")
-        if(diaryId != null) viewModel!!.loadDiary(diaryId)
+        if(diaryId != null) viewModel!!.loadDiary(this, diaryId)
 
     }
 
@@ -61,7 +61,7 @@ class DetailActivity : AppCompatActivity() {
             }
             R.id.action_delete -> {
                 val diaryId = intent.getStringExtra("DIARY_ID")
-                viewModel?.deleteDiary(diaryId)
+                viewModel?.deleteDiary(this, diaryId)
                 Toast.makeText(this,
                     "삭제 완료", Toast.LENGTH_LONG).show()
                 finish()
