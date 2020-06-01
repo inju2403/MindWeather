@@ -32,11 +32,6 @@ class ListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
 
-//        viewModel = activity!!.application!!.let {
-//            ViewModelProvider(activity!!.viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
-//                .get(ListViewModel::class.java)
-//        }
-
         viewModel = activity!!.application!!.let {
             ViewModelProvider(this, DiaryListInjector(
                 requireActivity().application

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_diary.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DiaryListAdapter (private val list : List<Diary>) : RecyclerView.Adapter<ItemViewHolder> () {
+class DiaryListAdapter (private val list : MutableList<Diary>) : RecyclerView.Adapter<ItemViewHolder> () {
 
     private val dateFormat = SimpleDateFormat("MMdd")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)

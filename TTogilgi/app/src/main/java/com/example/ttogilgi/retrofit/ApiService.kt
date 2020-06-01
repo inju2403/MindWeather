@@ -14,7 +14,6 @@ interface ApiService {
     @POST("auth/login/") // 로그인
     fun login(@Body loginRequestPOJO: LoginRequestPOJO): Call<Login_SignUP_ReturnPOJO>
 
-    @FormUrlEncoded
     @POST("auth/logout/") // 로그아웃
     fun logout(@Header("Authorization") Authorization: String): Call<Void>
 
@@ -31,7 +30,7 @@ interface ApiService {
     @PATCH("diary/{id}/") // 일기 수정
     fun updateDiary(@Path("id") id: String, @Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Call<Void>
 
-    @DELETE("diary/{Authorization}/") // 일기 삭제
+    @DELETE("diary/{id}/") // 일기 삭제
     fun deleteDiary(@Path("id") id: String, @Header("Authorization") Authorization: String): Call<Void>
 
 }

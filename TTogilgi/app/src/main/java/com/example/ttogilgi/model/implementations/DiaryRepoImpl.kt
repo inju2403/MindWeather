@@ -26,8 +26,8 @@ class DiaryRepoImpl(
     val str = pref.getString("token", "").toString()
     val token = "JWT $str"
 
-    override fun getDiarys(): List<Diary> {
-        var list: List<Diary> = arrayListOf()
+    override fun getDiarys(): MutableList<Diary> {
+        var list: MutableList<Diary> = arrayListOf()
         httpCall?.getDiarys(token)?.enqueue(object : Callback<JSONArray> {
             override fun onFailure(call: Call<JSONArray>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
@@ -38,7 +38,8 @@ class DiaryRepoImpl(
                     200 -> //list = response!!.body() as List<Diary>
                     {
                         var jsonArray: JSONArray = response as JSONArray
-                        list = jsonArray!! as List<Diary>
+                        list = jsonArray!! as MutableList<Diary>
+                        Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                     }
 //                        {
 //                            var jsonArray: JSONArray = response as JSONArray
@@ -97,9 +98,7 @@ class DiaryRepoImpl(
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 when (response!!.code()) {
-                    200 -> {
-                       // Toast.makeText(context, "저장 완료", Toast.LENGTH_LONG).show()
-                    }
+                    200 -> Toast.makeText(context, "저장 완료", Toast.LENGTH_LONG).show()
                     404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                 }
             }

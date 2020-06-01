@@ -9,11 +9,9 @@ class ListViewModel(
     val repo: IDiaryRepository
 ) : ViewModel() {
 
-    val diaryList: List<Diary> = repo.getDiarys()
-
-    val diaryListLiveData : MutableLiveData<List<Diary>> by lazy {
-        MutableLiveData<List<Diary>>().apply {
-            value = diaryList
+    val diaryListLiveData : MutableLiveData<MutableList<Diary>> by lazy {
+        MutableLiveData<MutableList<Diary>>().apply {
+            value = repo.getDiarys()
         }
     }
 }
