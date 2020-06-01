@@ -5,7 +5,7 @@ import com.example.ttogilgi.model.pojo.Diary
 interface IDiaryRepository {
     fun getDiarys(): List<Diary>
     fun getDiaryById(diaryId: String): Diary
-    fun updateDiary(diary: Diary)
+    fun updateDiary(diaryId: String)
     fun deleteDiary(diaryId: String)
 
 //    fun getDiarys(): List<DiaryData>

@@ -9,6 +9,14 @@ data class Diary (
     @Expose
     var id: String = "987654321",
 
+    @SerializedName("qna")
+    @Expose
+    var user: String = "",
+
+    @SerializedName("content")
+    @Expose
+    var content: String = "",
+
     @SerializedName("createdAt")
     @Expose
     var createdAt: Date = Date(),
@@ -16,10 +24,6 @@ data class Diary (
     @SerializedName("updatedAt")
     @Expose
     var updatedAt: Date = Date(),
-
-    @SerializedName("content")
-    @Expose
-    var content: String = "",
 
     @SerializedName("happiness")
     @Expose
@@ -43,9 +47,5 @@ data class Diary (
 
     @SerializedName("qna")
     @Expose
-    var qna: String = "",
-
-    @SerializedName("qna")
-    @Expose
-    var user: Int = 0
+    var qna: String = ""
 )

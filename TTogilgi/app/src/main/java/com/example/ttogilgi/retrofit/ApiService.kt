@@ -31,8 +31,9 @@ interface ApiService {
     @GET("diary/{id}/") // 일기 받기
     fun getDiaryById(@Path("id") id: Int, @Query("Authorization") Authorization: String): Call<Diary>
 
+    @FormUrlEncoded
     @PATCH("diary/") // 일기 수정
-    fun updateDiary(@Body diary: Diary, @Query("Authorization") Authorization: String): Call<Void>
+    fun updateDiary(@Field("id") id: String, @Query("Authorization") Authorization: String): Call<Void>
 
     @DELETE("diary/{id}/") // 일기 삭제
     fun deleteDiary(@Path("id") id: Int, @Query("Authorization") Authorization: String): Call<Void>

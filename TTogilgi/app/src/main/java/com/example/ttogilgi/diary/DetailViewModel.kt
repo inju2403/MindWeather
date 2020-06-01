@@ -23,7 +23,7 @@ class DetailViewModel (
     }
 
     fun addOrUpdateDiary(context: Context) {
-        repo.updateDiary(diary)
+        repo.updateDiary(diary.id)
     }
 
     fun deleteDiary(id: String) {

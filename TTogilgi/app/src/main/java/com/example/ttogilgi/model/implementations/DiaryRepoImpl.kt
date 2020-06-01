@@ -25,7 +25,7 @@ class DiaryRepoImpl(
     val token = pref.getString("token", "").toString()
 
     override fun getDiarys(): List<Diary> {
-        val list: MutableList<Diary> = arrayListOf()
+        var list: List<Diary> = arrayListOf()
         httpCall?.getDiarys(token)?.enqueue(object : Callback<JSONArray> {
             override fun onFailure(call: Call<JSONArray>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
@@ -34,20 +34,23 @@ class DiaryRepoImpl(
             override fun onResponse(call: Call<JSONArray>, response: Response<JSONArray>) {
                 when (response!!.code()) {
                     200 -> //list = response!!.body() as List<Diary>
-                        {
-                            var jsonArray: JSONArray = response as JSONArray
-                            var sz = jsonArray.length()
-                            for(i in 0..sz-1) {
-                                var item = jsonArray.get(i)
-                                list?.add(item as Diary)
-                            }
-                        }
+                    {
+                        var jsonArray: JSONArray = response as JSONArray
+                        list = jsonArray!! as List<Diary>
+                    }
+//                        {
+//                            var jsonArray: JSONArray = response as JSONArray
+//                            var sz = jsonArray.length()
+//                            for(i in 0..sz-1) {
+//                                var item = jsonArray.get(i)
+//                                list?.add(item as Diary)
+//                            }
+//                        }
                     400 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
                 }
             }
         })
-
-        return list as List<Diary>
+        return list
     }
 
     override fun getDiaryById(diaryId: String): Diary {
@@ -84,8 +87,8 @@ class DiaryRepoImpl(
         })
     }
 
-    override fun updateDiary(diary: Diary) {
-        httpCall?.updateDiary(diary, token)?.enqueue(object : Callback<Void> {
+    override fun updateDiary(diaryId: String) {
+        httpCall?.updateDiary(diaryId, token)?.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.d(Constants.TAG,"${t}")
             }
