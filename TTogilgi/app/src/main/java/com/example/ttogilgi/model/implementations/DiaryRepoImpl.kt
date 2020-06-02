@@ -10,10 +10,11 @@ import com.example.ttogilgi.model.repository.IDiaryRepository
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
 import com.example.ttogilgi.utils.Constants
-import org.json.JSONArray
+import com.example.ttogilgi.utils.Constants.TAG
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class DiaryRepoImpl(
     val httpCall: ApiService?
@@ -26,30 +27,23 @@ class DiaryRepoImpl(
     val str = pref.getString("token", "").toString()
     val token = "JWT $str"
 
+
     override fun getDiarys(): MutableList<Diary> {
         var list: MutableList<Diary> = arrayListOf()
-        httpCall?.getDiarys(token)?.enqueue(object : Callback<JSONArray> {
-            override fun onFailure(call: Call<JSONArray>, t: Throwable) {
-                Log.d(Constants.TAG,"${t}")
+
+        httpCall?.getDiarys(token)?.enqueue(object : Callback<MutableList<Diary>> {
+            override fun onFailure(call: Call<MutableList<Diary>>, t: Throwable) {
+                Log.d(TAG,"제이슨 어레이 에러 ${t}")
             }
 
-            override fun onResponse(call: Call<JSONArray>, response: Response<JSONArray>) {
+            override fun onResponse(call: Call<MutableList<Diary>>, response: Response<MutableList<Diary>>) {
                 when (response!!.code()) {
                     200 -> //list = response!!.body() as List<Diary>
                     {
-                        var jsonArray: JSONArray = response as JSONArray
-                        list = jsonArray!! as MutableList<Diary>
-                        Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
+                        list = response!!.body() as MutableList<Diary>
+                        Log.d(TAG,"getDiarys() 오케이")
                     }
-//                        {
-//                            var jsonArray: JSONArray = response as JSONArray
-//                            var sz = jsonArray.length()
-//                            for(i in 0..sz-1) {
-//                                var item = jsonArray.get(i)
-//                                list?.add(item as Diary)
-//                            }
-//                        }
-                    400 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
+                    400 -> Log.d(TAG,"리스트 로드 실패")
                 }
             }
         })
@@ -60,7 +54,7 @@ class DiaryRepoImpl(
         lateinit var diary: Diary
         httpCall?.getDiaryById(diaryId, token)?.enqueue(object : Callback<Diary> {
             override fun onFailure(call: Call<Diary>, t: Throwable) {
-                Log.d(Constants.TAG,"${t}")
+                Log.d(TAG,"로드 실패")
             }
 
             override fun onResponse(call: Call<Diary>, response: Response<Diary>) {
@@ -77,7 +71,7 @@ class DiaryRepoImpl(
     override fun deleteDiary(context: Context, diaryId: String) {
         httpCall?.deleteDiary(diaryId, token)?.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d(Constants.TAG,"${t}")
+                Log.d(TAG,"삭제 실패")
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
@@ -93,7 +87,7 @@ class DiaryRepoImpl(
     override fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
         httpCall?.updateDiary(diaryId,contentPOJO, token)?.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d(Constants.TAG,"${t}")
+                Log.d(TAG,"업데이트 실패")
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

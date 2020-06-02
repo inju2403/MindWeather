@@ -2,16 +2,11 @@ package com.example.ttogilgi.model.pojo
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 data class Diary (
     @SerializedName("id")
     @Expose
     var id: String = "987654321",
-
-    @SerializedName("qna")
-    @Expose
-    var user: String = "",
 
     @SerializedName("content")
     @Expose
@@ -19,11 +14,11 @@ data class Diary (
 
     @SerializedName("createdAt")
     @Expose
-    var createdAt: Date = Date(),
+    var createdAt: String = "",
 
     @SerializedName("updatedAt")
     @Expose
-    var updatedAt: Date = Date(),
+    var updatedAt: String = "",
 
     @SerializedName("happiness")
     @Expose
@@ -47,5 +42,9 @@ data class Diary (
 
     @SerializedName("qna")
     @Expose
-    var qna: String = ""
+    var qna: String = "",
+
+    @SerializedName("user")
+    @Expose
+    var user: String = ""
 )

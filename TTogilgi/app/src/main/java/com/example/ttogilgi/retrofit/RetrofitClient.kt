@@ -15,7 +15,7 @@ object RetrofitClient {
     // 레트로핏 클라이언트 가져오기
     fun getClient(baseUrl: String) : Retrofit? {
 
-        if(retrofitClient==null) {
+        if(retrofitClient == null) {
             val clientBuilder = OkHttpClient.Builder()
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
