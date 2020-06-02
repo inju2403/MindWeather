@@ -1,8 +1,6 @@
 package com.example.ttogilgi.model.implementations
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ttogilgi.model.pojo.ContentPOJO
 import com.example.ttogilgi.model.pojo.Diary
@@ -10,10 +8,6 @@ import com.example.ttogilgi.model.repository.IDiaryRepository
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
 import com.example.ttogilgi.utils.Constants
-import com.example.ttogilgi.utils.Constants.TAG
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class DiaryRepoImpl(
@@ -28,75 +22,20 @@ class DiaryRepoImpl(
     val token = "JWT $str"
 
 
-    override fun getDiarys(): MutableList<Diary> {
-        var list: MutableList<Diary> = arrayListOf()
-
-        httpCall?.getDiarys(token)?.enqueue(object : Callback<MutableList<Diary>> {
-            override fun onFailure(call: Call<MutableList<Diary>>, t: Throwable) {
-                Log.d(TAG,"제이슨 어레이 에러 ${t}")
-            }
-
-            override fun onResponse(call: Call<MutableList<Diary>>, response: Response<MutableList<Diary>>) {
-                when (response!!.code()) {
-                    200 -> //list = response!!.body() as List<Diary>
-                    {
-                        list = response!!.body() as MutableList<Diary>
-                        Log.d(TAG,"getDiarys() 오케이")
-                    }
-                    400 -> Log.d(TAG,"리스트 로드 실패")
-                }
-            }
-        })
-        return list
+    override suspend fun getDiarys(): MutableList<Diary> {
+        return httpCall?.getDiarys(token)!!
     }
 
-    override fun getDiaryById(context: Context, diaryId: String): Diary {
-        lateinit var diary: Diary
-        httpCall?.getDiaryById(diaryId, token)?.enqueue(object : Callback<Diary> {
-            override fun onFailure(call: Call<Diary>, t: Throwable) {
-                Log.d(TAG,"로드 실패")
-            }
-
-            override fun onResponse(call: Call<Diary>, response: Response<Diary>) {
-                when (response!!.code()) {
-                    200 -> diary = response!!.body() as Diary
-                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
-
-        return diary
+    override suspend fun getDiaryById(context: Context, diaryId: String): Diary {
+        return httpCall?.getDiaryById(diaryId, token)!!
     }
 
-    override fun deleteDiary(context: Context, diaryId: String) {
-        httpCall?.deleteDiary(diaryId, token)?.enqueue(object : Callback<Void> {
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d(TAG,"삭제 실패")
-            }
-
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                when (response!!.code()) {
-                    200 -> Toast.makeText(context, "삭제 완료", Toast.LENGTH_LONG).show()
-                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
-                }
-            }
-
-        })
+    override suspend fun deleteDiary(context: Context, diaryId: String) {
+        httpCall?.deleteDiary(diaryId, token)
     }
 
-    override fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
-        httpCall?.updateDiary(diaryId,contentPOJO, token)?.enqueue(object : Callback<Void> {
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d(TAG,"업데이트 실패")
-            }
-
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                when (response!!.code()) {
-                    200 -> Toast.makeText(context, "저장 완료", Toast.LENGTH_LONG).show()
-                    404 -> Toast.makeText(context, "${response.message()}", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
+    override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
+        httpCall?.updateDiary(diaryId, contentPOJO, token)
     }
 
 

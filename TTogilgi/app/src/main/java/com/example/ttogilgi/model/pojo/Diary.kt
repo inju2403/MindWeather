@@ -2,6 +2,7 @@ package com.example.ttogilgi.model.pojo
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class Diary (
     @SerializedName("id")
@@ -14,11 +15,11 @@ data class Diary (
 
     @SerializedName("createdAt")
     @Expose
-    var createdAt: String = "",
+    var createdAt: Date = Date(),
 
     @SerializedName("updatedAt")
     @Expose
-    var updatedAt: String = "",
+    var updatedAt: Date = Date(),
 
     @SerializedName("happiness")
     @Expose

@@ -2,6 +2,7 @@ package com.example.ttogilgi.retrofit
 
 import com.example.ttogilgi.model.pojo.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -22,15 +23,14 @@ interface ApiService {
     // 일기 리스트 받기, 일기 받기, 일기 수정, 일기 삭제
 
     @GET("diary/") // 일기 리스트 받기
-    fun getDiarys(@Header("Authorization") Authorization: String): Call<MutableList<Diary>>
+    suspend fun getDiarys(@Header("Authorization") Authorization: String): MutableList<Diary>
 
     @GET("diary/{id}/") // 일기 받기
-    fun getDiaryById(@Path("id") id: String, @Header("Authorization") Authorization: String): Call<Diary>
+    suspend fun getDiaryById(@Path("id") id: String, @Header("Authorization") Authorization: String): Diary
 
     @PATCH("diary/{id}/") // 일기 수정
-    fun updateDiary(@Path("id") id: String, @Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Call<Void>
+    suspend fun updateDiary(@Path("id") id: String, @Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Response<Unit>
 
     @DELETE("diary/{id}/") // 일기 삭제
-    fun deleteDiary(@Path("id") id: String, @Header("Authorization") Authorization: String): Call<Void>
-
+    suspend fun deleteDiary(@Path("id") id: String, @Header("Authorization") Authorization: String): Response<Unit>
 }

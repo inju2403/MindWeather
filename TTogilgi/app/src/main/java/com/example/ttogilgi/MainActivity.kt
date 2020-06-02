@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-        val token = pref.getString("token", "").toString()
+        val token = "JWT ${pref.getString("token", "").toString()}"
         val username = pref.getString("username", "").toString()
         Toast.makeText(this@MainActivity, "${username}님 반갑습니다 :)", Toast.LENGTH_LONG).show()
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         setBottomNavigation()
 
         viewModel = application!!.let {
-            ViewModelProvider(this, DiaryListInjector(
+            ViewModelProvider(viewModelStore, DiaryListInjector(
                 this.application
             ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)

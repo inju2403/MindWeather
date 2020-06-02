@@ -20,7 +20,7 @@ class DiaryListInjector(application: Application): AndroidViewModel(application)
 
     val app: Application = application
 
-    val httpCall: ApiService?
+    private val httpCall: ApiService?
             = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
 
     private fun getDiaryRepository(): IDiaryRepository {

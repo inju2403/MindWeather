@@ -2,6 +2,7 @@ package com.example.ttogilgi.diary.diaryList
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryDetail.DetailActivity
 import com.example.ttogilgi.diary.diaryDetail.EditActivity
 import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
+import com.example.ttogilgi.utils.Constants.TAG
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
@@ -33,27 +35,26 @@ class ListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         viewModel = activity!!.application!!.let {
-            ViewModelProvider(this, DiaryListInjector(
+            ViewModelProvider(viewModelStore, DiaryListInjector(
                 requireActivity().application
             ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)
         }
 
+
         viewModel!!.let {
-            it.diaryListLiveData.value?.let {
-                listAdapter =
-                    DiaryListAdapter(it)
-                diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-                diaryListView.adapter = listAdapter
-                listAdapter.itemClickListener = {
-                    val intent = Intent(activity, DetailActivity::class.java).apply {
-                        putExtra("DIARY_ID", it)
-                    }
-                    startActivity(intent)
-                }
-            }
             it.diaryListLiveData.observe(viewLifecycleOwner,
                 Observer {
+                    listAdapter =
+                        DiaryListAdapter(it)
+                    diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+                    diaryListView.adapter = listAdapter
+                    listAdapter.itemClickListener = {
+                        val intent = Intent(activity, DetailActivity::class.java).apply {
+                            putExtra("DIARY_ID", it)
+                        }
+                        startActivity(intent)
+                    }
                     listAdapter.notifyDataSetChanged()
                 })
         }
@@ -81,5 +82,12 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         listAdapter.notifyDataSetChanged()
+        viewModel!!.getDiarys()
+        Log.d(TAG,"리스트: ${viewModel!!.diaryListLiveData.value}")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        diaryListView.adapter = null
     }
 }
