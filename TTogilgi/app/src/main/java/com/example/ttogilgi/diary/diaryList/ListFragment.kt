@@ -41,24 +41,10 @@ class ListFragment : Fragment() {
                 .get(ListViewModel::class.java)
         }
 
-
-        viewModel!!.let {
-            it.diaryListLiveData.observe(viewLifecycleOwner,
-                Observer {
-                    listAdapter =
-                        DiaryListAdapter(it)
-                    diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-                    diaryListView.adapter = listAdapter
-                    listAdapter.itemClickListener = {
-                        val intent = Intent(activity, DetailActivity::class.java).apply {
-                            putExtra("DIARY_ID", it)
-                        }
-                        startActivity(intent)
-                    }
-                    listAdapter.notifyDataSetChanged()
-                })
-        }
+        setUpAdapter()
+        observeViewModel()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -81,7 +67,6 @@ class ListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        listAdapter.notifyDataSetChanged()
         viewModel!!.getDiarys()
         Log.d(TAG,"리스트: ${viewModel!!.diaryListLiveData.value}")
     }
@@ -89,5 +74,40 @@ class ListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         diaryListView.adapter = null
+    }
+
+
+
+
+    private fun setUpAdapter() {
+        listAdapter = DiaryListAdapter()
+        listAdapter.event.observe(
+            viewLifecycleOwner,
+            Observer {
+                viewModel!!.handleEvent(it)
+            }
+        )
+    }
+
+    private fun observeViewModel() {
+        viewModel!!.let {
+            it.diaryListLiveData.value?.let {
+                diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+                diaryListView.adapter = listAdapter
+            }
+            it.editDiary.observe(
+                viewLifecycleOwner,
+                Observer {
+                    val intent = Intent(activity, DetailActivity::class.java).apply {
+                        putExtra("DIARY_ID", it)
+                    }
+                    startActivity(intent)
+                }
+            )
+            it.diaryListLiveData.observe(viewLifecycleOwner,
+                Observer {
+                    listAdapter.submitList(it)
+                })
+        }
     }
 }

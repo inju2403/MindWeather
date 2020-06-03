@@ -1,5 +1,6 @@
 package com.example.ttogilgi.diary
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.ttogilgi.diary.diaryList.DiaryListEvent
 import com.example.ttogilgi.model.pojo.Diary
@@ -19,6 +20,8 @@ class ListViewModel(
             value = diarys
         }
     }
+    private val editDiaryState = MutableLiveData<String>()
+    val editDiary: LiveData<String> get() = editDiaryState
 
     fun getDiarys() = launch {
         diarys = repo.getDiarys()
@@ -26,7 +29,14 @@ class ListViewModel(
     }
 
     override fun handleEvent(event: DiaryListEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (event) {
+            is DiaryListEvent.OnStart -> getDiarys()
+            is DiaryListEvent.OnDiaryItemClick -> editDiary(event.position)
+        }
+    }
+
+    private fun editDiary(position: Int) {
+        editDiaryState.value = diaryListLiveData.value!![position].id
     }
 
 }

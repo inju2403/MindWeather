@@ -1,7 +1,7 @@
 package com.example.ttogilgi.diary.diaryList
 
 sealed class DiaryListEvent {
-    data class OnNoteItemClick(val position: Int) : DiaryListEvent()
-    object OnNewNoteClick : DiaryListEvent()
+    data class OnDiaryItemClick(val position: Int) : DiaryListEvent()
+    object OnNewDiaryClick : DiaryListEvent()
     object OnStart : DiaryListEvent()
 }
