@@ -17,5 +17,6 @@
 ### 구현
 > MVVM 아키텍쳐        
 > Live Data를 이용한 Observer Pattern    
-> Retrofit을 이용한 Rest API 통신   
+> Retrofit을 이용한 Rest API 통신    
+> Coroutine    
 > MPAndroidChart을 이용한 그래프 시각화    
