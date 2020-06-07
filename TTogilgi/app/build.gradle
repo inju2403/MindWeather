@@ -58,12 +58,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-
-
     implementation "com.squareup.okhttp3:logging-interceptor:4.6.0"
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
