@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -55,29 +54,30 @@ class GraphFragment : Fragment() {
     }
 
     private fun makeChart() {
+
         emotion_graph.setUsePercentValues(true)
         emotion_graph.description.isEnabled = false
-        emotion_graph.setExtraOffsets(5F, 5F, 5F, 5F)
+        emotion_graph.setExtraOffsets(5F, 0F, 5F, 10F)
 
         emotion_graph.dragDecelerationFrictionCoef = 0.95f
 
-        emotion_graph.isDrawHoleEnabled = false
-        emotion_graph.setHoleColor(Color.WHITE)
+        emotion_graph.isDrawHoleEnabled = true
+        emotion_graph.setHoleColor(1)
         emotion_graph.transparentCircleRadius = 61f
+
+        emotion_graph.setDrawCenterText(true)
+        emotion_graph.centerText = "나의 감정 분포"
+        emotion_graph.setCenterTextColor(Color.DKGRAY)
+        emotion_graph.setCenterTextSize(18f)
 
         val yValues = ArrayList<PieEntry>()
 
-        yValues.add(PieEntry(happinessCnt.toFloat()+1, "행복"))
-        yValues.add(PieEntry(neutralityCnt.toFloat()+2, "중립"))
+        yValues.add(PieEntry(angerCnt.toFloat()+5, "행복"))
+        yValues.add(PieEntry(worryCnt.toFloat()+4, "중립"))
+        yValues.add(PieEntry(neutralityCnt.toFloat()+2, "걱정"))
         yValues.add(PieEntry(sadnessCnt.toFloat()+3, "슬픔"))
-        yValues.add(PieEntry(worryCnt.toFloat()+4, "걱정"))
-        yValues.add(PieEntry(angerCnt.toFloat()+5, "분노"))
+        yValues.add(PieEntry(happinessCnt.toFloat()+1, "분노"))
 
-        val description = Description()
-        description.text = "나의 감정 분포" //라벨
-
-        description.textSize = 20F
-        emotion_graph.description = description
 
         emotion_graph.animateY(1000, Easing.EaseInOutCubic) //애니메이션
 
@@ -85,7 +85,7 @@ class GraphFragment : Fragment() {
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.JOYFUL_COLORS)
+        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
 
         val data = PieData(dataSet)
         data.setValueTextSize(10f)

@@ -15,7 +15,18 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="똑일기"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:id="@+id/toolbar_title"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="italic"-->
+<!--            android:textColor="@color/brownColor"/>-->
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/contentFrame"
@@ -41,4 +52,5 @@
         app:itemIconTint="@drawable/bottom_navigation_item_color"
         app:itemTextColor="@drawable/bottom_navigation_tint_color"
         app:menu="@menu/main_activity_bottom_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
