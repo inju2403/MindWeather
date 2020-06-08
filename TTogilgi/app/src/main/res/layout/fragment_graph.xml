@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GraphFragment">
+    tools:context=".graph.GraphFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/emotion_graph"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="그래프" />
+        android:layout_margin="32dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.github.mikephil.charting.charts.PieChart>
 
 </FrameLayout>

@@ -78,7 +78,7 @@
 
     <fragment
         android:id="@+id/graphFragment"
-        android:name="com.example.ttogilgi.GraphFragment"
+        android:name="com.example.ttogilgi.graph.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
     <fragment

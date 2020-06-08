@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryList.ListFragment
 import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
+import com.example.ttogilgi.graph.EmotionViewModel
+import com.example.ttogilgi.graph.GraphFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     val PREFERENCE = "template.android.TTogilgi"
 
     private var viewModel: ListViewModel? = null
+    private var emotionViewModel: EmotionViewModel? = null
 
     private val FRAG_LIST = 0
     private val FRAG_GRAPH = 1
@@ -46,6 +49,11 @@ class MainActivity : AppCompatActivity() {
                 this.application
             ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)
+        }
+
+        emotionViewModel = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel::class.java)
         }
     }
 

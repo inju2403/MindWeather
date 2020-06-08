@@ -14,6 +14,8 @@ import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryDetail.DetailActivity
 import com.example.ttogilgi.diary.diaryDetail.EditActivity
 import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
+import com.example.ttogilgi.graph.EmotionViewModel
+import com.example.ttogilgi.model.pojo.Diary
 import com.example.ttogilgi.utils.Constants.TAG
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -21,6 +23,14 @@ class ListFragment : Fragment() {
 
     private lateinit var listAdapter: DiaryListAdapter
     private var viewModel: ListViewModel? = null
+    private var emotionViewModel: EmotionViewModel? = null
+
+    private var happinessCnt = 0
+    private var neutralityCnt = 0
+    private var sadnessCnt = 0
+    private var worryCnt = 0
+    private var angerCnt = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +51,14 @@ class ListFragment : Fragment() {
                 .get(ListViewModel::class.java)
         }
 
+        emotionViewModel = activity!!.application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel::class.java)
+        }
+
         setUpAdapter()
         observeViewModel()
+        observeEmotionViewModel()
     }
 
 
@@ -94,6 +110,14 @@ class ListFragment : Fragment() {
             it.diaryListLiveData.value?.let {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
+                var list = it as List<Diary>
+                for(i in list.indices) {
+                    happinessCnt += list[i].happiness
+                    angerCnt += list[i].anger
+                    worryCnt += list[i].worry
+                    neutralityCnt += list[i].neutrality
+                    sadnessCnt += list[i].sadness
+                }
             }
             it.editDiary.observe(
                 viewLifecycleOwner,
@@ -108,6 +132,18 @@ class ListFragment : Fragment() {
                 Observer {
                     listAdapter.submitList(it)
                 })
+        }
+    }
+
+    private fun observeEmotionViewModel() {
+        emotionViewModel!!.let {
+            it.emotionLiveData.value?.let {
+                it.happiness = happinessCnt
+                it.anger = angerCnt
+                it.neutrality = neutralityCnt
+                it.sadness = sadnessCnt
+                it.worry = worryCnt
+            }
         }
     }
 }
