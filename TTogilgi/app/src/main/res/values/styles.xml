@@ -35,6 +35,9 @@
     </style>
 
     <style name="Contents_TextView_style">
+<!--        <item name="">@color/colorPrimary</item>-->
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">8dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">top</item>
         <item name="android:textColor">@color/brownColor</item>
