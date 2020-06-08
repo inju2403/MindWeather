@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".graph.GraphFragment">
 
-    <com.github.mikephil.charting.charts.PieChart
+    <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/emotion_graph"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="32dp"
         app:layout_constraintStart_toStartOf="parent">
 
-    </com.github.mikephil.charting.charts.PieChart>
+    </com.github.mikephil.charting.charts.RadarChart>
 
 </FrameLayout>
