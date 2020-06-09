@@ -70,10 +70,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 .get(ListViewModel::class.java)
         }
 
-//        emotionViewModel = application!!.let {
-//            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
-//                .get(EmotionViewModel::class.java)
-//        }
+        emotionViewModel = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel::class.java)
+        }
 
     }
 

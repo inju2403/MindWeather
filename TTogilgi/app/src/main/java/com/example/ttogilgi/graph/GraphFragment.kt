@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -36,18 +37,18 @@ class GraphFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-//        emotionViewModel = activity!!.application!!.let {
-//            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
-//                .get(EmotionViewModel::class.java)
-//        }
+        emotionViewModel = activity!!.application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel::class.java)
+        }
 
-//        emotionViewModel!!.emotionLiveData!!.value?.let {
-//            happinessCnt = it.happiness
-//            neutralityCnt = it.neutrality
-//            sadnessCnt = it.sadness
-//            worryCnt = it.worry
-//            angerCnt = it.anger
-//        }
+        emotionViewModel!!.emotionLiveData!!.value?.let {
+            happinessCnt = it.happiness
+            neutralityCnt = it.neutrality
+            sadnessCnt = it.sadness
+            worryCnt = it.worry
+            angerCnt = it.anger
+        }
         
         makeChart()
     }
@@ -71,11 +72,11 @@ class GraphFragment : Fragment() {
 
         val yValues = ArrayList<PieEntry>()
 
-        yValues.add(PieEntry(angerCnt.toFloat()+5, "행복"))
-        yValues.add(PieEntry(worryCnt.toFloat()+4, "중립"))
-        yValues.add(PieEntry(neutralityCnt.toFloat()+2, "걱정"))
-        yValues.add(PieEntry(sadnessCnt.toFloat()+3, "슬픔"))
-        yValues.add(PieEntry(happinessCnt.toFloat()+1, "분노"))
+        yValues.add(PieEntry(angerCnt.toFloat(), "행복"))
+        yValues.add(PieEntry(worryCnt.toFloat(), "중립"))
+        yValues.add(PieEntry(neutralityCnt.toFloat(), "걱정"))
+        yValues.add(PieEntry(sadnessCnt.toFloat(), "슬픔"))
+        yValues.add(PieEntry(happinessCnt.toFloat(), "분노"))
 
 
         emotion_graph.animateY(1000, Easing.EaseInOutCubic) //애니메이션

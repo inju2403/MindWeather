@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 //RetrofitClient Class with Singleton Pattern
@@ -20,6 +21,16 @@ object RetrofitClient {
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             clientBuilder.addInterceptor(loggingInterceptor)
+
+//            val client = OkHttpClient()
+//            client.setConnectTimeout(30, TimeUnit.SECONDS) // connect timeout
+//
+//            client.setReadTimeout(30, TimeUnit.SECONDS) // socket timeout
+
+            clientBuilder.connectTimeout(5, TimeUnit.MINUTES) // connect
+            clientBuilder.writeTimeout(5, TimeUnit.MINUTES) // write
+            clientBuilder.readTimeout(5, TimeUnit.MINUTES); // read
+
 
             retrofitClient = Retrofit.Builder()
                 .baseUrl(baseUrl)

@@ -51,10 +51,10 @@ class ListFragment : Fragment() {
                 .get(ListViewModel::class.java)
         }
 
-//        emotionViewModel = activity!!.application!!.let {
-//            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
-//                .get(EmotionViewModel::class.java)
-//        }
+        emotionViewModel = activity!!.application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel::class.java)
+        }
 
         setUpAdapter()
         observeViewModel()
@@ -91,8 +91,6 @@ class ListFragment : Fragment() {
         super.onDestroyView()
         diaryListView.adapter = null
     }
-
-
 
 
     private fun setUpAdapter() {
@@ -136,14 +134,14 @@ class ListFragment : Fragment() {
     }
 
     private fun observeEmotionViewModel() {
-//        emotionViewModel!!.let {
-//            it.emotionLiveData.value?.let {
-//                it.happiness = happinessCnt
-//                it.anger = angerCnt
-//                it.neutrality = neutralityCnt
-//                it.sadness = sadnessCnt
-//                it.worry = worryCnt
-//            }
-//        }
+        emotionViewModel!!.let {
+            it.emotionLiveData.value?.let {
+                it.happiness = happinessCnt
+                it.anger = angerCnt
+                it.neutrality = neutralityCnt
+                it.sadness = sadnessCnt
+                it.worry = worryCnt
+            }
+        }
     }
 }

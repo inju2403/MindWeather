@@ -4,12 +4,15 @@
 
     <item android:id="@+id/action_modify"
         android:title="수정"
+        android:icon="@drawable/ic_edit"
         app:showAsAction="always" />
     <item android:id="@+id/action_delete"
         android:title="삭제"
+        android:icon="@drawable/ic_delete"
         app:showAsAction="always" />
     <item android:id="@+id/menu_share"
         android:title="공유"
+        android:icon="@drawable/ic_send"
         app:showAsAction="always" />
 
 </menu>

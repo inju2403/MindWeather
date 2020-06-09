@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/searchButton"
-        android:icon="@drawable/search_icon"
+        android:icon="@drawable/ic_search"
         android:title="찾아보기"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/addButton"
-        android:icon="@drawable/add_icon"
+        android:icon="@drawable/ic_add"
         android:title="일기추가"
         app:showAsAction="always"/>
 </menu>
