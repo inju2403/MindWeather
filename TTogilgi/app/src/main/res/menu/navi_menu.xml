@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single" >
         <item
             android:checkable="false"
-            android:id="@+id/nav_first"
+            android:id="@+id/nav_info_edit"
             android:title="정보수정" />
         <item
             android:checkable="false"
-            android:id="@+id/nav_second"
+            android:id="@+id/nav_logout"
             android:title="로그아웃" />
     </group>
 

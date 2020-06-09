@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -37,18 +36,18 @@ class GraphFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        emotionViewModel = activity!!.application!!.let {
-            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
-                .get(EmotionViewModel::class.java)
-        }
+//        emotionViewModel = activity!!.application!!.let {
+//            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+//                .get(EmotionViewModel::class.java)
+//        }
 
-        emotionViewModel!!.emotionLiveData!!.value?.let {
-            happinessCnt = it.happiness
-            neutralityCnt = it.neutrality
-            sadnessCnt = it.sadness
-            worryCnt = it.worry
-            angerCnt = it.anger
-        }
+//        emotionViewModel!!.emotionLiveData!!.value?.let {
+//            happinessCnt = it.happiness
+//            neutralityCnt = it.neutrality
+//            sadnessCnt = it.sadness
+//            worryCnt = it.worry
+//            angerCnt = it.anger
+//        }
         
         makeChart()
     }
