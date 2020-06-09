@@ -1,8 +1,11 @@
 package com.example.ttogilgi
 
 import android.os.Bundle
+import android.view.Gravity
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryList.ListFragment
@@ -35,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainActivityToolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_smile)
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
         val token = "JWT ${pref.getString("token", "").toString()}"
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
                 .get(EmotionViewModel::class.java)
         }
+
     }
 
     private fun setFragment() {
@@ -106,6 +112,21 @@ class MainActivity : AppCompatActivity() {
                 fragmentManager.beginTransaction().replace(R.id.contentFrame, settingFragment).commit()
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                drawerLayout.openDrawer(Gravity.LEFT)
+                drawerLayout.let {
+                    //왼쪽
+                    if (it.isDrawerOpen(GravityCompat.START)) {
+                        it.closeDrawer(GravityCompat.START)
+                    }
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
