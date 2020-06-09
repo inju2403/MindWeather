@@ -122,6 +122,7 @@ class ListFragment : Fragment() {
                 Observer {
                     val intent = Intent(activity, DetailActivity::class.java).apply {
                         putExtra("DIARY_ID", it)
+                        Log.d(TAG,"observer diary id: ${it}")
                     }
                     startActivity(intent)
                 }

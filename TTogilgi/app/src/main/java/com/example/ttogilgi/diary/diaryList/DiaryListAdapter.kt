@@ -1,5 +1,6 @@
 package com.example.ttogilgi.diary.diaryList
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.ItemViewHolder
 import com.example.ttogilgi.model.pojo.Diary
+import com.example.ttogilgi.utils.Constants
 import com.example.ttogilgi.utils.DiaryDiffUtilCallback
 import kotlinx.android.synthetic.main.item_diary.view.*
 import java.text.SimpleDateFormat
@@ -30,6 +32,7 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.summaryView.text = it.content
             holder.containerView.setOnClickListener {
                 event.value = DiaryListEvent.OnDiaryItemClick(position)
+                Log.d(Constants.TAG,"onBind position: ${position}")
             }
             holder.containerView.dateView.text = dateFormat.format(it.updatedAt)
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.updatedAt)

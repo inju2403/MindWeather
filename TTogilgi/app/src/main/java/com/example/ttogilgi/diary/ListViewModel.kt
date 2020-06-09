@@ -1,11 +1,13 @@
 package com.example.ttogilgi.diary
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.ttogilgi.diary.diaryList.DiaryListEvent
 import com.example.ttogilgi.model.pojo.Diary
 import com.example.ttogilgi.model.repository.IDiaryRepository
 import com.example.ttogilgi.utils.BaseViewModel
+import com.example.ttogilgi.utils.Constants
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -37,6 +39,7 @@ class ListViewModel(
 
     private fun editDiary(position: Int) {
         editDiaryState.value = diaryListLiveData.value!![position].id
+        Log.d(Constants.TAG,"viewModel diary id: ${diaryListLiveData.value!![position].id}")
     }
 
 }
