@@ -4,8 +4,8 @@
     <group android:checkableBehavior="single" >
         <item
             android:checkable="false"
-            android:id="@+id/nav_info_edit"
-            android:title="정보수정" />
+            android:id="@+id/nav_password_edit"
+            android:title="비밀번호 변경" />
         <item
             android:checkable="false"
             android:id="@+id/nav_logout"

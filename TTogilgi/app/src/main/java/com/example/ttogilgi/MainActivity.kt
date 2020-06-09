@@ -15,6 +15,7 @@ import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
 import com.example.ttogilgi.graph.EmotionViewModel
 import com.example.ttogilgi.graph.GraphFragment
 import com.example.ttogilgi.login.LoginActivity
+import com.example.ttogilgi.login.PasswordChangeActivity
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
 import com.example.ttogilgi.utils.Constants
@@ -145,7 +146,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.nav_info_edit-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
+            R.id.nav_password_edit-> {
+                val intent = Intent(applicationContext, PasswordChangeActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_logout-> {
                 val httpCall: ApiService?
                         = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
