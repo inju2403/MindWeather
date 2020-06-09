@@ -29,9 +29,10 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         getItem(position).let {
+            var diaryId = it?.id
             holder.containerView.summaryView.text = it.content
             holder.containerView.setOnClickListener {
-                event.value = DiaryListEvent.OnDiaryItemClick(position)
+                event.value = DiaryListEvent.OnDiaryItemClick(diaryId!!)
                 Log.d(Constants.TAG,"onBind position: ${position}")
             }
             holder.containerView.dateView.text = dateFormat.format(it.updatedAt)

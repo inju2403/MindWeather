@@ -10,7 +10,7 @@ class DiaryDiffUtilCallback : DiffUtil.ItemCallback<Diary>() {
     }
 
     override fun areContentsTheSame(oldItem: Diary, newItem: Diary): Boolean {
-        return oldItem == newItem
+        return oldItem.updatedAt == newItem.updatedAt
     }
 
 }

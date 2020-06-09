@@ -84,7 +84,7 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel!!.getDiarys()
-        Log.d(TAG,"리스트: ${viewModel!!.diaryListLiveData.value}")
+        Log.d(TAG,"(뷰모델) 리스트: ${viewModel!!.diaryListLiveData.value}")
     }
 
     override fun onDestroyView() {
