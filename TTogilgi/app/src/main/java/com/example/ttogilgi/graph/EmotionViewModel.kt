@@ -14,13 +14,8 @@ class EmotionViewModel: ViewModel() {
         }
     }
     fun setEmotions(newEmotion: Emotion) {
-        emotion.happiness = newEmotion.happiness
-        emotion.neutrality = newEmotion.neutrality
-        emotion.sadness = newEmotion.sadness
-        emotion.worry = newEmotion.worry
-        emotion.anger = newEmotion.anger
+        emotion = newEmotion
         Log.d(Constants.TAG,"${emotion.happiness}, ${emotion.neutrality}, ${emotion.sadness}, ${emotion.worry}, ${emotion.anger}")
-//        emotion = newEmotion
         emotionLiveData.value = emotion
     }
 }
