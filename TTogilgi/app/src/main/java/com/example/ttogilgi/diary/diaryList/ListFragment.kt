@@ -15,6 +15,7 @@ import com.example.ttogilgi.diary.diaryDetail.DetailActivity
 import com.example.ttogilgi.diary.diaryDetail.EditActivity
 import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
 import com.example.ttogilgi.graph.EmotionViewModel
+import com.example.ttogilgi.model.Emotion
 import com.example.ttogilgi.model.pojo.Diary
 import com.example.ttogilgi.utils.Constants.TAG
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -47,20 +48,19 @@ class ListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         viewModel = activity!!.application!!.let {
-            ViewModelProvider(viewModelStore, DiaryListInjector(
+            ViewModelProvider(activity!!.viewModelStore, DiaryListInjector(
                 requireActivity().application
             ).provideDiaryListViewModelFactory())
                 .get(ListViewModel::class.java)
         }
 
         emotionViewModel = activity!!.application!!.let {
-            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+            ViewModelProvider(activity!!.viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
                 .get(EmotionViewModel::class.java)
         }
 
         setUpAdapter()
         observeViewModel()
-        observeEmotionViewModel()
     }
 
 
@@ -110,20 +110,6 @@ class ListFragment : Fragment() {
             it.diaryListLiveData.value?.let {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
-
-                var list = it as List<Diary>
-                happinessCnt = 0
-                neutralityCnt = 0
-                sadnessCnt = 0
-                worryCnt = 0
-                angerCnt = 0
-                for(i in list.indices) {
-                    happinessCnt += list[i].happiness
-                    angerCnt += list[i].anger
-                    worryCnt += list[i].worry
-                    neutralityCnt += list[i].neutrality
-                    sadnessCnt += list[i].sadness
-                }
             }
             it.editDiary.observe(
                 viewLifecycleOwner,
@@ -139,19 +125,25 @@ class ListFragment : Fragment() {
             it.diaryListLiveData.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.submitList(it)
-                })
-        }
-    }
 
-    private fun observeEmotionViewModel() {
-        emotionViewModel!!.let {
-            it.emotionLiveData.value?.let {
-                it.happiness = happinessCnt
-                it.anger = angerCnt
-                it.neutrality = neutralityCnt
-                it.sadness = sadnessCnt
-                it.worry = worryCnt
-            }
+                    // observer emotion
+                    var list = it as List<Diary>
+                    happinessCnt = 0
+                    neutralityCnt = 0
+                    sadnessCnt = 0
+                    worryCnt = 0
+                    angerCnt = 0
+                    for(i in list.indices) {
+                        happinessCnt += list[i].happiness
+                        angerCnt += list[i].anger
+                        worryCnt += list[i].worry
+                        neutralityCnt += list[i].neutrality
+                        sadnessCnt += list[i].sadness
+                    }
+//                    Log.d(TAG,"$happinessCnt, $neutralityCnt, $sadnessCnt, $worryCnt, $angerCnt")
+                    val newEmotion: Emotion = Emotion(happinessCnt, neutralityCnt, sadnessCnt, worryCnt, angerCnt)
+                    emotionViewModel!!.setEmotions(newEmotion)
+                })
         }
     }
 }
