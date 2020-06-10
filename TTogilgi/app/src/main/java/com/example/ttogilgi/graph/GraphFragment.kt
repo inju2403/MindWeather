@@ -76,11 +76,11 @@ class GraphFragment : Fragment() {
 
         val yValues = ArrayList<PieEntry>()
 
-        yValues.add(PieEntry(happinessCnt.toFloat(), "행복"))
-        yValues.add(PieEntry(neutralityCnt.toFloat(), "중립"))
-        yValues.add(PieEntry(worryCnt.toFloat(), "걱정"))
-        yValues.add(PieEntry(sadnessCnt.toFloat(), "슬픔"))
-        yValues.add(PieEntry(angerCnt.toFloat(), "분노"))
+        if(happinessCnt>0) yValues.add(PieEntry(happinessCnt.toFloat(), "행복"))
+        if(neutralityCnt>0) yValues.add(PieEntry(neutralityCnt.toFloat(), "중립"))
+        if(worryCnt>0) yValues.add(PieEntry(worryCnt.toFloat(), "걱정"))
+        if(sadnessCnt>0) yValues.add(PieEntry(sadnessCnt.toFloat(), "슬픔"))
+        if(angerCnt>0) yValues.add(PieEntry(angerCnt.toFloat(), "분노"))
 
 
         emotion_graph.animateY(1000, Easing.EaseInOutCubic) //애니메이션
