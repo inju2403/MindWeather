@@ -31,6 +31,8 @@ class ListFragment : Fragment() {
     private var worryCnt = 0
     private var angerCnt = 0
 
+    private var curId: String = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -108,7 +110,13 @@ class ListFragment : Fragment() {
             it.diaryListLiveData.value?.let {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
+
                 var list = it as List<Diary>
+                happinessCnt = 0
+                neutralityCnt = 0
+                sadnessCnt = 0
+                worryCnt = 0
+                angerCnt = 0
                 for(i in list.indices) {
                     happinessCnt += list[i].happiness
                     angerCnt += list[i].anger
@@ -124,6 +132,7 @@ class ListFragment : Fragment() {
                         putExtra("DIARY_ID", it)
                         Log.d(TAG,"observer diary id: ${it}")
                     }
+                    curId = it
                     startActivity(intent)
                 }
             )

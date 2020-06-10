@@ -54,7 +54,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         setSupportActionBar(mainActivityToolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_smile)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_open_menu)
         nav_view.setNavigationItemSelectedListener(this) //navigation 리스너
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)

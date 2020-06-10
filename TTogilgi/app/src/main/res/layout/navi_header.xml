@@ -3,29 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="150dp"
     android:background="@drawable/ic_launcher_background"
+    android:backgroundTint="@color/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:gravity="bottom">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher_round"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_weight="4"
+        app:srcCompat="@drawable/ic_notebook"
         android:id="@+id/imageView"/>
-
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="  설정"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:layout_weight="28"
+        android:text=""
+        android:id="@+id/blank"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:fontFamily="@font/nanumpen"
+        android:text="똑일기"
+        android:layout_gravity="bottom"
+        android:textColor="@color/brownColor"
+        android:textSize="30sp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="24dp"
         android:id="@+id/textView"/>
 
 </LinearLayout>
