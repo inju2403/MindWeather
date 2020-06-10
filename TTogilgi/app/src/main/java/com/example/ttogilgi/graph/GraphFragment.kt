@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
+import com.example.ttogilgi.utils.Constants.PREFERENCE
 import com.example.ttogilgi.utils.Constants.TAG
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -28,6 +30,7 @@ class GraphFragment : Fragment() {
     private var sadnessCnt = 0
     private var worryCnt = 0
     private var angerCnt = 0
+    lateinit var username: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +42,9 @@ class GraphFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val pref = activity!!.getSharedPreferences(PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+        username = pref.getString("username", "").toString()
 
         emotionViewModel = activity!!.application!!.let {
             ViewModelProvider(activity!!.viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
@@ -54,10 +60,16 @@ class GraphFragment : Fragment() {
             Log.d(TAG,"그래프 프래그먼트 ${it.happiness}, ${it.neutrality}, ${it.sadness}, ${it.worry}, ${it.anger}")
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         makeChart()
     }
 
     private fun makeChart() {
+
+        Log.d(TAG,"makeChart $happinessCnt, $neutralityCnt, $sadnessCnt, $worryCnt, $angerCnt")
 
         emotion_graph.setUsePercentValues(true)
         emotion_graph.description.isEnabled = false
@@ -85,6 +97,11 @@ class GraphFragment : Fragment() {
 
         emotion_graph.animateY(1000, Easing.EaseInOutCubic) //애니메이션
 
+//        val description = Description()
+//        description.text = "${username}님의 감정이에요" //라벨
+//
+//        description.textSize = 14F
+//        emotion_graph.description = description
 
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
@@ -92,7 +109,7 @@ class GraphFragment : Fragment() {
         dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
 
         val data = PieData(dataSet)
-        data.setValueTextSize(10f)
+        data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
 
         emotion_graph.data = data

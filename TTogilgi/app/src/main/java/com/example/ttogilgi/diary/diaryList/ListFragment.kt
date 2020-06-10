@@ -140,7 +140,6 @@ class ListFragment : Fragment() {
                         neutralityCnt += list[i].neutrality
                         sadnessCnt += list[i].sadness
                     }
-//                    Log.d(TAG,"$happinessCnt, $neutralityCnt, $sadnessCnt, $worryCnt, $angerCnt")
                     val newEmotion: Emotion = Emotion(happinessCnt, neutralityCnt, sadnessCnt, worryCnt, angerCnt)
                     emotionViewModel!!.setEmotions(newEmotion)
                 })
