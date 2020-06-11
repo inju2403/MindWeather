@@ -16,10 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:textColor="@color/brownColor"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
             android:text="공지사항"
+            android:textColor="@color/brownColor"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,10 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
             android:text="글자크기"
             android:textColor="@color/brownColor"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,46 +42,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:textColor="@color/brownColor"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
             android:text="사용방법"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
             android:textColor="@color/brownColor"
-            android:text="비밀번호 변경"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/logoutText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="350dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:textColor="@color/brownColor"
-            android:text="로그아웃"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView6"
-            android:textColor="@color/brownColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
             android:text="문의사항"
+            android:textColor="@color/brownColor"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
