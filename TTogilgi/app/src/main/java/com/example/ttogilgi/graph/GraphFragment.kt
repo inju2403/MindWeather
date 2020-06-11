@@ -62,8 +62,8 @@ class GraphFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
         makeChart()
     }
 

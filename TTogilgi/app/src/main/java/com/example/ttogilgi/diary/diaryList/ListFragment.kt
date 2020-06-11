@@ -106,6 +106,8 @@ class ListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+
+
         viewModel!!.let {
             it.diaryListLiveData.value?.let {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)

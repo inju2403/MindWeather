@@ -83,11 +83,11 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.contentFrame, listFragment).commit()
 
-//        fragmentManager.beginTransaction().add(R.id.contentFrame, graphFragment).commit()
-//        fragmentManager.beginTransaction().hide(graphFragment).commit()
-//
-//        fragmentManager.beginTransaction().add(R.id.contentFrame, settingFragment).commit()
-//        fragmentManager.beginTransaction().hide(settingFragment).commit()
+        fragmentManager.beginTransaction().add(R.id.contentFrame, graphFragment).commit()
+        fragmentManager.beginTransaction().hide(graphFragment).commit()
+
+        fragmentManager.beginTransaction().add(R.id.contentFrame, settingFragment).commit()
+        fragmentManager.beginTransaction().hide(settingFragment).commit()
     }
 
     private fun setBottomNavigation() {
@@ -119,13 +119,19 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         val fragmentManager = supportFragmentManager
         when (next) {
             FRAG_LIST -> {
-                fragmentManager.beginTransaction().replace(R.id.contentFrame, listFragment).commit()
+                fragmentManager.beginTransaction().show(listFragment).commit()
+                fragmentManager.beginTransaction().hide(graphFragment).commit()
+                fragmentManager.beginTransaction().hide(settingFragment).commit()
             }
             FRAG_GRAPH -> {
-                fragmentManager.beginTransaction().replace(R.id.contentFrame, graphFragment).commit()
+                fragmentManager.beginTransaction().hide(listFragment).commit()
+                fragmentManager.beginTransaction().show(graphFragment).commit()
+                fragmentManager.beginTransaction().hide(settingFragment).commit()
             }
             FRAG_SETTING -> {
-                fragmentManager.beginTransaction().replace(R.id.contentFrame, settingFragment).commit()
+                fragmentManager.beginTransaction().hide(listFragment).commit()
+                fragmentManager.beginTransaction().hide(graphFragment).commit()
+                fragmentManager.beginTransaction().show(settingFragment).commit()
             }
         }
     }
