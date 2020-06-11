@@ -2,6 +2,7 @@ package com.example.ttogilgi.diary.diaryList
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -61,14 +62,15 @@ class ListFragment : Fragment() {
 
         setUpAdapter()
         observeViewModel()
-    }
 
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
 
         activity!!.menuInflater.inflate(R.menu.list_fragment_toolbar_menu, menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
@@ -87,6 +89,15 @@ class ListFragment : Fragment() {
         super.onResume()
         viewModel!!.getDiarys()
         Log.d(TAG,"(뷰모델) 리스트: ${viewModel!!.diaryListLiveData.value}")
+
+        // recyclerview scroll to top
+        val handler = Handler()
+        val runnable = Runnable {
+            diaryListView.smoothScrollToPosition(0)
+        }
+        handler?.run {
+            postDelayed(runnable, 2000)
+        }
     }
 
     override fun onDestroyView() {
@@ -112,6 +123,7 @@ class ListFragment : Fragment() {
             it.diaryListLiveData.value?.let {
                 diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
                 diaryListView.adapter = listAdapter
+//                diaryListView.smoothScrollToPosition(0)
             }
             it.editDiary.observe(
                 viewLifecycleOwner,
