@@ -10,14 +10,6 @@ import com.example.ttogilgi.utils.Constants
 
 class DiaryListInjector(application: Application): AndroidViewModel(application) {
 
-//    private val realm : Realm by lazy {
-//        Realm.getDefaultInstance()
-//    }
-//
-//    private val diaryDao : DiaryDao by lazy {
-//        DiaryDao(realm)
-//    }
-
     val app: Application = application
 
     private val httpCall: ApiService?

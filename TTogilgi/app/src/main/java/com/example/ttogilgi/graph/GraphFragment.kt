@@ -2,7 +2,6 @@ package com.example.ttogilgi.graph
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.example.ttogilgi.utils.Constants.PREFERENCE
-import com.example.ttogilgi.utils.Constants.TAG
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -25,11 +23,11 @@ class GraphFragment : Fragment() {
 
     private var emotionViewModel: EmotionViewModel? = null
 
-    private var happinessCnt = 0
-    private var neutralityCnt = 0
-    private var sadnessCnt = 0
-    private var worryCnt = 0
-    private var angerCnt = 0
+//    private var happinessCnt = 0
+//    private var neutralityCnt = 0
+//    private var sadnessCnt = 0
+//    private var worryCnt = 0
+//    private var angerCnt = 0
     lateinit var username: String
 
     override fun onCreateView(
@@ -39,6 +37,13 @@ class GraphFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_graph, container, false)
     }
+
+
+    private var happinessCnt = 0
+    private var neutralityCnt = 0
+    private var sadnessCnt = 0
+    private var worryCnt = 0
+    private var angerCnt = 0
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -57,7 +62,6 @@ class GraphFragment : Fragment() {
             sadnessCnt = it.sadness
             worryCnt = it.worry
             angerCnt = it.anger
-            Log.d(TAG,"그래프 프래그먼트 ${it.happiness}, ${it.neutrality}, ${it.sadness}, ${it.worry}, ${it.anger}")
         })
 
     }
@@ -68,9 +72,6 @@ class GraphFragment : Fragment() {
     }
 
     private fun makeChart() {
-
-        Log.d(TAG,"makeChart $happinessCnt, $neutralityCnt, $sadnessCnt, $worryCnt, $angerCnt")
-
         emotion_graph.setUsePercentValues(true)
         emotion_graph.description.isEnabled = false
         emotion_graph.setExtraOffsets(5F, 0F, 5F, 10F)
