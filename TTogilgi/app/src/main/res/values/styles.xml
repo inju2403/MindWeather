@@ -18,6 +18,16 @@
         <item name="android:text"> 0418 </item>
     </style>
 
+    <style name="Time_TextView_style">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/nanumsquareroundr</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:text"> 07:50 </item>
+    </style>
+
     <style name="DayOfTheWeek_TextView_style">
         <item name="android:maxLines">1</item>
         <item name="android:textSize">19sp</item>

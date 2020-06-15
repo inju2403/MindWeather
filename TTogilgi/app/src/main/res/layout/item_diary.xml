@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp">
+    android:layout_height="135dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -42,10 +42,20 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/timeView"
+                style="@style/Time_TextView_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/dateView"
+                app:layout_constraintStart_toStartOf="@+id/dateView"
+                app:layout_constraintTop_toBottomOf="@+id/dateView" />
+
+            <TextView
                 android:id="@+id/dayOfTheWeekView"
                 style="@style/DayOfTheWeek_TextView_style"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginTop="24dp"
@@ -55,8 +65,8 @@
             <TextView
                 android:id="@+id/summaryView"
                 style="@style/Summary_TextView_style"
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
