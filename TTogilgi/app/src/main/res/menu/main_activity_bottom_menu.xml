@@ -13,10 +13,4 @@
         android:title="감정 변화"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/addButton"
-        android:icon="@drawable/ic_settings"
-        android:title="설정"
-        app:showAsAction="always"/>
-
 </menu>

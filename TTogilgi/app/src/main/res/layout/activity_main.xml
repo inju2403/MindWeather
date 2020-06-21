@@ -38,7 +38,7 @@
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:itemBackground="@color/colorPrimary"
+            android:background="@color/colorPrimary"
             app:itemIconTint="@drawable/bottom_navigation_item_color"
             app:itemTextColor="@drawable/bottom_navigation_tint_color"
             app:layout_constraintBottom_toBottomOf="parent"

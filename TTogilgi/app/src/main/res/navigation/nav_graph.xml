@@ -45,9 +45,6 @@
         <action
             android:id="@+id/action_mainActivity_to_listFragment"
             app:destination="@id/listFragment" />
-        <action
-            android:id="@+id/action_mainActivity_to_settingFragment"
-            app:destination="@id/settingFragment" />
     </activity>
 
     <fragment
@@ -81,9 +78,4 @@
         android:name="com.example.ttogilgi.graph.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.example.ttogilgi.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
 </navigation>
