@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         }
-                        400 -> Toast.makeText(this@LoginActivity, "로그인 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
+                        400 -> Toast.makeText(this@LoginActivity, "계정 정보를 확인해주세요", Toast.LENGTH_LONG).show()
                     }
                 }
 
