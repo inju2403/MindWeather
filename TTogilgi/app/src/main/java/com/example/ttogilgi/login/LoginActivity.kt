@@ -21,16 +21,17 @@ class LoginActivity : AppCompatActivity() {
 
     val TAG: String? = "로그"
     val PREFERENCE = "template.android.TTogilgi"
-    val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-    val editor = pref.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+        val editor = pref.edit()
+
         //자동 로그인
         if(pref.getBoolean("Auto_Login_enabled",true)) {
-
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
         loginBtn.setOnClickListener {
@@ -53,10 +54,10 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString("password",passwordEdit.text.toString().trim())
                             editor.putString("email",response.body()?.signUpUser?.email)
                             if(autoLoginCheck.isChecked) {
-                                editor.putBoolean("Auto_Login_enabled", true)
+                                editor.putBoolean("Auto_Login_enabled", false)
                             }
                             else {
-                                editor.putBoolean("Auto_Login_enabled", false)
+                                editor.putBoolean("Auto_Login_enabled", true)
                             }
                             editor.commit()
                             finish()
