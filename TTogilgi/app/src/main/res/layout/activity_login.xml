@@ -30,39 +30,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEdit" />
 
-    <CheckBox
-        android:id="@+id/autoLoginCheck"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="102dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="자동 로그인"
-        app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="로그인"
         app:layout_constraintStart_toStartOf="@+id/passwordEdit"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
 
     <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="로그인"
-        app:layout_constraintEnd_toEndOf="@+id/autoLoginCheck"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/autoLoginCheck"
-        app:layout_constraintTop_toBottomOf="@+id/autoLoginCheck" />
-
-    <Button
         android:id="@+id/signUpBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="102dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/loginBtn"
-        app:layout_constraintTop_toBottomOf="@+id/autoLoginCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
+
+    <CheckBox
+        android:id="@+id/autoLoginCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="자동 로그인"
+        app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

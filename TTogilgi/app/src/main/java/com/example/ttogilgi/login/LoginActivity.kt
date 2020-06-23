@@ -21,10 +21,13 @@ class LoginActivity : AppCompatActivity() {
 
     val TAG: String? = "로그"
     val PREFERENCE = "template.android.TTogilgi"
+    val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+    val editor = pref.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
 
         loginBtn.setOnClickListener {
             val httpCall: ApiService?
@@ -40,8 +43,6 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Login_SignUP_ReturnPOJO>, response: Response<Login_SignUP_ReturnPOJO>) {
                     when (response!!.code()) {
                         200 -> {
-                            val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-                            val editor = pref.edit()
                             editor.putString("token",response.body()?.token)
                             editor.putString("pk",response.body()?.signUpUser?.pk.toString())
                             editor.putString("username",response.body()?.signUpUser?.username)
