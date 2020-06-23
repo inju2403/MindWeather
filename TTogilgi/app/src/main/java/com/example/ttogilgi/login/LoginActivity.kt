@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         val editor = pref.edit()
 
         //자동 로그인
-        if(pref.getBoolean("Auto_Login_enabled",true)) {
+        if(pref.getBoolean("Auto_Login_enabled",false)) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
@@ -54,9 +54,6 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString("password",passwordEdit.text.toString().trim())
                             editor.putString("email",response.body()?.signUpUser?.email)
                             if(autoLoginCheck.isChecked) {
-                                editor.putBoolean("Auto_Login_enabled", false)
-                            }
-                            else {
                                 editor.putBoolean("Auto_Login_enabled", true)
                             }
                             editor.commit()
