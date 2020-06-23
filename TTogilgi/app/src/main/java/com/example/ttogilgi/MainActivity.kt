@@ -155,6 +155,11 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         when (response!!.code()) {
                             200 -> {
+                                val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+                                val editor = pref.edit()
+                                editor.clear()
+                                editor.commit()
+
                                 Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(applicationContext, LoginActivity::class.java))
                             }

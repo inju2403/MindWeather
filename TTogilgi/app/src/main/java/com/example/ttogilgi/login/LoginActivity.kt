@@ -28,6 +28,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //자동 로그인
+        if(pref.getBoolean("Auto_Login_enabled",true)) {
+
+        }
 
         loginBtn.setOnClickListener {
             val httpCall: ApiService?
@@ -46,7 +50,14 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString("token",response.body()?.token)
                             editor.putString("pk",response.body()?.signUpUser?.pk.toString())
                             editor.putString("username",response.body()?.signUpUser?.username)
+                            editor.putString("password",passwordEdit.text.toString().trim())
                             editor.putString("email",response.body()?.signUpUser?.email)
+                            if(autoLoginCheck.isChecked) {
+                                editor.putBoolean("Auto_Login_enabled", true)
+                            }
+                            else {
+                                editor.putBoolean("Auto_Login_enabled", false)
+                            }
                             editor.commit()
                             finish()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
