@@ -1,10 +1,12 @@
 package com.example.ttogilgi.diary.diaryDetail
 
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +17,11 @@ import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
 
+    private var handler: Handler? = null
+    private var runnable: Runnable? =null
+
     private var viewModel: DetailViewModel? = null
+    private var context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +29,9 @@ class EditActivity : AppCompatActivity() {
         setSupportActionBar(editToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
+
+        progressBar.visibility = View.GONE
+        progressBarText.visibility = View.GONE
 
         viewModel = application!!.let {
             ViewModelProvider(this, DiaryDetailInjector(
@@ -60,8 +69,16 @@ class EditActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_save -> {
-                viewModel?.addOrUpdateDiary(this)
-                finish()
+                runnable = Runnable {
+                    finish()
+                }
+                handler = Handler()
+                handler?.run {
+                    viewModel?.addOrUpdateDiary(context)
+                    progressBar.visibility = View.VISIBLE
+                    progressBarText.visibility = View.VISIBLE
+                    postDelayed(runnable, 3000)
+                }
             }
         }
         return super.onOptionsItemSelected(item)

@@ -9,8 +9,8 @@ import com.example.ttogilgi.login.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
 
-    var handler: Handler? = null
-    var runnable: Runnable? =null
+    private var handler: Handler? = null
+    private var runnable: Runnable? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

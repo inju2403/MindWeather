@@ -96,7 +96,7 @@ class ListFragment : Fragment() {
             diaryListView.smoothScrollToPosition(0)
         }
         handler?.run {
-            postDelayed(runnable, 2000)
+            postDelayed(runnable, 100)
         }
     }
 
