@@ -1,10 +1,13 @@
 package com.example.ttogilgi.diary.diaryDetail
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +15,7 @@ import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
 import kotlinx.android.synthetic.main.activity_detail.*
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -60,11 +64,22 @@ class DetailActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_delete -> {
-                val diaryId = intent.getStringExtra("DIARY_ID")
-                viewModel?.deleteDiary(this, diaryId)
-                Toast.makeText(this,
-                    "삭제 완료", Toast.LENGTH_LONG).show()
-                finish()
+                val view = LayoutInflater.from(this).inflate(R.layout.dialog_delete, null)
+                val builder = AlertDialog.Builder(this, R.style.DialogTheme)
+
+                val dialog =
+                    builder
+                    .setTitle("일기를 삭제하시겠어요?")
+                    .setView(view)
+                    .setNegativeButton("취소", null)
+                    .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                        val diaryId = intent.getStringExtra("DIARY_ID")
+                        viewModel?.deleteDiary(this, diaryId)
+                        Toast.makeText(this,
+                            "삭제 완료", Toast.LENGTH_LONG).show()
+                        finish()
+                    }).create()
+                dialog.show()
             }
             R.id.menu_share -> {
                 val intent = Intent()
