@@ -95,7 +95,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                         switchFragement(FRAG_LIST)
                         true
                     }
-                    R.id.searchButton -> {
+                    R.id.graph_tap -> {
                         switchFragement(FRAG_GRAPH)
                         true
                     }

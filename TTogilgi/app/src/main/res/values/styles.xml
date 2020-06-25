@@ -64,6 +64,21 @@
         <item name="android:text"> Contents </item>
     </style>
 
+    <style name="Emotion_TextView_style">
+        <!--        <item name="">@color/colorPrimary</item>-->
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">top</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/nanumpen</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:maxLines">100</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text"> Contents </item>
+    </style>
+
     <style name="AlertButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/brownColor</item>
         <item name="android:textStyle">bold</item>

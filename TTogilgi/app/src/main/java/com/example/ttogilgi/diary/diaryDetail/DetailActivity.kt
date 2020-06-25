@@ -3,9 +3,11 @@ package com.example.ttogilgi.diary.diaryDetail
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +21,12 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
+    private var handler: Handler? = null
+    private var runnable: Runnable? =null
+
     private lateinit var viewModel: DetailViewModel
+
+    private var context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +34,10 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(detailToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
+
+        emotionImage.visibility = View.GONE
+        emotionText.visibility = View.GONE
+        contentView.visibility = View.GONE
 
         viewModel = application!!.let {
             ViewModelProvider(this, DiaryDetailInjector(
@@ -40,7 +51,44 @@ class DetailActivity : AppCompatActivity() {
         })
 
         val diaryId = intent.getStringExtra("DIARY_ID")
-        if(diaryId != null) viewModel!!.loadDiary(this, diaryId)
+        if(diaryId != null) {
+
+            runnable = Runnable {
+                if(viewModel.diary.happiness==1) {
+                    emotionImage.setImageResource(R.drawable.ic_happiness)
+                    emotionText.text = "행복했던 하루"
+                }
+                else if(viewModel.diary.worry==1) {
+                    emotionImage.setImageResource(R.drawable.ic_worry)
+                    emotionText.text = "걱정되었던 하루"
+                }
+                else if(viewModel.diary.anger==1) {
+                    emotionImage.setImageResource(R.drawable.ic_anger)
+                    emotionText.text = "화났던 하루"
+                }
+                else if(viewModel.diary.sadness==1) {
+                    emotionImage.setImageResource(R.drawable.ic_sadness)
+                    emotionText.text = "슬펐던 하루"
+                }
+                else if(viewModel.diary.neutrality==1) {
+                    emotionImage.setImageResource(R.drawable.ic_neatrality)
+                    emotionText.text = "무난했던 하루"
+                }
+                else {
+                    emotionImage.setImageResource(R.drawable.ic_unknowability)
+                    emotionText.text = "복합적인 감정의 하루"
+                }
+                emotionImage.visibility = View.VISIBLE
+                emotionText.visibility = View.VISIBLE
+                contentView.visibility = View.VISIBLE
+            }
+            handler = Handler()
+            handler?.run {
+                viewModel!!.loadDiary(context, diaryId)
+                postDelayed(runnable, 600)
+            }
+
+        }
 
     }
 

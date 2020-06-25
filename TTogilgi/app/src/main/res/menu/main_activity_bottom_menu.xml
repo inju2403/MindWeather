@@ -8,7 +8,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/searchButton"
+        android:id="@+id/graph_tap"
         android:icon="@drawable/ic_graph"
         android:title="감정 변화"
         app:showAsAction="always" />
