@@ -18,6 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/titleText"
+        style="@style/Edit_And_Detail_Title_TextView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 이야기를 들려주세요!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editToolbar" />
+
     <EditText
         android:id="@+id/contentEdit"
         style="@style/Contents_TextView_style"
@@ -26,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <ProgressBar
         android:id="@+id/progressBar"

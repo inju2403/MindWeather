@@ -64,7 +64,7 @@
         <item name="android:text"> Contents </item>
     </style>
 
-    <style name="Emotion_TextView_style">
+    <style name="Edit_And_Detail_Title_TextView_style">
         <!--        <item name="">@color/colorPrimary</item>-->
         <item name="android:layout_margin">16dp</item>
         <item name="android:padding">8dp</item>

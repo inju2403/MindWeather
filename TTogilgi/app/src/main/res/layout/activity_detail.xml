@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/emotionText"
-        style="@style/Emotion_TextView_style"
+        style="@style/Edit_And_Detail_Title_TextView_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
