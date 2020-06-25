@@ -37,6 +37,26 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.timeView.text = timeFormat.format(it.updatedAt)
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.updatedAt)
             holder.containerView.tag = it.id
+
+            //감정 표정 세팅
+            if(it.happiness==1) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_happiness)
+            }
+            else if(it.sadness==1) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_sadness)
+            }
+            else if(it.worry==1) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_worry)
+            }
+            else if(it.anger==1) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_anger)
+            }
+            else if(it.neutrality==1) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_neatrality)
+            }
+            else {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_unknowability)
+            }
         }
     }
 
