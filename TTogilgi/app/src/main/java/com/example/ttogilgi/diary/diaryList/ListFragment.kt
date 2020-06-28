@@ -33,7 +33,7 @@ class ListFragment : Fragment() {
     private var worryCnt = 0
     private var angerCnt = 0
 
-    private var curId: String = ""
+    private var largestId = 0
 
 
     override fun onCreateView(
@@ -88,16 +88,17 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel!!.getDiarys()
-        Log.d(TAG,"(뷰모델) 리스트: ${viewModel!!.diaryListLiveData.value}")
+        Log.d(TAG,"largestId is $largestId")
+//        Log.d(TAG,"(뷰모델) 리스트: ${viewModel!!.diaryListLiveData.value}")
 
-        // recyclerview scroll to top
-        val handler = Handler()
-        val runnable = Runnable {
-            diaryListView.smoothScrollToPosition(0)
-        }
-        handler?.run {
-            postDelayed(runnable, 100)
-        }
+//        // recyclerview scroll to top
+//        val handler = Handler()
+//        val runnable = Runnable {
+//            diaryListView.smoothScrollToPosition(0)
+//        }
+//        handler?.run {
+//            postDelayed(runnable, 100)
+//        }
     }
 
     override fun onDestroyView() {
@@ -132,10 +133,24 @@ class ListFragment : Fragment() {
                         putExtra("DIARY_ID", it)
                         Log.d(TAG,"observer diary id: ${it}")
                     }
-                    curId = it
                     startActivity(intent)
                 }
             )
+
+            // 새로운 아이템이 바인딩 될 때 스크롤 올리기
+            it.createDiary.observe(
+                viewLifecycleOwner,
+                Observer {
+                    val handler = Handler()
+                    val runnable = Runnable {
+                        diaryListView.smoothScrollToPosition(0)
+                    }
+                    handler?.run {
+                        postDelayed(runnable, 1000)
+                    }
+                }
+            )
+
             it.diaryListLiveData.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.submitList(it)

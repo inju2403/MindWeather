@@ -21,6 +21,8 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
     private val timeFormat = SimpleDateFormat("HH:mm")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
+    private var largestId = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_diary, parent, false)
         return ItemViewHolder(itemView)
@@ -37,6 +39,11 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.timeView.text = timeFormat.format(it.updatedAt)
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.updatedAt)
             holder.containerView.tag = it.id
+
+            if(largestId < diaryId!!.toInt()) {
+                largestId = diaryId!!.toInt()
+                event.value = DiaryListEvent.OnDiaryCreated(largestId)
+            }
 
             //감정 표정 세팅
             if(it.happiness==1) {
