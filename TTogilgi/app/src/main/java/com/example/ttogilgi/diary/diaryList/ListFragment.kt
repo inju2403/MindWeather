@@ -74,9 +74,6 @@ class ListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            R.id.searchButton -> {
-
-            }
             R.id.addButton -> {
                 val intent = Intent(activity!!.applicationContext, EditActivity::class.java)
                 startActivity(intent)
