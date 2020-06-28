@@ -35,6 +35,9 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
 
+        progressBar.visibility = View.GONE
+        progressBarText.visibility = View.GONE
+
         emotionImage.visibility = View.GONE
         emotionText.visibility = View.GONE
         contentView.visibility = View.GONE
@@ -54,6 +57,9 @@ class DetailActivity : AppCompatActivity() {
         if(diaryId != null) {
 
             runnable = Runnable {
+                progressBar.visibility = View.GONE
+                progressBarText.visibility = View.GONE
+
                 if(viewModel.diary.happiness==1) {
                     emotionImage.setImageResource(R.drawable.ic_happiness)
                     emotionText.text = "행복했던 하루"
@@ -85,7 +91,9 @@ class DetailActivity : AppCompatActivity() {
             handler = Handler()
             handler?.run {
                 viewModel!!.loadDiary(context, diaryId)
-                postDelayed(runnable, 600)
+                progressBar.visibility = View.VISIBLE
+                progressBarText.visibility = View.VISIBLE
+                postDelayed(runnable, 2000)
             }
 
         }
