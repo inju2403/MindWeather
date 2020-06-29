@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
 
+    private val RQ_CODE = 101
+
     private lateinit var listAdapter: DiaryListAdapter
     private var viewModel: ListViewModel? = null
     private var emotionViewModel: EmotionViewModel? = null
@@ -32,9 +34,6 @@ class ListFragment : Fragment() {
     private var sadnessCnt = 0
     private var worryCnt = 0
     private var angerCnt = 0
-
-    private var largestId = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,7 +75,8 @@ class ListFragment : Fragment() {
         {
             R.id.addButton -> {
                 val intent = Intent(activity!!.applicationContext, EditActivity::class.java)
-                startActivity(intent)
+//                startActivity(intent)
+                startActivityForResult(intent, RQ_CODE)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -85,7 +85,6 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel!!.getDiarys()
-        Log.d(TAG,"largestId is $largestId")
 //        Log.d(TAG,"(뷰모델) 리스트: ${viewModel!!.diaryListLiveData.value}")
 
 //        // recyclerview scroll to top
@@ -134,20 +133,6 @@ class ListFragment : Fragment() {
                 }
             )
 
-            // 새로운 아이템이 바인딩 될 때 스크롤 올리기
-            it.createDiary.observe(
-                viewLifecycleOwner,
-                Observer {
-                    val handler = Handler()
-                    val runnable = Runnable {
-                        diaryListView.smoothScrollToPosition(0)
-                    }
-                    handler?.run {
-                        postDelayed(runnable, 1000)
-                    }
-                }
-            )
-
             it.diaryListLiveData.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.submitList(it)
@@ -169,6 +154,20 @@ class ListFragment : Fragment() {
                     val newEmotion: Emotion = Emotion(happinessCnt, neutralityCnt, sadnessCnt, worryCnt, angerCnt)
                     emotionViewModel!!.setEmotions(newEmotion)
                 })
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == RQ_CODE) {
+            val handler = Handler()
+            val runnable = Runnable {
+                diaryListView.smoothScrollToPosition(0)
+            }
+            handler?.run {
+                postDelayed(runnable, 1000)
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ttogilgi.diary.diaryDetail
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -70,6 +71,8 @@ class EditActivity : AppCompatActivity() {
             }
             R.id.action_save -> {
                 runnable = Runnable {
+                    val intent = Intent()
+                    setResult(RESULT_OK, intent);
                     finish()
                 }
                 handler = Handler()
