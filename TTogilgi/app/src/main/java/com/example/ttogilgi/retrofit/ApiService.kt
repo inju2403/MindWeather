@@ -32,12 +32,12 @@ interface ApiService {
     @GET("diary/{id}/") // 일기 받기
     suspend fun getDiaryById(@Path("id") id: String, @Header("Authorization") Authorization: String): Diary
 
-//    @PATCH("diary/{id}/") // 일기 수정
-//    suspend fun updateDiary(@Path("id") id: String,
-//                            @Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Response<Unit>
+    @PATCH("diary/{id}/") // 일기 수정
+    suspend fun updateDiary(@Path("id") id: String,
+                            @Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Response<Unit>
 
-    @PATCH("diary/999999999/") // 일기 수정 임시
-    suspend fun updateDiary(@Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Response<Unit>
+//    @PATCH("diary/999999999/") // 일기 수정 임시
+//    suspend fun updateDiary(@Body contentPOJO: ContentPOJO, @Header("Authorization") Authorization: String): Response<Unit>
 
     @DELETE("diary/{id}/") // 일기 삭제
     suspend fun deleteDiary(@Path("id") id: String, @Header("Authorization") Authorization: String): Response<Unit>

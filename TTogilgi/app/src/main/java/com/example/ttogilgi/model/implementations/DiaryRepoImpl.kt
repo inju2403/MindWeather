@@ -34,14 +34,14 @@ class DiaryRepoImpl(
         httpCall?.deleteDiary(diaryId, token)
     }
 
-//    override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
-//        httpCall?.updateDiary(diaryId, contentPOJO, token)
-//    }
+    override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
+        httpCall?.updateDiary(diaryId, contentPOJO, token)
+    }
 
     //임시 업데이트
-    override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
-        httpCall?.updateDiary(contentPOJO, token)
-    }
+//    override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
+//        httpCall?.updateDiary(contentPOJO, token)
+//    }
 
 
 //    //local

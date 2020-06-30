@@ -2,7 +2,6 @@ package com.example.ttogilgi.diary.diaryDetail
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
@@ -15,17 +14,25 @@ import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
 import kotlinx.android.synthetic.main.activity_edit.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class EditActivity : AppCompatActivity() {
+class EditActivity : AppCompatActivity(), CoroutineScope {
 
-    private var handler: Handler? = null
-    private var runnable: Runnable? =null
+    private lateinit var job: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     private var viewModel: DetailViewModel? = null
     private var context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        job = Job()
+
         setContentView(R.layout.activity_edit)
         setSupportActionBar(editToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -70,20 +77,20 @@ class EditActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_save -> {
-                runnable = Runnable {
-                    val intent = Intent()
-                    setResult(RESULT_OK, intent);
-                    finish()
-                }
-                handler = Handler()
-                handler?.run {
-                    viewModel?.addOrUpdateDiary(context)
-                    progressBar.visibility = View.VISIBLE
-                    progressBarText.visibility = View.VISIBLE
-                    postDelayed(runnable, 3000)
-                }
+                diaryUpdateLoading()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun diaryUpdateLoading() = launch {
+        progressBar.visibility = View.VISIBLE
+        progressBarText.visibility = View.VISIBLE
+
+        viewModel?.addOrUpdateDiary(context)!!.join()
+
+        val intent = Intent()
+        setResult(RESULT_OK, intent)
+        finish()
     }
 }
