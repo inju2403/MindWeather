@@ -3,7 +3,6 @@ package com.example.ttogilgi.diary.diaryDetail
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -17,12 +16,18 @@ import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), CoroutineScope {
 
-    private var handler: Handler? = null
-    private var runnable: Runnable? =null
+    lateinit var job: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     private lateinit var viewModel: DetailViewModel
 
@@ -30,6 +35,8 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        job = Job()
+
         setContentView(R.layout.activity_detail)
         setSupportActionBar(detailToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -55,47 +62,7 @@ class DetailActivity : AppCompatActivity() {
 
         val diaryId = intent.getStringExtra("DIARY_ID")
         if(diaryId != null) {
-
-            runnable = Runnable {
-                progressBar.visibility = View.GONE
-                progressBarText.visibility = View.GONE
-
-                if(viewModel.diary.happiness==1) {
-                    emotionImage.setImageResource(R.drawable.ic_happiness)
-                    emotionText.text = "행복했던 하루"
-                }
-                else if(viewModel.diary.worry==1) {
-                    emotionImage.setImageResource(R.drawable.ic_worry)
-                    emotionText.text = "걱정되었던 하루"
-                }
-                else if(viewModel.diary.anger==1) {
-                    emotionImage.setImageResource(R.drawable.ic_anger)
-                    emotionText.text = "화났던 하루"
-                }
-                else if(viewModel.diary.sadness==1) {
-                    emotionImage.setImageResource(R.drawable.ic_sadness)
-                    emotionText.text = "슬펐던 하루"
-                }
-                else if(viewModel.diary.neutrality==1) {
-                    emotionImage.setImageResource(R.drawable.ic_neatrality)
-                    emotionText.text = "무난했던 하루"
-                }
-                else {
-                    emotionImage.setImageResource(R.drawable.ic_unknowability)
-                    emotionText.text = "복합적인 감정의 하루"
-                }
-                emotionImage.visibility = View.VISIBLE
-                emotionText.visibility = View.VISIBLE
-                contentView.visibility = View.VISIBLE
-            }
-            handler = Handler()
-            handler?.run {
-                viewModel!!.loadDiary(context, diaryId)
-                progressBar.visibility = View.VISIBLE
-                progressBarText.visibility = View.VISIBLE
-                postDelayed(runnable, 2000)
-            }
-
+            diaryLoading(diaryId)
         }
 
     }
@@ -125,16 +92,16 @@ class DetailActivity : AppCompatActivity() {
 
                 val dialog =
                     builder
-                    .setTitle("일기를 삭제하시겠어요?")
-                    .setView(view)
-                    .setNegativeButton("취소", null)
-                    .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
-                        val diaryId = intent.getStringExtra("DIARY_ID")
-                        viewModel?.deleteDiary(this, diaryId)
-                        Toast.makeText(this,
-                            "삭제 완료", Toast.LENGTH_LONG).show()
-                        finish()
-                    }).create()
+                        .setTitle("일기를 삭제하시겠어요?")
+                        .setView(view)
+                        .setNegativeButton("취소", null)
+                        .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                            val diaryId = intent.getStringExtra("DIARY_ID")
+                            viewModel?.deleteDiary(this, diaryId)
+                            Toast.makeText(this,
+                                "삭제 완료", Toast.LENGTH_LONG).show()
+                            finish()
+                        }).create()
                 dialog.show()
             }
             R.id.menu_share -> {
@@ -150,4 +117,37 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun diaryLoading(diaryId: String) = launch {
+
+        progressBar.visibility = View.VISIBLE
+        progressBarText.visibility = View.VISIBLE
+
+        viewModel!!.loadDiary(context, diaryId).join()
+
+        progressBar.visibility = View.GONE
+        progressBarText.visibility = View.GONE
+
+        if (viewModel.diary.happiness == 1) {
+            emotionImage.setImageResource(R.drawable.ic_happiness)
+            emotionText.text = "행복했던 하루"
+        } else if (viewModel.diary.worry == 1) {
+            emotionImage.setImageResource(R.drawable.ic_worry)
+            emotionText.text = "걱정되었던 하루"
+        } else if (viewModel.diary.anger == 1) {
+            emotionImage.setImageResource(R.drawable.ic_anger)
+            emotionText.text = "화났던 하루"
+        } else if (viewModel.diary.sadness == 1) {
+            emotionImage.setImageResource(R.drawable.ic_sadness)
+            emotionText.text = "슬펐던 하루"
+        } else if (viewModel.diary.neutrality == 1) {
+            emotionImage.setImageResource(R.drawable.ic_neatrality)
+            emotionText.text = "무난했던 하루"
+        } else {
+            emotionImage.setImageResource(R.drawable.ic_unknowability)
+            emotionText.text = "복합적인 감정의 하루"
+        }
+        emotionImage.visibility = View.VISIBLE
+        emotionText.visibility = View.VISIBLE
+        contentView.visibility = View.VISIBLE
+    }
 }
