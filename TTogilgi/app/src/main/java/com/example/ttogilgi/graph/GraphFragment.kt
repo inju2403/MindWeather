@@ -39,11 +39,11 @@ class GraphFragment : Fragment() {
     }
 
 
-    private var happinessCnt = 0
-    private var neutralityCnt = 0
-    private var sadnessCnt = 0
-    private var worryCnt = 0
-    private var angerCnt = 0
+    private var happinessCnt = 0.0
+    private var neutralityCnt = 0.0
+    private var sadnessCnt = 0.0
+    private var worryCnt = 0.0
+    private var angerCnt = 0.0
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

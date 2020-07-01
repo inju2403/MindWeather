@@ -29,11 +29,11 @@ class ListFragment : Fragment() {
     private var viewModel: ListViewModel? = null
     private var emotionViewModel: EmotionViewModel? = null
 
-    private var happinessCnt = 0
-    private var neutralityCnt = 0
-    private var sadnessCnt = 0
-    private var worryCnt = 0
-    private var angerCnt = 0
+    private var happinessCnt = 0.0
+    private var neutralityCnt = 0.0
+    private var sadnessCnt = 0.0
+    private var worryCnt = 0.0
+    private var angerCnt = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -139,17 +139,46 @@ class ListFragment : Fragment() {
 
                     // observer emotion
                     var list = it as List<Diary>
-                    happinessCnt = 0
-                    neutralityCnt = 0
-                    sadnessCnt = 0
-                    worryCnt = 0
-                    angerCnt = 0
+                    happinessCnt = 0.0
+                    neutralityCnt = 0.0
+                    sadnessCnt = 0.0
+                    worryCnt = 0.0
+                    angerCnt = 0.0
                     for(i in list.indices) {
-                        happinessCnt += list[i].happiness
-                        angerCnt += list[i].anger
-                        worryCnt += list[i].worry
-                        neutralityCnt += list[i].neutrality
-                        sadnessCnt += list[i].sadness
+
+                        var emotionValues = arrayListOf(list[i].happiness,
+                            list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
+                        var sortedEmotionValues = emotionValues.sortedDescending()
+
+                        if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
+                            //복합 감정 (점유율이 가장 높은 감정이 2개인 경우)
+                            var sum = list[i].happiness + list[i].anger + list[i].worry + list[i].neutrality + list[i].sadness
+
+                            happinessCnt += list[i].happiness.toDouble() / sum.toDouble()
+                            angerCnt += list[i].anger.toDouble() / sum.toDouble()
+                            worryCnt += list[i].worry.toDouble() / sum.toDouble()
+                            neutralityCnt += list[i].neutrality.toDouble() / sum.toDouble()
+                            sadnessCnt += list[i].sadness.toDouble() / sum.toDouble()
+                        }
+
+                        else {
+                            // 점유율이 가장 높은 감정이 1개인 경우
+                            if(sortedEmotionValues[0] == list[i].happiness) {
+                                happinessCnt += 1.0
+                            }
+                            else if(sortedEmotionValues[0] == list[i].sadness) {
+                                angerCnt += 1.0
+                            }
+                            else if(sortedEmotionValues[0] == list[i].worry) {
+                                worryCnt += 1.0
+                            }
+                            else if(sortedEmotionValues[0] == list[i].anger) {
+                                neutralityCnt += 1.0
+                            }
+                            else if(sortedEmotionValues[0] == list[i].neutrality) {
+                                sadnessCnt += 1.0
+                            }
+                        }
                     }
                     val newEmotion: Emotion = Emotion(happinessCnt, neutralityCnt, sadnessCnt, worryCnt, angerCnt)
                     emotionViewModel!!.setEmotions(newEmotion)
