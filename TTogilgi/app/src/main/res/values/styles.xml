@@ -10,7 +10,7 @@
 
     <style name="Date_TextView_style">
         <item name="android:maxLines">1</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumsquareroundr</item>
@@ -20,7 +20,7 @@
 
     <style name="Time_TextView_style">
         <item name="android:maxLines">1</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumsquareroundr</item>
@@ -30,7 +30,7 @@
 
     <style name="DayOfTheWeek_TextView_style">
         <item name="android:maxLines">1</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumsquareroundr</item>
@@ -39,7 +39,7 @@
     </style>
 
     <style name="Summary_TextView_style">
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumsquareroundr</item>
