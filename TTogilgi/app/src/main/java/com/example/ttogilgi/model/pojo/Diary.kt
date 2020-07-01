@@ -13,11 +13,11 @@ data class Diary (
     @Expose
     var content: String = "",
 
-    @SerializedName("createdAt")
+    @SerializedName("created_at")
     @Expose
     var createdAt: Date = Date(),
 
-    @SerializedName("updatedAt")
+    @SerializedName("updated_at")
     @Expose
     var updatedAt: Date = Date(),
 

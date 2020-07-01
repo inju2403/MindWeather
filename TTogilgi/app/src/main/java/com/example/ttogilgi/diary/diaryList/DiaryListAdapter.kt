@@ -33,9 +33,9 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.setOnClickListener {
                 event.value = DiaryListEvent.OnDiaryItemClick(diaryId!!)
             }
-            holder.containerView.dateView.text = dateFormat.format(it.updatedAt)
-            holder.containerView.timeView.text = timeFormat.format(it.updatedAt)
-            holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.updatedAt)
+            holder.containerView.dateView.text = dateFormat.format(it.createdAt)
+            holder.containerView.timeView.text = timeFormat.format(it.createdAt)
+            holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.createdAt)
             holder.containerView.tag = it.id
 
 
