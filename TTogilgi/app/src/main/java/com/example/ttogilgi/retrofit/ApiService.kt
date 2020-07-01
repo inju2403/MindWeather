@@ -18,7 +18,7 @@ interface ApiService {
     fun logout(@Header("Authorization") Authorization: String): Call<Void>
 
     @POST("auth/password/change/") // 비밀번호 변경
-    fun changePassword(@Header("Authorization") Authorization: String, @Body changePassowrdPOJO: Change_Passowrd_POJO ): Call<Void>
+    fun changePassword(@Header("Authorization") Authorization: String, @Body changePasswordPOJO: Change_Password_POJO ): Call<Void>
 
     @PATCH("auth/user/") // 닉네임 변경
     fun changeUsername(@Header("Authorization") Authorization: String, @Body changeUsernamePOJO: Change_Username_POJO): Call<Void>
