@@ -1,11 +1,14 @@
 package com.example.ttogilgi
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -145,29 +148,40 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 startActivity(intent)
             }
             R.id.nav_logout-> {
-                val httpCall: ApiService?
-                        = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
-                httpCall?.logout(token)?.enqueue(object : Callback<Void> {
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
-                        Log.d(Constants.TAG,"logout - onFailed() called / t: ${t}")
-                    }
+                val view = LayoutInflater.from(this).inflate(R.layout.dialog_layout, null)
+                val builder = AlertDialog.Builder(this, R.style.DialogTheme)
 
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        when (response!!.code()) {
-                            200 -> {
-                                val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-                                val editor = pref.edit()
-                                editor.clear()
-                                editor.commit()
+                val dialog =
+                    builder
+                        .setTitle("로그아웃 하시겠습니까?")
+                        .setView(view)
+                        .setNegativeButton("취소", null)
+                        .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                            val httpCall: ApiService?
+                                    = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
+                            httpCall?.logout(token)?.enqueue(object : Callback<Void> {
+                                override fun onFailure(call: Call<Void>, t: Throwable) {
+                                    Log.d(Constants.TAG,"logout - onFailed() called / t: ${t}")
+                                }
 
-                                Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
-                                startActivity(Intent(applicationContext, LoginActivity::class.java))
-                            }
-                            400 -> Toast.makeText(applicationContext, "로그아웃 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
-                        }
-                    }
+                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                    when (response!!.code()) {
+                                        200 -> {
+                                            val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+                                            val editor = pref.edit()
+                                            editor.clear()
+                                            editor.commit()
 
-                })
+                                            Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
+                                            startActivity(Intent(applicationContext, LoginActivity::class.java))
+                                        }
+                                        400 -> Toast.makeText(applicationContext, "로그아웃 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+
+                            })
+                        }).create()
+                dialog.show()
             }
         }
         return false

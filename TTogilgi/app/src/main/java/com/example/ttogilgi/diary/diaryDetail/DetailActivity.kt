@@ -87,7 +87,7 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
                 finish()
             }
             R.id.action_delete -> {
-                val view = LayoutInflater.from(this).inflate(R.layout.dialog_delete, null)
+                val view = LayoutInflater.from(this).inflate(R.layout.dialog_layout, null)
                 val builder = AlertDialog.Builder(this, R.style.DialogTheme)
 
                 val dialog =
