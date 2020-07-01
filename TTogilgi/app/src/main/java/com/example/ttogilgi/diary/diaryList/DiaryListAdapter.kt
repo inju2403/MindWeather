@@ -38,25 +38,31 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.updatedAt)
             holder.containerView.tag = it.id
 
+
             //감정 표정 세팅
-            if(it.happiness==1) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_happiness)
-            }
-            else if(it.sadness==1) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_sadness)
-            }
-            else if(it.worry==1) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_worry)
-            }
-            else if(it.anger==1) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_anger)
-            }
-            else if(it.neutrality==1) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_neatrality)
-            }
-            else {
+            var emotionValues = arrayListOf(it.happiness, it.sadness, it.worry, it.anger, it.neutrality)
+            var sortedEmotionValues = emotionValues.sortedDescending()
+
+            if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
+                //복합 감정
                 holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_unknowability)
             }
+            else if(sortedEmotionValues[0] == it.happiness) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_happiness)
+            }
+            else if(sortedEmotionValues[0] == it.sadness) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_sadness)
+            }
+            else if(sortedEmotionValues[0] == it.worry) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_worry)
+            }
+            else if(sortedEmotionValues[0] == it.anger) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_anger)
+            }
+            else if(sortedEmotionValues[0] == it.neutrality) {
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_neatrality)
+            }
+
         }
     }
 

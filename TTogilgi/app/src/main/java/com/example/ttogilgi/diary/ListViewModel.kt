@@ -21,20 +21,13 @@ class ListViewModel(
         }
     }
 
-    var largestId: Int = 0
-    val largestIdLiveData: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>().apply {
-            value = largestId
-        }
-    }
-
-    private val editDiaryState = MutableLiveData<String>()
-    val editDiary: LiveData<String> get() = editDiaryState
-
     fun getDiarys() = launch {
         diarys = repo.getDiarys()
         diaryListLiveData.value = diarys
     }
+
+    private val editDiaryState = MutableLiveData<String>()
+    val editDiary: LiveData<String> get() = editDiaryState
 
     override fun handleEvent(event: DiaryListEvent) {
         when (event) {

@@ -127,25 +127,39 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
         progressBar.visibility = View.GONE
         progressBarText.visibility = View.GONE
 
-        if (viewModel.diary.happiness == 1) {
-            emotionImage.setImageResource(R.drawable.ic_happiness)
-            emotionText.text = "행복했던 하루"
-        } else if (viewModel.diary.worry == 1) {
-            emotionImage.setImageResource(R.drawable.ic_worry)
-            emotionText.text = "걱정되었던 하루"
-        } else if (viewModel.diary.anger == 1) {
-            emotionImage.setImageResource(R.drawable.ic_anger)
-            emotionText.text = "화났던 하루"
-        } else if (viewModel.diary.sadness == 1) {
-            emotionImage.setImageResource(R.drawable.ic_sadness)
-            emotionText.text = "슬펐던 하루"
-        } else if (viewModel.diary.neutrality == 1) {
-            emotionImage.setImageResource(R.drawable.ic_neatrality)
-            emotionText.text = "무난했던 하루"
-        } else {
+        //감정 표정 세팅
+        var emotionValues = arrayListOf(
+            viewModel.diary.happiness, viewModel.diary.sadness,
+            viewModel.diary.worry, viewModel.diary.anger, viewModel.diary.neutrality)
+
+        var sortedEmotionValues = emotionValues.sortedDescending()
+
+        if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
+            //복합 감정
             emotionImage.setImageResource(R.drawable.ic_unknowability)
             emotionText.text = "복합적인 감정의 하루"
         }
+        else if(sortedEmotionValues[0] == viewModel.diary.happiness) {
+            emotionImage.setImageResource(R.drawable.ic_happiness)
+            emotionText.text = "행복했던 하루"
+        }
+        else if(sortedEmotionValues[0] == viewModel.diary.sadness) {
+            emotionImage.setImageResource(R.drawable.ic_sadness)
+            emotionText.text = "슬펐던 하루"
+        }
+        else if(sortedEmotionValues[0] == viewModel.diary.worry) {
+            emotionImage.setImageResource(R.drawable.ic_worry)
+            emotionText.text = "걱정되었던 하루"
+        }
+        else if(sortedEmotionValues[0] == viewModel.diary.anger) {
+            emotionImage.setImageResource(R.drawable.ic_anger)
+            emotionText.text = "화났던 하루"
+        }
+        else if(sortedEmotionValues[0] == viewModel.diary.neutrality) {
+            emotionImage.setImageResource(R.drawable.ic_neatrality)
+            emotionText.text = "평범했던 하루"
+        }
+
         emotionImage.visibility = View.VISIBLE
         emotionText.visibility = View.VISIBLE
         contentView.visibility = View.VISIBLE
