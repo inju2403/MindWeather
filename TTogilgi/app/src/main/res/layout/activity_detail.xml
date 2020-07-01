@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/emotionImage"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
@@ -36,11 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
         android:text="감정에 대한 글"
-        app:layout_constraintBottom_toTopOf="@+id/contentView"
+        app:layout_constraintBottom_toBottomOf="@+id/emotionImage"
         app:layout_constraintStart_toEndOf="@+id/emotionImage"
-        app:layout_constraintTop_toBottomOf="@+id/detailToolbar" />
+        app:layout_constraintTop_toTopOf="@+id/emotionImage" />
 
     <TextView
         android:id="@+id/contentView"

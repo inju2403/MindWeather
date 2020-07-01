@@ -52,8 +52,8 @@
     <style name="Contents_TextView_style">
 <!--        <item name="">@color/colorPrimary</item>-->
         <item name="android:layout_margin">16dp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:gravity">top</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumsquareroundr</item>
@@ -67,8 +67,8 @@
     <style name="Edit_And_Detail_Title_TextView_style">
         <!--        <item name="">@color/colorPrimary</item>-->
         <item name="android:layout_margin">16dp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:gravity">top</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/nanumpen</item>
