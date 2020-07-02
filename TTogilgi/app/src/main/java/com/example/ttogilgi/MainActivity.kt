@@ -1,14 +1,10 @@
 package com.example.ttogilgi
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -19,19 +15,15 @@ import com.example.ttogilgi.graph.*
 import com.example.ttogilgi.login.LoginActivity
 import com.example.ttogilgi.login.PasswordChangeActivity
 import com.example.ttogilgi.login.UsernameChangeActivity
-import com.example.ttogilgi.retrofit.ApiService
-import com.example.ttogilgi.retrofit.RetrofitClient
-import com.example.ttogilgi.utils.Constants
+import com.example.ttogilgi.utils.Constants.PREFERENCE
+import com.example.ttogilgi.utils.MyLogoutDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatActivity() {
 
-    val PREFERENCE = "template.android.TTogilgi"
+    private val RETURN_OK = 101
 
     private var viewModel: ListViewModel? = null
     private var emotionViewModel_1week: EmotionViewModel1week? = null
@@ -162,40 +154,14 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 startActivity(intent)
             }
             R.id.nav_logout-> {
-                val view = LayoutInflater.from(this).inflate(R.layout.dialog_layout, null)
-                val builder = AlertDialog.Builder(this, R.style.DialogTheme)
 
-                val dialog =
-                    builder
-                        .setTitle("로그아웃 하시겠습니까?")
-                        .setView(view)
-                        .setNegativeButton("취소", null)
-                        .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
-                            val httpCall: ApiService?
-                                    = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
-                            httpCall?.logout(token)?.enqueue(object : Callback<Void> {
-                                override fun onFailure(call: Call<Void>, t: Throwable) {
-                                    Log.d(Constants.TAG,"logout - onFailed() called / t: ${t}")
-                                }
-
-                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                    when (response!!.code()) {
-                                        200 -> {
-                                            val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-                                            val editor = pref.edit()
-                                            editor.clear()
-                                            editor.commit()
-
-                                            Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
-                                            startActivity(Intent(applicationContext, LoginActivity::class.java))
-                                        }
-                                        400 -> Toast.makeText(applicationContext, "로그아웃 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
-                                    }
-                                }
-
-                            })
-                        }).create()
-                dialog.show()
+                val dialog = MyLogoutDialog(this)
+                dialog.start("로그아웃 하시겠습니까?", token)
+                dialog.setOnOKClickedListener {
+                    if(it == RETURN_OK) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    }
+                }
             }
         }
         return false
