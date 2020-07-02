@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.DetailViewModel
 import com.example.ttogilgi.diary.diaryDetail.buildlogic.DiaryDetailInjector
-import com.example.ttogilgi.utils.MyDiaryDeleteDialog
+import com.example.ttogilgi.utils.MyDialog
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -87,7 +87,7 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
                 finish()
             }
             R.id.action_delete -> {
-                val dialog = MyDiaryDeleteDialog(this)
+                val dialog = MyDialog(this)
                 dialog.start("일기를 삭제하시겠어요?")
                 dialog.setOnOKClickedListener {
                     if(it == RETURN_OK) {

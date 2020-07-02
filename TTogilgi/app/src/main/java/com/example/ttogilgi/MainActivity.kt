@@ -1,7 +1,9 @@
 package com.example.ttogilgi
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.widget.Toast
@@ -15,11 +17,17 @@ import com.example.ttogilgi.graph.*
 import com.example.ttogilgi.login.LoginActivity
 import com.example.ttogilgi.login.PasswordChangeActivity
 import com.example.ttogilgi.login.UsernameChangeActivity
+import com.example.ttogilgi.retrofit.ApiService
+import com.example.ttogilgi.retrofit.RetrofitClient
+import com.example.ttogilgi.utils.Constants
 import com.example.ttogilgi.utils.Constants.PREFERENCE
-import com.example.ttogilgi.utils.MyLogoutDialog
+import com.example.ttogilgi.utils.MyDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatActivity() {
 
@@ -155,11 +163,35 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
             }
             R.id.nav_logout-> {
 
-                val dialog = MyLogoutDialog(this)
-                dialog.start("로그아웃 하시겠습니까?", token)
+                val dialog = MyDialog(this)
+                dialog.start("로그아웃 하시겠습니까?")
                 dialog.setOnOKClickedListener {
                     if(it == RETURN_OK) {
-                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                        val httpCall: ApiService?
+                                = RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
+                        httpCall?.logout(token)?.enqueue(object : Callback<Void> {
+                            override fun onFailure(call: Call<Void>, t: Throwable) {
+                                Log.d(Constants.TAG,"logout - onFailed() called / t: ${t}")
+                            }
+
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                when (response!!.code()) {
+                                    200 -> {
+                                        val pref = applicationContext!!.getSharedPreferences(PREFERENCE,
+                                            Context.MODE_PRIVATE
+                                        )
+                                        val editor = pref.edit()
+                                        editor.clear()
+                                        editor.commit()
+
+                                        Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
+                                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                                    }
+                                    400 -> Toast.makeText(applicationContext, "로그아웃 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
+                                }
+                            }
+
+                        })
                     }
                 }
             }

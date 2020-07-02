@@ -7,17 +7,15 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.ttogilgi.R
 
-class MyDiaryDeleteDialog(context : Context) {
+class MyDialog(context : Context) {
 
-    private val RETURN_OK = 101
+    private val RESULT_OK = 101
 
     private val dialog = Dialog(context)   //부모 액티비티의 context 가 들어감
     private lateinit var titleText : TextView
     private lateinit var okButton : Button
     private lateinit var cancelButton : Button
     private lateinit var listener : MyDialogOKClickedListener
-
-    var applicationContext = context
 
     fun start(title : String) {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)   //타이틀바 제거
@@ -31,7 +29,7 @@ class MyDiaryDeleteDialog(context : Context) {
         okButton.setOnClickListener {
 
             //TODO: 부모 액티비티로 내용을 돌려주기 위해 작성할 코드
-            listener.onOKClicked(RETURN_OK)
+            listener.onOKClicked(RESULT_OK)
 
             dialog.dismiss()
         }
