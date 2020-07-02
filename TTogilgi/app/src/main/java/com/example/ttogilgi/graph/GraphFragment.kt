@@ -2,6 +2,7 @@ package com.example.ttogilgi.graph
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.R
 import com.example.ttogilgi.utils.Constants.PREFERENCE
+import com.example.ttogilgi.utils.Constants.TAG
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_graph.*
 
 
@@ -23,12 +26,13 @@ class GraphFragment : Fragment() {
 
     private var emotionViewModel: EmotionViewModel? = null
 
-//    private var happinessCnt = 0
-//    private var neutralityCnt = 0
-//    private var sadnessCnt = 0
-//    private var worryCnt = 0
-//    private var angerCnt = 0
     lateinit var username: String
+
+    private var happinessCnt = 0.0
+    private var neutralityCnt = 0.0
+    private var sadnessCnt = 0.0
+    private var worryCnt = 0.0
+    private var angerCnt = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +42,6 @@ class GraphFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_graph, container, false)
     }
 
-
-    private var happinessCnt = 0.0
-    private var neutralityCnt = 0.0
-    private var sadnessCnt = 0.0
-    private var worryCnt = 0.0
-    private var angerCnt = 0.0
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -64,6 +62,7 @@ class GraphFragment : Fragment() {
             angerCnt = it.anger
         })
 
+        setTabLayout()
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -138,5 +137,28 @@ class GraphFragment : Fragment() {
 //        xAxis.valueFormatter = IndexAxisValueFormatter(labels)
 //        emotion_graph.setData(data)
 //    }
+
+    private fun setTabLayout() {
+        graphTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabSelected(p0: TabLayout.Tab?) {
+                Log.d(TAG,"selected: ${p0?.position}")
+                when(p0?.position) {
+                    0 -> makeChart() // 1년
+                    1 -> makeChart() // 6개월
+                    2 -> makeChart() // 한 달
+                    3 -> makeChart() // 한 주
+                }
+            }
+
+        })
+    }
 
 }

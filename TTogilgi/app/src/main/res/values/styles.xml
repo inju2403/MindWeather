@@ -91,4 +91,13 @@
         <item name="buttonBarNegativeButtonStyle">@style/AlertButtonStyle</item>
     </style>
 
+    <style name="GraphTabLayoutStyle" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="fontFamily">@font/nanumbarunpenb</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="tabIndicatorColor">@color/brownColor</item>
+        <item name="tabTextColor">@color/liteGreyColor</item>
+        <item name="tabSelectedTextColor">@color/brownColor</item>
+    </style>
+
 </resources>
