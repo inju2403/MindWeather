@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="닉네임"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,32 +24,37 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="비밀번호"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEdit" />
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="102dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="로그인"
+        app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
         app:layout_constraintStart_toStartOf="@+id/passwordEdit"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
 
     <Button
         android:id="@+id/signUpBtn"
-        android:layout_width="102dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="회원가입"
         app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="@+id/centerGuideline"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
 
     <CheckBox
@@ -62,5 +67,12 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/loginBtn"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
