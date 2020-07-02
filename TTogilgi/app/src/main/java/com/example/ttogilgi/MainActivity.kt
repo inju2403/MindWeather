@@ -15,8 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ttogilgi.diary.ListViewModel
 import com.example.ttogilgi.diary.diaryList.ListFragment
 import com.example.ttogilgi.diary.diaryList.buildlogic.DiaryListInjector
-import com.example.ttogilgi.graph.EmotionViewModel
-import com.example.ttogilgi.graph.GraphFragment
+import com.example.ttogilgi.graph.*
 import com.example.ttogilgi.login.LoginActivity
 import com.example.ttogilgi.login.PasswordChangeActivity
 import com.example.ttogilgi.login.UsernameChangeActivity
@@ -35,7 +34,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
     val PREFERENCE = "template.android.TTogilgi"
 
     private var viewModel: ListViewModel? = null
-    private var emotionViewModel: EmotionViewModel? = null
+    private var emotionViewModel_1week: EmotionViewModel1week? = null
+    private var emotionViewModel_1month: EmotionViewModel1month? = null
+    private var emotionViewModel_6month: EmotionViewModel6month? = null
+    private var emotionViewModel_1year: EmotionViewModel1year? = null
 
     private val FRAG_LIST = 0
     private val FRAG_GRAPH = 1
@@ -72,9 +74,21 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 .get(ListViewModel::class.java)
         }
 
-        emotionViewModel = application!!.let {
-            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(it))
-                .get(EmotionViewModel::class.java)
+        emotionViewModel_1week = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel1week::class.java)
+        }
+        emotionViewModel_1month = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel1month::class.java)
+        }
+        emotionViewModel_6month = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel6month::class.java)
+        }
+        emotionViewModel_1year = application!!.let {
+            ViewModelProvider(viewModelStore, ViewModelProvider.AndroidViewModelFactory(it))
+                .get(EmotionViewModel1year::class.java)
         }
 
     }

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ttogilgi.model.Emotion
 
-class EmotionViewModel: ViewModel() {
+class EmotionViewModel1week: ViewModel() {
     private var emotion = Emotion()
     val emotionLiveData: MutableLiveData<Emotion> by lazy {
         MutableLiveData<Emotion>().apply {
