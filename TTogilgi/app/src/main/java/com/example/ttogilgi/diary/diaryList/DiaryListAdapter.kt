@@ -18,7 +18,6 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
 ) {
 
     private val dateFormat = SimpleDateFormat("MMdd")
-    private val timeFormat = SimpleDateFormat("HH:mm")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -34,7 +33,6 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
                 event.value = DiaryListEvent.OnDiaryItemClick(diaryId!!)
             }
             holder.containerView.dateView.text = dateFormat.format(it.createdAt)
-            holder.containerView.timeView.text = timeFormat.format(it.createdAt)
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.createdAt)
             holder.containerView.tag = it.id
 

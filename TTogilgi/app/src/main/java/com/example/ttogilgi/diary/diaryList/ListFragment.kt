@@ -1,5 +1,6 @@
 package com.example.ttogilgi.diary.diaryList
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -375,7 +376,7 @@ class ListFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == RQ_CODE) {
+        if(requestCode == RESULT_OK) {
             val handler = Handler()
             val runnable = Runnable {
                 diaryListView.smoothScrollToPosition(0)
