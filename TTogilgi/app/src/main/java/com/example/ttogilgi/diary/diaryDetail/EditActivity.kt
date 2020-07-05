@@ -1,6 +1,5 @@
 package com.example.ttogilgi.diary.diaryDetail
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -83,7 +82,7 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
         when (item.itemId) {
             android.R.id.home -> {
                 val intent = Intent()
-                setResult(Activity.RESULT_CANCELED, intent)
+                setResult(RESULT_CANCELED, intent)
                 finish()
             }
             R.id.action_save -> {

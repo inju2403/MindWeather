@@ -34,7 +34,7 @@ class ListFragment : Fragment() {
     private val monthDateFormat = SimpleDateFormat("MM")
     private val dayDateFormat = SimpleDateFormat("dd")
 
-    private val RQ_CODE = 101
+    private val REQUEST_EDITACTIVITY_CODE = 101
 
     private lateinit var listAdapter: DiaryListAdapter
     private var viewModel: ListViewModel? = null
@@ -127,7 +127,7 @@ class ListFragment : Fragment() {
         {
             R.id.addButton -> {
                 val intent = Intent(activity!!.applicationContext, EditActivity::class.java)
-                startActivityForResult(intent, RQ_CODE)
+                startActivityForResult(intent, REQUEST_EDITACTIVITY_CODE)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -211,7 +211,7 @@ class ListFragment : Fragment() {
 
                         var diaryTimeValue = diaryYear * (12 * 30) + diaryMonth * 30 + diaryDay
 
-                        Log.d(TAG,"날짜 차이 ${curTimeValue-diaryTimeValue}")
+//                        Log.d(TAG,"날짜 차이 ${curTimeValue-diaryTimeValue}")
 
                         if(curTimeValue - diaryTimeValue <= 7) { // 한 주
                             var emotionValues = arrayListOf(list[i].happiness,
@@ -376,13 +376,17 @@ class ListFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == RESULT_OK) {
-            val handler = Handler()
-            val runnable = Runnable {
-                diaryListView.smoothScrollToPosition(0)
-            }
-            handler?.run {
-                postDelayed(runnable, 1000)
+        if(requestCode == REQUEST_EDITACTIVITY_CODE) {
+            Log.d(TAG,"req ok")
+            if(resultCode == RESULT_OK) {
+                Log.d(TAG,"res ok")
+                val handler = Handler()
+                val runnable = Runnable {
+                    diaryListView.smoothScrollToPosition(0)
+                }
+                handler?.run {
+                    postDelayed(runnable, 1000)
+                }
             }
         }
     }
