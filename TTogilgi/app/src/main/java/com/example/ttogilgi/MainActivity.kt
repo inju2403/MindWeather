@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -29,6 +31,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatActivity() {
 
     private val RETURN_OK = 101
@@ -44,6 +47,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
     private lateinit var token: String
     private lateinit var username: String
+    private lateinit var email: String
 
     private val listFragment: ListFragment =
         ListFragment()
@@ -62,7 +66,18 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
         token = "JWT ${pref.getString("token", "").toString()}"
         username = pref.getString("username", "").toString()
+        email = pref.getString("email", "").toString()
+
         Toast.makeText(this@MainActivity, "${username}님 반갑습니다 :)", Toast.LENGTH_LONG).show()
+
+
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val headerView: View = navigationView.getHeaderView(0)
+        val drawerLayout_text = headerView.findViewById<TextView>(R.id.drawerLayout_textView)
+        drawerLayout_text.text = "${username}의 일기"
+
+        val email_text = headerView.findViewById<TextView>(R.id.email_text)
+        email_text.text = email
 
         setFragment()
         setBottomNavigation()

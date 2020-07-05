@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:background="@drawable/ic_launcher_background"
     android:backgroundTint="@color/colorPrimary"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="horizontal"
-    android:gravity="bottom">
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_weight="4"
-        app:srcCompat="@drawable/ic_notebook"
-        android:id="@+id/imageView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="28"
-        android:text=""
-        android:id="@+id/blank"/>
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
+        android:id="@+id/drawerLayout_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:fontFamily="@font/nanumpen"
         android:text="똑일기"
-        android:layout_gravity="bottom"
         android:textColor="@color/brownColor"
-        android:textSize="30sp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="24dp"
-        android:id="@+id/textView"/>
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:fontFamily="@font/nanumpen"
+        android:text="email"
+        android:textColor="@color/brownColor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drawerLayout_textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
