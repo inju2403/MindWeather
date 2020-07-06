@@ -94,4 +94,10 @@
         <item name="tabSelectedTextColor">@color/brownColor</item>
     </style>
 
+    <style name="WeatherDescriptionTextStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/nanumpen</item>
+        <item name="android:textColor">@color/brownColor</item>
+        <item name="android:text"> Contents </item>
+    </style>
 </resources>

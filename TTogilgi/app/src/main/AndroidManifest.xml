@@ -13,16 +13,16 @@
     <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:usesCleartextTraffic="true"
-
         android:name=".TTogilgiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".login.UsernameChangeActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".WeatherDescriptionActivity"></activity>
+        <activity android:name=".login.UsernameChangeActivity" />
         <activity android:name=".login.PasswordChangeActivity" />
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity" />

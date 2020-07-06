@@ -62,7 +62,7 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
                 holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_anger)
             }
             else if(sortedEmotionValues[0] == it.neutrality) {
-                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_neatrality)
+                holder.containerView.diaryCardImage.setImageResource(R.drawable.ic_neutrality)
             }
 
         }

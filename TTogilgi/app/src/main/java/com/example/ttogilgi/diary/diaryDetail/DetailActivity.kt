@@ -158,7 +158,7 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
             emotionText.text = "화났던 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.neutrality) {
-            emotionImage.setImageResource(R.drawable.ic_neatrality)
+            emotionImage.setImageResource(R.drawable.ic_neutrality)
             emotionText.text = "평범했던 하루"
         }
 

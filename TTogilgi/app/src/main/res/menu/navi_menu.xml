@@ -4,6 +4,10 @@
     <group android:checkableBehavior="single" >
         <item
             android:checkable="false"
+            android:id="@+id/nav_weather_description"
+            android:title="날씨 설명 보기" />
+        <item
+            android:checkable="false"
             android:id="@+id/nav_username_edit"
             android:title="닉네임 변경" />
         <item

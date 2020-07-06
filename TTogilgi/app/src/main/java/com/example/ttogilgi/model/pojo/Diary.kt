@@ -25,7 +25,7 @@ data class Diary (
     @Expose
     var happiness: Int = 0,
 
-    @SerializedName("neatrality") // neutrality
+    @SerializedName("neutrality")
     @Expose
     var neutrality: Int = 0,
 

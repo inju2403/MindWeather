@@ -171,6 +171,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.nav_weather_description -> {
+                val intent = Intent(applicationContext, WeatherDescriptionActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_username_edit-> {
                 val intent = Intent(applicationContext, UsernameChangeActivity::class.java)
                 startActivity(intent)
