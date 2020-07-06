@@ -214,147 +214,35 @@ class ListFragment : Fragment() {
 //                        Log.d(TAG,"날짜 차이 ${curTimeValue-diaryTimeValue}")
 
                         if(curTimeValue - diaryTimeValue <= 7) { // 한 주
-                            var emotionValues = arrayListOf(list[i].happiness,
-                                list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
-                            var sortedEmotionValues = emotionValues.sortedDescending()
-
-                            if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
-                                //복합 감정 (점유율이 가장 높은 감정이 2개인 경우)
-                                var sum = list[i].happiness + list[i].anger + list[i].worry + list[i].neutrality + list[i].sadness
-
-                                happinessCnt1week += list[i].happiness.toDouble() / sum.toDouble()
-                                angerCnt1week += list[i].anger.toDouble() / sum.toDouble()
-                                worryCnt1week += list[i].worry.toDouble() / sum.toDouble()
-                                neutralityCnt1week += list[i].neutrality.toDouble() / sum.toDouble()
-                                sadnessCnt1week += list[i].sadness.toDouble() / sum.toDouble()
-                            }
-
-                            else {
-                                // 점유율이 가장 높은 감정이 1개인 경우
-                                if(sortedEmotionValues[0] == list[i].happiness) {
-                                    happinessCnt1week += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    sadnessCnt1week += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].worry) {
-                                    worryCnt1week += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].anger) {
-                                    angerCnt1week += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    neutralityCnt1week += 1.0
-                                }
-                            }
+                            if(list[i].happiness > 0) happinessCnt1week += 1.0
+                            if(list[i].anger > 0) angerCnt1week += 1.0
+                            if(list[i].worry >0) worryCnt1week += 1.0
+                            if(list[i].sadness > 0) sadnessCnt1week += 1.0
+                            if(list[i].neutrality > 0) neutralityCnt1week += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 30) { // 한 달
-                            var emotionValues = arrayListOf(list[i].happiness,
-                                list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
-                            var sortedEmotionValues = emotionValues.sortedDescending()
-
-                            if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
-                                //복합 감정 (점유율이 가장 높은 감정이 2개인 경우)
-                                var sum = list[i].happiness + list[i].anger + list[i].worry + list[i].neutrality + list[i].sadness
-
-                                happinessCnt1month += list[i].happiness.toDouble() / sum.toDouble()
-                                angerCnt1month += list[i].anger.toDouble() / sum.toDouble()
-                                worryCnt1month += list[i].worry.toDouble() / sum.toDouble()
-                                neutralityCnt1month += list[i].neutrality.toDouble() / sum.toDouble()
-                                sadnessCnt1month += list[i].sadness.toDouble() / sum.toDouble()
-                            }
-
-                            else {
-                                // 점유율이 가장 높은 감정이 1개인 경우
-                                if(sortedEmotionValues[0] == list[i].happiness) {
-                                    happinessCnt1month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    sadnessCnt1month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].worry) {
-                                    worryCnt1month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].anger) {
-                                    angerCnt1month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    neutralityCnt1month += 1.0
-                                }
-                            }
+                            if(list[i].happiness > 0) happinessCnt1month += 1.0
+                            if(list[i].anger > 0) angerCnt1month += 1.0
+                            if(list[i].worry >0) worryCnt1month += 1.0
+                            if(list[i].sadness > 0) sadnessCnt1month += 1.0
+                            if(list[i].neutrality > 0) neutralityCnt1month += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 180) { // 6개월
-                            var emotionValues = arrayListOf(list[i].happiness,
-                                list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
-                            var sortedEmotionValues = emotionValues.sortedDescending()
-
-                            if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
-                                //복합 감정 (점유율이 가장 높은 감정이 2개인 경우)
-                                var sum = list[i].happiness + list[i].anger + list[i].worry + list[i].neutrality + list[i].sadness
-
-                                happinessCnt6month += list[i].happiness.toDouble() / sum.toDouble()
-                                angerCnt6month += list[i].anger.toDouble() / sum.toDouble()
-                                worryCnt6month += list[i].worry.toDouble() / sum.toDouble()
-                                neutralityCnt6month += list[i].neutrality.toDouble() / sum.toDouble()
-                                sadnessCnt6month += list[i].sadness.toDouble() / sum.toDouble()
-                            }
-
-                            else {
-                                // 점유율이 가장 높은 감정이 1개인 경우
-                                if(sortedEmotionValues[0] == list[i].happiness) {
-                                    happinessCnt6month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    sadnessCnt6month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].worry) {
-                                    worryCnt6month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].anger) {
-                                    angerCnt6month += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    neutralityCnt6month += 1.0
-                                }
-                            }
+                            if(list[i].happiness > 0) happinessCnt6month += 1.0
+                            if(list[i].anger > 0) angerCnt6month += 1.0
+                            if(list[i].worry >0) worryCnt6month += 1.0
+                            if(list[i].sadness > 0) sadnessCnt6month += 1.0
+                            if(list[i].neutrality > 0) neutralityCnt6month += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 365) { // 1년
-                            var emotionValues = arrayListOf(list[i].happiness,
-                                list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
-                            var sortedEmotionValues = emotionValues.sortedDescending()
-
-                            if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
-                                //복합 감정 (점유율이 가장 높은 감정이 2개인 경우)
-                                var sum = list[i].happiness + list[i].anger + list[i].worry + list[i].neutrality + list[i].sadness
-
-                                happinessCnt1year += list[i].happiness.toDouble() / sum.toDouble()
-                                angerCnt1year += list[i].anger.toDouble() / sum.toDouble()
-                                worryCnt1year += list[i].worry.toDouble() / sum.toDouble()
-                                neutralityCnt1year += list[i].neutrality.toDouble() / sum.toDouble()
-                                sadnessCnt1year += list[i].sadness.toDouble() / sum.toDouble()
-                            }
-
-                            else {
-                                // 점유율이 가장 높은 감정이 1개인 경우
-                                if(sortedEmotionValues[0] == list[i].happiness) {
-                                    happinessCnt1year += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    sadnessCnt1year += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].worry) {
-                                    worryCnt1year += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].anger) {
-                                    angerCnt1year += 1.0
-                                }
-                                else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    neutralityCnt1year += 1.0
-                                }
-                            }
+                            if(list[i].happiness > 0) happinessCnt1year += 1.0
+                            if(list[i].anger > 0) angerCnt1year += 1.0
+                            if(list[i].worry >0) worryCnt1year += 1.0
+                            if(list[i].sadness > 0) sadnessCnt1year += 1.0
+                            if(list[i].neutrality > 0) neutralityCnt1year += 1.0
                         }
                     }
 
