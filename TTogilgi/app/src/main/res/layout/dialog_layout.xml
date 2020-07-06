@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/titleText"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/nanumsquareroundr"
         android:gravity="center"
         android:text="다이얼로그 제목"
         android:textColor="@color/blackColor"
@@ -26,6 +26,7 @@
 
         <Button
             android:id="@+id/cancelButton"
+            android:fontFamily="@font/nanummyeongjo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,6 +37,7 @@
 
         <Button
             android:id="@+id/okButton"
+            android:fontFamily="@font/nanummyeongjo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

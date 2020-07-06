@@ -1,6 +1,7 @@
 package com.example.ttogilgi.graph
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +18,6 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_graph.*
 
@@ -55,6 +55,23 @@ class GraphFragment : Fragment() {
     private var angerCnt6month = 0.0
     private var angerCnt1month = 0.0
     private var angerCnt1week = 0.0
+
+//    private val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
+
+    var brownColor = "#8B4513"
+    var blueColor = "#1E90FF" // 슬픔
+    var tomatoColor = "#FF6347" // 분노
+    var greenColor = "#3CB371" // 중립
+    var goldColor = "#FFA700" // 행복
+    val violetRedColor = "#DB7093" // 걱정
+    val pupleColor = "#BA55D3" // 걱정
+
+    private var colorList
+            = listOf(Color.parseColor(goldColor),
+                        Color.parseColor(greenColor),
+                        Color.parseColor(violetRedColor),
+                        Color.parseColor(blueColor),
+                        Color.parseColor(tomatoColor))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -158,6 +175,7 @@ class GraphFragment : Fragment() {
     }
 
     private fun makeChart1week() {
+
         emotion_graph.setUsePercentValues(true)
         emotion_graph.description.isEnabled = false
         emotion_graph.setExtraOffsets(5F, 0F, 5F, 10F)
@@ -170,7 +188,6 @@ class GraphFragment : Fragment() {
 
         emotion_graph.setDrawCenterText(true)
         emotion_graph.centerText = "한 주의 감정"
-        emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
         val yValues = ArrayList<PieEntry>()
@@ -187,13 +204,23 @@ class GraphFragment : Fragment() {
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+//        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        dataSet.colors = colorList
+
+        val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
+        dataSet.valueTypeface = typeFace
 
         val data = PieData(dataSet)
         data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
 
         emotion_graph.data = data
+
+        emotion_graph.setCenterTextTypeface(typeFace)
+        emotion_graph.setEntryLabelTypeface(typeFace)
+        emotion_graph.setNoDataTextTypeface(typeFace)
+
+        emotion_graph.setCenterTextColor(Color.parseColor(brownColor))
     }
 
     private fun makeChart1month() {
@@ -209,7 +236,6 @@ class GraphFragment : Fragment() {
 
         emotion_graph.setDrawCenterText(true)
         emotion_graph.centerText = "한 달의 감정"
-        emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
         val yValues = ArrayList<PieEntry>()
@@ -226,13 +252,23 @@ class GraphFragment : Fragment() {
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+//        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        dataSet.colors = colorList
+
+        val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
+        dataSet.valueTypeface = typeFace
 
         val data = PieData(dataSet)
         data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
 
         emotion_graph.data = data
+
+        emotion_graph.setCenterTextTypeface(typeFace)
+        emotion_graph.setEntryLabelTypeface(typeFace)
+        emotion_graph.setNoDataTextTypeface(typeFace)
+
+        emotion_graph.setCenterTextColor(Color.parseColor(brownColor))
     }
 
     private fun makeChart6month() {
@@ -248,7 +284,6 @@ class GraphFragment : Fragment() {
 
         emotion_graph.setDrawCenterText(true)
         emotion_graph.centerText = "6개월의 감정"
-        emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
         val yValues = ArrayList<PieEntry>()
@@ -265,13 +300,21 @@ class GraphFragment : Fragment() {
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+//        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        dataSet.colors = colorList
+
+        val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
+        dataSet.valueTypeface = typeFace
 
         val data = PieData(dataSet)
         data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
 
         emotion_graph.data = data
+        emotion_graph.setCenterTextTypeface(typeFace)
+        emotion_graph.setEntryLabelTypeface(typeFace)
+
+        emotion_graph.setCenterTextColor(Color.parseColor(brownColor))
     }
 
     private fun makeChart1year() {
@@ -286,8 +329,7 @@ class GraphFragment : Fragment() {
         emotion_graph.transparentCircleRadius = 61f
 
         emotion_graph.setDrawCenterText(true)
-        emotion_graph.centerText = "1 년의 감정"
-        emotion_graph.setCenterTextColor(Color.DKGRAY)
+        emotion_graph.centerText = "1년의 감정"
         emotion_graph.setCenterTextSize(18f)
 
         val yValues = ArrayList<PieEntry>()
@@ -304,13 +346,24 @@ class GraphFragment : Fragment() {
         val dataSet = PieDataSet(yValues,"")
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+//        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        dataSet.colors = colorList
+
+        val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
+        dataSet.valueTypeface = typeFace
 
         val data = PieData(dataSet)
         data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
+//        data.setValueTextColors(textColorList)
 
         emotion_graph.data = data
+
+        emotion_graph.setCenterTextTypeface(typeFace)
+        emotion_graph.setEntryLabelTypeface(typeFace)
+        emotion_graph.setNoDataTextTypeface(typeFace)
+
+        emotion_graph.setCenterTextColor(Color.parseColor(brownColor))
     }
 
 }

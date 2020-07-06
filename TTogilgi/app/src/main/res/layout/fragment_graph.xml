@@ -21,7 +21,9 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginTop="8dp"
-            style="@style/GraphTabLayoutStyle">
+            app:tabTextAppearance="@style/GraphTabLayoutStyle"
+            app:tabSelectedTextColor="@color/brownColor"
+            app:tabIndicatorColor="@color/brownColor">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_1year"

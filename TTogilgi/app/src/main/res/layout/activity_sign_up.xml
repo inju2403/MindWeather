@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/usernameEdit"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -20,6 +21,7 @@
 
     <EditText
         android:id="@+id/emailEdit"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -32,6 +34,7 @@
 
     <EditText
         android:id="@+id/password1Edit"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -44,6 +47,7 @@
 
     <EditText
         android:id="@+id/password2Edit"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -56,6 +60,7 @@
 
     <Button
         android:id="@+id/signUpRequestBtn"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -69,6 +74,7 @@
 
     <Button
         android:id="@+id/goBackBtn"
+        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

@@ -19,7 +19,7 @@
         android:fontFamily="@font/nanumpen"
         android:text="마음의날씨"
         android:textColor="@color/brownColor"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/username_text"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -30,10 +30,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/nanumpen"
+        android:fontFamily="@font/nanummyeongjo"
+        android:textStyle="bold"
         android:textColor="@color/brownColor"
         android:text="닉네임"
-        android:textSize="20sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/email_text"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -44,10 +45,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="14dp"
-        android:fontFamily="@font/nanumpen"
+        android:textStyle="bold"
+        android:fontFamily="@font/nanummyeongjo"
         android:text="email"
         android:textColor="@color/brownColor"
-        android:textSize="20sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -13,4 +13,6 @@
     <color name="blueColor">#FF0000FF</color>
     <color name="dimPupleColor">#330033</color>
     <color name="orangeColor">#FFA500</color>
+    <color name="yellowColor">#FFFF00</color>
+    <color name="forestGreenColor">#228B22</color>
 </resources>
