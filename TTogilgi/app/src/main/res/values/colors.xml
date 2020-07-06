@@ -12,4 +12,5 @@
     <color name="blackColor">#FF000000</color>
     <color name="blueColor">#FF0000FF</color>
     <color name="dimPupleColor">#330033</color>
+    <color name="orangeColor">#FFA500</color>
 </resources>

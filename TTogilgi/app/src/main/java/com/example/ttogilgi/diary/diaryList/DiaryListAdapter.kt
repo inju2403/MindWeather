@@ -1,5 +1,6 @@
 package com.example.ttogilgi.diary.diaryList
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.ttogilgi.R
 import com.example.ttogilgi.diary.ItemViewHolder
 import com.example.ttogilgi.model.pojo.Diary
+import com.example.ttogilgi.utils.Constants.TAG
 import com.example.ttogilgi.utils.DiaryDiffUtilCallback
 import kotlinx.android.synthetic.main.item_diary.view.*
 import java.text.SimpleDateFormat
@@ -40,6 +42,8 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             //감정 표정 세팅
             var emotionValues = arrayListOf(it.happiness, it.sadness, it.worry, it.anger, it.neutrality)
             var sortedEmotionValues = emotionValues.sortedDescending()
+
+            Log.d(TAG, "감정 개수: ${sortedEmotionValues[0]}, ${sortedEmotionValues[1]}, ${sortedEmotionValues[2]}, ${sortedEmotionValues[3]}, ${sortedEmotionValues[4]}")
 
             if(sortedEmotionValues[0] == sortedEmotionValues[1]) {
                 //복합 감정

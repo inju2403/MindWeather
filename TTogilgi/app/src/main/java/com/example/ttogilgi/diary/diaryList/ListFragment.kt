@@ -235,16 +235,16 @@ class ListFragment : Fragment() {
                                     happinessCnt1week += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    angerCnt1week += 1.0
+                                    sadnessCnt1week += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].worry) {
                                     worryCnt1week += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].anger) {
-                                    neutralityCnt1week += 1.0
+                                    angerCnt1week += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    sadnessCnt1week += 1.0
+                                    neutralityCnt1week += 1.0
                                 }
                             }
                         }
@@ -271,16 +271,16 @@ class ListFragment : Fragment() {
                                     happinessCnt1month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    angerCnt1month += 1.0
+                                    sadnessCnt1month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].worry) {
                                     worryCnt1month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].anger) {
-                                    neutralityCnt1month += 1.0
+                                    angerCnt1month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    sadnessCnt1month += 1.0
+                                    neutralityCnt1month += 1.0
                                 }
                             }
                         }
@@ -307,16 +307,16 @@ class ListFragment : Fragment() {
                                     happinessCnt6month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    angerCnt6month += 1.0
+                                    sadnessCnt6month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].worry) {
                                     worryCnt6month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].anger) {
-                                    neutralityCnt6month += 1.0
+                                    angerCnt6month += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    sadnessCnt6month += 1.0
+                                    neutralityCnt6month += 1.0
                                 }
                             }
                         }
@@ -343,16 +343,16 @@ class ListFragment : Fragment() {
                                     happinessCnt1year += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].sadness) {
-                                    angerCnt1year += 1.0
+                                    sadnessCnt1year += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].worry) {
                                     worryCnt1year += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].anger) {
-                                    neutralityCnt1year += 1.0
+                                    angerCnt1year += 1.0
                                 }
                                 else if(sortedEmotionValues[0] == list[i].neutrality) {
-                                    sadnessCnt1year += 1.0
+                                    neutralityCnt1year += 1.0
                                 }
                             }
                         }

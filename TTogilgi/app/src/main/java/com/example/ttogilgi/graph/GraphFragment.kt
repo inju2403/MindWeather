@@ -169,7 +169,7 @@ class GraphFragment : Fragment() {
         emotion_graph.transparentCircleRadius = 61f
 
         emotion_graph.setDrawCenterText(true)
-        emotion_graph.centerText = "나의 감정 분포"
+        emotion_graph.centerText = "한 주의 감정"
         emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
@@ -208,7 +208,7 @@ class GraphFragment : Fragment() {
         emotion_graph.transparentCircleRadius = 61f
 
         emotion_graph.setDrawCenterText(true)
-        emotion_graph.centerText = "나의 감정 분포"
+        emotion_graph.centerText = "한 달의 감정"
         emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
@@ -247,7 +247,7 @@ class GraphFragment : Fragment() {
         emotion_graph.transparentCircleRadius = 61f
 
         emotion_graph.setDrawCenterText(true)
-        emotion_graph.centerText = "나의 감정 분포"
+        emotion_graph.centerText = "6개월의 감정"
         emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 
@@ -286,7 +286,7 @@ class GraphFragment : Fragment() {
         emotion_graph.transparentCircleRadius = 61f
 
         emotion_graph.setDrawCenterText(true)
-        emotion_graph.centerText = "나의 감정 분포"
+        emotion_graph.centerText = "1 년의 감정"
         emotion_graph.setCenterTextColor(Color.DKGRAY)
         emotion_graph.setCenterTextSize(18f)
 

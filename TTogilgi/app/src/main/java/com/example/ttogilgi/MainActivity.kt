@@ -74,7 +74,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val headerView: View = navigationView.getHeaderView(0)
         val drawerLayout_text = headerView.findViewById<TextView>(R.id.drawerLayout_textView)
-        drawerLayout_text.text = "${username}의 일기"
+        drawerLayout_text.text = "마음의 날씨"
+
+        val username_text = headerView.findViewById<TextView>(R.id.username_text)
+        username_text.text = username
 
         val email_text = headerView.findViewById<TextView>(R.id.email_text)
         email_text.text = email

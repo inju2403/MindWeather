@@ -15,7 +15,7 @@
         android:layout_marginRight="45dp"
         android:layout_marginBottom="400dp"
         android:fontFamily="@font/nanumpen"
-        android:text="똑일기"
+        android:text="마음의 날씨"
         android:textSize="40dp"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
