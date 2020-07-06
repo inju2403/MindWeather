@@ -1,8 +1,15 @@
-# 똑일기 (Android AI Diary App)    
+# 마음의 날씨 (Android AI Diary App)    
+
+<div><img src="https://user-images.githubusercontent.com/56947879/86610137-dd566a00-bfe7-11ea-9f8c-d818e1910a2b.png"  width="100%"></div>
 
 
 ## Project Description    
 
+'오늘, 내 마음의 날씨는 무엇일까?'    
+    
+     
+'마음의 날씨'는?     
+    
 딥러닝을 활용한 NLP를 사용하여 한글어 감정 분석을 통해 사용자가 작성한 일기를 분석하여 감정 상태를 분석, 도출한 뒤, 사용자에게 결과를 그래프로 시각화하여 제공하여 피드백을 줄 수 있는 일기 안드로이드 애플리케이션    
 
 
@@ -29,7 +36,7 @@
 
 ## Architecture
 
-<div><img src="https://user-images.githubusercontent.com/56947879/86445071-b8929600-bd4c-11ea-9135-f188bb72d92e.png" align="left" width="100%"></div>
+<div><img src="https://user-images.githubusercontent.com/56947879/86610665-9f0d7a80-bfe8-11ea-8573-730b114a7789.png" align="left" width="100%"></div>
 
 This AI Diary app uses MVVM architecture. There is also a Repository layer, which is for interacting with API calls or DB transactions.
 
