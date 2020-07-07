@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         //비밀번호찾기 텍스트 밑줄 긋기
         var spannableString = SpannableString("비밀번호찾기")
-        spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 0)
+        spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 1)
         passwordChangeLinkText.text = spannableString
 
         //비밀번호찾기 리스너
@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
         //자동 로그인
         if(pref.getBoolean("Auto_Login_enabled",false)) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
         }
 
         loginBtn.setOnClickListener {
@@ -69,8 +70,8 @@ class LoginActivity : AppCompatActivity() {
                                 editor.putBoolean("Auto_Login_enabled", true)
                             }
                             editor.commit()
-                            finish()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                            finish()
                         }
                         400 -> Toast.makeText(this@LoginActivity, "계정 정보를 확인해주세요", Toast.LENGTH_LONG).show()
                     }

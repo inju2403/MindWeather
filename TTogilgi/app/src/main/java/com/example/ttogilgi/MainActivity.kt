@@ -208,6 +208,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
                                         Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
                                         startActivity(Intent(applicationContext, LoginActivity::class.java))
+                                        finish()
                                     }
                                     400 -> Toast.makeText(applicationContext, "로그아웃 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
                                 }

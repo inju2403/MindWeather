@@ -84,27 +84,28 @@
         android:id="@+id/passwordChangeDescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginBottom="80dp"
-        android:text="비밀번호를 잊으셨나요?"
         android:fontFamily="@font/nanummyeongjo"
+        android:text="비밀번호를 잊으셨나요?"
         android:textColor="@color/dimGreyColor"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
-        app:layout_constraintStart_toStartOf="@+id/loginBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/passwordChangeLinkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="80dp"
         android:fontFamily="@font/nanummyeongjo"
         android:text="비밀번호찾기"
         android:textColor="@color/dimGreyColor"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@+id/passwordChangeDescriptionText"
-        app:layout_constraintStart_toEndOf="@+id/passwordChangeDescriptionText"
-        app:layout_constraintTop_toTopOf="@+id/passwordChangeDescriptionText" />
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/passwordChangeDescriptionText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

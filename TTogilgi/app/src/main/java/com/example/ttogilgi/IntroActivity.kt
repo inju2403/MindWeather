@@ -30,6 +30,7 @@ class IntroActivity : AppCompatActivity() {
         runnable = Runnable {
             val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
         handler = Handler()
         handler?.run {
