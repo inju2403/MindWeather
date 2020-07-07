@@ -18,6 +18,10 @@
             android:checkable="false"
             android:id="@+id/nav_logout"
             android:title="로그아웃" />
+        <item
+            android:checkable="false"
+            android:id="@+id/nav_delete_user"
+            android:title="계정 삭제" />
     </group>
 
 </menu>

@@ -58,20 +58,20 @@ class GraphFragment : Fragment() {
 
 //    private val typeFace = Typeface.createFromAsset(resources.assets, "nanummyeongjo.ttf")
 
-    var brownColor = "#8B4513"
-    var blueColor = "#1E90FF" // 슬픔
-    var tomatoColor = "#FF6347" // 분노
-    var greenColor = "#3CB371" // 중립
+    var brownColor = "#8B4513" // 텍스트 색상
+
     var goldColor = "#FFA700" // 행복
-    val violetRedColor = "#DB7093" // 걱정
-    val pupleColor = "#BA55D3" // 걱정
+    var greyColor = "#BBBBBB" // 중립
+    val pupleColor = "#A575CD" // 걱정
+    var blueColor = "#42A5F5" // 슬픔
+    var redColor = "#FF4950" // 분노
 
     private var colorList
             = listOf(Color.parseColor(goldColor),
-                        Color.parseColor(greenColor),
-                        Color.parseColor(violetRedColor),
+                        Color.parseColor(greyColor),
+                        Color.parseColor(pupleColor),
                         Color.parseColor(blueColor),
-                        Color.parseColor(tomatoColor))
+                        Color.parseColor(redColor))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -355,7 +355,6 @@ class GraphFragment : Fragment() {
         val data = PieData(dataSet)
         data.setValueTextSize(14f)
         data.setValueTextColor(Color.WHITE)
-//        data.setValueTextColors(textColorList)
 
         emotion_graph.data = data
 

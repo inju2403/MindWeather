@@ -217,6 +217,19 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                     }
                 }
             }
+            R.id.nav_delete_user -> {
+                val dialog = MyDialog(this)
+                dialog.start("계정을 삭제 하시겠습니까?")
+                dialog.setOnOKClickedListener {
+                    val dialog2 = MyDialog(this)
+                    dialog2.start("모든 계정 정보가 삭제됩니다")
+                    dialog.setOnOKClickedListener {
+                        if(it == RETURN_OK) {
+
+                        }
+                    }
+                }
+            }
         }
         return false
     }
