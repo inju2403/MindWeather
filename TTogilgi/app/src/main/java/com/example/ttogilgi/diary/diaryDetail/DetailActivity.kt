@@ -143,23 +143,23 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
         }
         else if(sortedEmotionValues[0] == viewModel.diary.happiness) {
             emotionImage.setImageResource(R.drawable.ic_happiness)
-            emotionText.text = "행복했던 하루"
+            emotionText.text = "행복을 느낀 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.sadness) {
             emotionImage.setImageResource(R.drawable.ic_sadness)
-            emotionText.text = "슬펐던 하루"
+            emotionText.text = "슬픔을 느낀 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.worry) {
             emotionImage.setImageResource(R.drawable.ic_worry)
-            emotionText.text = "걱정되었던 하루"
+            emotionText.text = "걱정을 느낀 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.anger) {
             emotionImage.setImageResource(R.drawable.ic_anger)
-            emotionText.text = "화났던 하루"
+            emotionText.text = "화나는 감정을 느낀 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.neutrality) {
             emotionImage.setImageResource(R.drawable.ic_neutrality)
-            emotionText.text = "평범했던 하루"
+            emotionText.text = "어느 한쪽으로 치우치지 않은 감정의 하루"
         }
 
         emotionImage.visibility = View.VISIBLE
