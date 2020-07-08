@@ -213,36 +213,41 @@ class ListFragment : Fragment() {
 
 //                        Log.d(TAG,"날짜 차이 ${curTimeValue-diaryTimeValue}")
 
+                        var emotionValues = arrayListOf(list[i].happiness,
+                            list[i].sadness, list[i].worry, list[i].anger, list[i].neutrality)
+
+                        val mx = emotionValues.max()
+
                         if(curTimeValue - diaryTimeValue <= 7) { // 한 주
-                            if(list[i].happiness > 0) happinessCnt1week += 1.0
-                            if(list[i].anger > 0) angerCnt1week += 1.0
-                            if(list[i].worry >0) worryCnt1week += 1.0
-                            if(list[i].sadness > 0) sadnessCnt1week += 1.0
-                            if(list[i].neutrality > 0) neutralityCnt1week += 1.0
+                            if(list[i].happiness == mx) happinessCnt1week += 1.0
+                            if(list[i].anger == mx) angerCnt1week += 1.0
+                            if(list[i].worry == mx) worryCnt1week += 1.0
+                            if(list[i].sadness == mx) sadnessCnt1week += 1.0
+                            if(list[i].neutrality == mx) neutralityCnt1week += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 30) { // 한 달
-                            if(list[i].happiness > 0) happinessCnt1month += 1.0
-                            if(list[i].anger > 0) angerCnt1month += 1.0
-                            if(list[i].worry >0) worryCnt1month += 1.0
-                            if(list[i].sadness > 0) sadnessCnt1month += 1.0
-                            if(list[i].neutrality > 0) neutralityCnt1month += 1.0
+                            if(list[i].happiness == mx) happinessCnt1month += 1.0
+                            if(list[i].anger == mx) angerCnt1month += 1.0
+                            if(list[i].worry == mx) worryCnt1month += 1.0
+                            if(list[i].sadness == mx) sadnessCnt1month += 1.0
+                            if(list[i].neutrality == mx) neutralityCnt1month += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 180) { // 6개월
-                            if(list[i].happiness > 0) happinessCnt6month += 1.0
-                            if(list[i].anger > 0) angerCnt6month += 1.0
-                            if(list[i].worry >0) worryCnt6month += 1.0
-                            if(list[i].sadness > 0) sadnessCnt6month += 1.0
-                            if(list[i].neutrality > 0) neutralityCnt6month += 1.0
+                            if(list[i].happiness == mx) happinessCnt6month += 1.0
+                            if(list[i].anger == mx) angerCnt6month += 1.0
+                            if(list[i].worry == mx) worryCnt6month += 1.0
+                            if(list[i].sadness == mx) sadnessCnt6month += 1.0
+                            if(list[i].neutrality == mx) neutralityCnt6month += 1.0
                         }
 
                         if(curTimeValue - diaryTimeValue <= 365) { // 1년
-                            if(list[i].happiness > 0) happinessCnt1year += 1.0
-                            if(list[i].anger > 0) angerCnt1year += 1.0
-                            if(list[i].worry >0) worryCnt1year += 1.0
-                            if(list[i].sadness > 0) sadnessCnt1year += 1.0
-                            if(list[i].neutrality > 0) neutralityCnt1year += 1.0
+                            if(list[i].happiness == mx) happinessCnt1year += 1.0
+                            if(list[i].anger == mx) angerCnt1year += 1.0
+                            if(list[i].worry == mx) worryCnt1year += 1.0
+                            if(list[i].sadness == mx) sadnessCnt1year += 1.0
+                            if(list[i].neutrality == mx) neutralityCnt1year += 1.0
                         }
                     }
 
