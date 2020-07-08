@@ -69,7 +69,9 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
         })
 
         val diaryId = intent.getStringExtra("DIARY_ID")
-        if(diaryId != null) viewModel!!.loadDiary(this, diaryId)
+        if(diaryId != null) {
+            diaryLoading(diaryId)
+        }
 
     }
 
@@ -94,6 +96,7 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
 
     private fun diaryUpdateLoading() = launch {
         progressBar.visibility = View.VISIBLE
+        progressBarText.text = "감정 분석 중입니다"
         progressBarText.visibility = View.VISIBLE
 
         viewModel?.addOrUpdateDiary(context)!!.join()
@@ -101,5 +104,18 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
         val intent = Intent()
         setResult(RESULT_OK, intent)
         finish()
+    }
+
+    private fun diaryLoading(diaryId: String) = launch {
+
+        progressBar.visibility = View.VISIBLE
+        progressBarText.text = "일기를 불러오는 중입니다"
+        progressBarText.visibility = View.VISIBLE
+
+        viewModel!!.loadDiary(context, diaryId).join()
+
+        progressBar.visibility = View.GONE
+        progressBarText.visibility = View.GONE
+
     }
 }
