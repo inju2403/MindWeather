@@ -18,6 +18,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 
@@ -32,6 +34,9 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var viewModel: DetailViewModel
 
     private var context = this
+
+    private val dateFormat = SimpleDateFormat("MMdd")
+    private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,6 +129,9 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
         progressBar.visibility = View.VISIBLE
         progressBarText.visibility = View.VISIBLE
 
+        dateView.visibility = View.GONE
+        dayOfTheWeekView.visibility = View.GONE
+
         viewModel!!.loadDiary(context, diaryId).join()
 
         progressBar.visibility = View.GONE
@@ -155,15 +163,21 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
         }
         else if(sortedEmotionValues[0] == viewModel.diary.anger) {
             emotionImage.setImageResource(R.drawable.ic_anger)
-            emotionText.text = "화나는 감정을 느낀 하루"
+            emotionText.text = "화가 났던 하루"
         }
         else if(sortedEmotionValues[0] == viewModel.diary.neutrality) {
             emotionImage.setImageResource(R.drawable.ic_neutrality)
-            emotionText.text = "어느 한쪽으로 치우치지 않은 감정의 하루"
+            emotionText.text = "감정이 중립인 하루"
         }
 
         emotionImage.visibility = View.VISIBLE
         emotionText.visibility = View.VISIBLE
         contentView.visibility = View.VISIBLE
+
+        dateView.text = dateFormat.format(viewModel!!.diary.createdAt)
+        dayOfTheWeekView.text = weekdayFormat.format(viewModel!!.diary.createdAt)
+
+        dateView.visibility = View.VISIBLE
+        dayOfTheWeekView.visibility = View.VISIBLE
     }
 }

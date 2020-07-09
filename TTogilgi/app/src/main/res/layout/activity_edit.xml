@@ -7,6 +7,30 @@
     android:background="@drawable/diary_detail_background"
     tools:context=".diary.diaryDetail.EditActivity">
 
+    <TextView
+        android:id="@+id/dateView"
+        style="@style/Date_TextView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="0709"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/editToolbar" />
+
+    <TextView
+        android:id="@+id/dayOfTheWeekView"
+        style="@style/DayOfTheWeek_TextView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:text="Thu"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/editToolbar" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/editToolbar"
         android:layout_width="match_parent"
@@ -27,11 +51,11 @@
         style="@style/Edit_And_Detail_Title_TextView_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="오늘의 이야기를 들려주세요!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/dateView" />
 
     <EditText
         android:id="@+id/contentEdit"
@@ -40,7 +64,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginBottom="60dp"
@@ -65,13 +89,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="감정 분석 중입니다"
         android:fontFamily="@font/nanummyeongjo"
+        android:text="감정 분석 중입니다"
+        android:textColor="@color/brownColor"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/brownColor"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -204,6 +204,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                                         )
                                         val editor = pref.edit()
                                         editor.clear()
+                                        editor.putBoolean("runFirst", false)
                                         editor.commit()
 
                                         Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()

@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#FFEBCD</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="brownColor">#8B4513</color>
+    <color name="midiumBrownColor">#CD853F</color>
     <color name="liteBrownColor">#DEB887</color>
     <color name="oliveColor">#808000</color>
     <color name="dimGreyColor">#696969</color>
@@ -15,4 +16,5 @@
     <color name="orangeColor">#FFA500</color>
     <color name="yellowColor">#FFFF00</color>
     <color name="forestGreenColor">#228B22</color>
+    <color name="tutorialBackgroundColor">#C4BEB7</color>
 </resources>

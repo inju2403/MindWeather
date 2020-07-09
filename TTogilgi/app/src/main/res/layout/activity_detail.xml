@@ -22,15 +22,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/dateView"
+        style="@style/Date_TextView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="0709"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/detailToolbar" />
+
+    <TextView
+        android:id="@+id/dayOfTheWeekView"
+        style="@style/DayOfTheWeek_TextView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:text="Thu"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/detailToolbar" />
+
     <ImageView
         android:id="@+id/emotionImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/dateView"
         app:srcCompat="@drawable/ic_notebook" />
 
     <TextView
@@ -40,13 +64,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:text="감정에 대한 글"
-        app:layout_constraintBottom_toBottomOf="@+id/emotionImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emotionImage"
-        app:layout_constraintTop_toTopOf="@+id/emotionImage" />
+        app:layout_constraintTop_toBottomOf="@+id/dateView" />
 
     <TextView
         android:id="@+id/contentView"
@@ -63,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotionImage"
+        app:layout_constraintTop_toBottomOf="@+id/emotionText"
         app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
@@ -90,4 +114,12 @@
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

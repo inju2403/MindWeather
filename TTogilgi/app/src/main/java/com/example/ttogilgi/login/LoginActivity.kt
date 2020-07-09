@@ -13,6 +13,7 @@ import com.example.ttogilgi.model.pojo.LoginRequestPOJO
 import com.example.ttogilgi.model.pojo.Login_SignUP_ReturnPOJO
 import com.example.ttogilgi.retrofit.ApiService
 import com.example.ttogilgi.retrofit.RetrofitClient
+import com.example.ttogilgi.tutorial.TutorialActivity
 import com.example.ttogilgi.utils.Constants.API_BASE_URL
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -30,6 +31,15 @@ class LoginActivity : AppCompatActivity() {
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
         val editor = pref.edit()
+        var runFirst = pref.getBoolean("runFirst", true)
+
+        if(runFirst) { // 최초 실행
+            editor.putBoolean("runFirst", false)
+            editor.commit()
+
+            startActivity(Intent(this@LoginActivity, TutorialActivity::class.java))
+            finish()
+       }
 
         //비밀번호찾기 텍스트 밑줄 긋기
         var spannableString = SpannableString("비밀번호찾기")
@@ -42,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //자동 로그인
-        if(pref.getBoolean("Auto_Login_enabled",false)) {
+        if(pref.getBoolean("Auto_Login_enabled",false) && !runFirst) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             finish()
         }

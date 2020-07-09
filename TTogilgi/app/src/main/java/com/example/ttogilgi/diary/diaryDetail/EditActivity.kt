@@ -18,6 +18,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 class EditActivity : AppCompatActivity(), CoroutineScope {
@@ -28,6 +30,9 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
 
     private var viewModel: DetailViewModel? = null
     private var context = this
+
+    private val dateFormat = SimpleDateFormat("MMdd")
+    private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,10 +117,22 @@ class EditActivity : AppCompatActivity(), CoroutineScope {
         progressBarText.text = "일기를 불러오는 중입니다"
         progressBarText.visibility = View.VISIBLE
 
+        titleText.visibility = View.GONE
+        dateView.visibility = View.GONE
+        dayOfTheWeekView.visibility = View.GONE
+
         viewModel!!.loadDiary(context, diaryId).join()
 
         progressBar.visibility = View.GONE
         progressBarText.visibility = View.GONE
+
+
+        dateView.text = dateFormat.format(viewModel!!.diary.createdAt)
+        dayOfTheWeekView.text = weekdayFormat.format(viewModel!!.diary.createdAt)
+
+        titleText.visibility = View.VISIBLE
+        dateView.visibility = View.VISIBLE
+        dayOfTheWeekView.visibility = View.VISIBLE
 
     }
 }
