@@ -1,12 +1,15 @@
 package com.example.ttogilgi.login
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.ttogilgi.MainActivity
 import com.example.ttogilgi.R
 import com.example.ttogilgi.model.pojo.LoginRequestPOJO
@@ -25,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
     val TAG: String? = "로그"
     val PREFERENCE = "template.android.TTogilgi"
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -39,7 +43,9 @@ class LoginActivity : AppCompatActivity() {
 
             startActivity(Intent(this@LoginActivity, TutorialActivity::class.java))
             finish()
-       }
+        }
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
 
         //비밀번호찾기 텍스트 밑줄 긋기
         var spannableString = SpannableString("비밀번호찾기")
