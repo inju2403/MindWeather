@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".graph.GraphFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/graphTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"
+            app:tabTextAppearance="@style/GraphTabLayoutStyle"
+            app:tabSelectedTextColor="@color/brownColor"
+            app:tabIndicatorColor="@color/brownColor">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_1year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1년" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_6month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6개월" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_1month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한 달" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_1week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한 주" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/emotion_graph"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graphTabLayout">
+
+        </com.github.mikephil.charting.charts.PieChart>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

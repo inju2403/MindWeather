@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeatherDescriptionActivity"
+    android:background="@drawable/diary_detail_background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/weatherDescriptionToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/happinessImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionToolbar"
+        app:srcCompat="@drawable/ic_happiness" />
+
+    <ImageView
+        android:id="@+id/sadnessImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/happinessImage"
+        app:layout_constraintTop_toBottomOf="@+id/happinessImage"
+        app:srcCompat="@drawable/ic_sadness" />
+
+    <ImageView
+        android:id="@+id/worryImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/sadnessImage"
+        app:layout_constraintTop_toBottomOf="@+id/sadnessImage"
+        app:srcCompat="@drawable/ic_worry" />
+
+    <ImageView
+        android:id="@+id/angerImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/worryImage"
+        app:layout_constraintTop_toBottomOf="@+id/worryImage"
+        app:srcCompat="@drawable/ic_anger" />
+
+    <ImageView
+        android:id="@+id/neutralityImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/angerImage"
+        app:layout_constraintTop_toBottomOf="@+id/angerImage"
+        app:srcCompat="@drawable/ic_neutrality" />
+
+    <ImageView
+        android:id="@+id/unknownabilityImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/neutralityImage"
+        app:layout_constraintTop_toBottomOf="@+id/neutralityImage"
+        app:srcCompat="@drawable/ic_unknowability" />
+
+    <TextView
+        android:id="@+id/happinessText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="행복한 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/happinessImage"
+        app:layout_constraintStart_toEndOf="@+id/happinessImage"
+        app:layout_constraintTop_toTopOf="@+id/happinessImage" />
+
+    <TextView
+        android:id="@+id/sadnessText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="슬픈 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/sadnessImage"
+        app:layout_constraintStart_toEndOf="@+id/sadnessImage"
+        app:layout_constraintTop_toTopOf="@+id/sadnessImage" />
+
+    <TextView
+        android:id="@+id/worryText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="걱정을 느끼는 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/worryImage"
+        app:layout_constraintStart_toEndOf="@+id/worryImage"
+        app:layout_constraintTop_toTopOf="@+id/worryImage" />
+
+    <TextView
+        android:id="@+id/angerText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="화난 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/angerImage"
+        app:layout_constraintStart_toEndOf="@+id/angerImage"
+        app:layout_constraintTop_toTopOf="@+id/angerImage" />
+
+    <TextView
+        android:id="@+id/neutralityText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="중립의 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/neutralityImage"
+        app:layout_constraintStart_toEndOf="@+id/neutralityImage"
+        app:layout_constraintTop_toTopOf="@+id/neutralityImage" />
+
+    <TextView
+        android:id="@+id/unknownabilityText"
+        style="@style/WeatherDescriptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="복합적인 감정"
+        app:layout_constraintBottom_toBottomOf="@+id/unknownabilityImage"
+        app:layout_constraintStart_toEndOf="@+id/unknownabilityImage"
+        app:layout_constraintTop_toTopOf="@+id/unknownabilityImage" />
+</androidx.constraintlayout.widget.ConstraintLayout>

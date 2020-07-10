@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FDF5E6</color>
+    <color name="colorPrimaryDark">#FFEBCD</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="brownColor">#8B4513</color>
+    <color name="midiumBrownColor">#CD853F</color>
+    <color name="liteBrownColor">#DEB887</color>
+    <color name="oliveColor">#808000</color>
+    <color name="dimGreyColor">#696969</color>
+    <color name="liteGreyColor">#909090</color>
+    <color name="redColor">#FFFF0000</color>
+    <color name="blackColor">#FF000000</color>
+    <color name="blueColor">#FF0000FF</color>
+    <color name="dimPupleColor">#330033</color>
+    <color name="orangeColor">#FFA500</color>
+    <color name="yellowColor">#FFFF00</color>
+    <color name="forestGreenColor">#228B22</color>
+    <color name="tutorialBackgroundColor">#C4BEB7</color>
+</resources>
