@@ -1,6 +1,6 @@
 # 마음의 날씨 (Android AI Diary App)    
 
-<div><img src="https://user-images.githubusercontent.com/56947879/86683467-8b8bff00-c03c-11ea-9087-763c7b162179.png"  width="100%"></div>
+<div><img src="https://user-images.githubusercontent.com/56947879/87245957-c5b63000-c484-11ea-8a5c-196df3cef2d8.png"  width="100%"></div>
 
 
 ## Project Description    
@@ -31,6 +31,8 @@
  - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
  - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) (A powerful & easy to use chart library for Android)
  - [DiffUtil](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil) (A utility class that calculates the difference between two lists and outputs a list of update operations that converts the first list into the second one)    
+ - [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2?hl=ko) (Swipe views allow you to navigate between sibling screens, such as tabs, with a horizontal finger gesture, or swipe)    
+ - [dotsindicator](https://github.com/tommybuonomo/dotsindicator) (This library makes it possible to represent View Pager Dots Indicator with 3 different awesome styles. It supports ViewPager and ViewPager2)     
 
 
 
