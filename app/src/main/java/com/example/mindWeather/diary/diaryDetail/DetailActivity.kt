@@ -35,6 +35,7 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
 
     private var context = this
 
+    private val yearFormat = SimpleDateFormat("YY")
     private val dateFormat = SimpleDateFormat("MMdd")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
@@ -131,6 +132,7 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
 
         dateView.visibility = View.GONE
         dayOfTheWeekView.visibility = View.GONE
+        yearView.visibility = View.GONE
 
         viewModel!!.loadDiary(context, diaryId).join()
 
@@ -176,8 +178,10 @@ class DetailActivity : AppCompatActivity(), CoroutineScope {
 
         dateView.text = dateFormat.format(viewModel!!.diary.createdAt)
         dayOfTheWeekView.text = weekdayFormat.format(viewModel!!.diary.createdAt)
+        yearView.text = "'${yearFormat.format(viewModel!!.diary.createdAt)}"
 
         dateView.visibility = View.VISIBLE
         dayOfTheWeekView.visibility = View.VISIBLE
+        yearView.visibility = View.VISIBLE
     }
 }

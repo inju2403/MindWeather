@@ -19,6 +19,7 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
     DiaryDiffUtilCallback()
 ) {
 
+    private val yearFormat = SimpleDateFormat("YY")
     private val dateFormat = SimpleDateFormat("MMdd")
     private val weekdayFormat = SimpleDateFormat("EEE", Locale.ENGLISH)
 
@@ -34,6 +35,7 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
             holder.containerView.setOnClickListener {
                 event.value = DiaryListEvent.OnDiaryItemClick(diaryId!!)
             }
+            holder.containerView.yearView.text = "'${yearFormat.format(it.createdAt)}"
             holder.containerView.dateView.text = dateFormat.format(it.createdAt)
             holder.containerView.dayOfTheWeekView.text = weekdayFormat.format(it.createdAt)
             holder.containerView.tag = it.id
