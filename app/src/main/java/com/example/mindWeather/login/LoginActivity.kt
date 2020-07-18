@@ -80,7 +80,6 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString("token",response.body()?.token)
                             editor.putString("pk",response.body()?.signUpUser?.pk.toString())
                             editor.putString("username",response.body()?.signUpUser?.username)
-                            editor.putString("password",passwordEdit.text.toString().trim())
                             editor.putString("email",response.body()?.signUpUser?.email)
                             if(autoLoginCheck.isChecked) {
                                 editor.putBoolean("Auto_Login_enabled", true)

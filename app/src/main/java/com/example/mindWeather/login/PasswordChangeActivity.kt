@@ -26,13 +26,9 @@ class PasswordChangeActivity : AppCompatActivity() {
 
         val pref = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
         val token = "JWT ${pref.getString("token", "").toString()}"
-        val password = pref.getString("password", "")
 
         changeRequestBtn.setOnClickListener {
-            if(password != currentPasswordEdit.text.toString().trim()) {
-                Toast.makeText(this@PasswordChangeActivity, "현재 비밀번호를 확인해주세요.", Toast.LENGTH_LONG).show()
-            }
-            else if(newPassword1Edit.text.toString().trim() != newPassword2Edit.text.toString().trim()) {
+            if(newPassword1Edit.text.toString().trim() != newPassword2Edit.text.toString().trim()) {
                 Toast.makeText(this@PasswordChangeActivity, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
             }
             else if(newPassword1Edit.text.toString().trim().length<8 || newPassword2Edit.text.toString().trim().length<8) {
@@ -51,7 +47,7 @@ class PasswordChangeActivity : AppCompatActivity() {
                         Log.d(Constants.TAG, "password - onFailed() called / t: ${t}")
                         Toast.makeText(
                             this@PasswordChangeActivity,
-                            "비밀번호 변경 실패",
+                            "비밀번호 변경 실패: 서버 오류",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -69,10 +65,9 @@ class PasswordChangeActivity : AppCompatActivity() {
                             400 -> {
                                 Toast.makeText(
                                     this@PasswordChangeActivity,
-                                    "비밀번호 변경 실패",
+                                    "현재 비밀번호를 확인해주세요.",
                                     Toast.LENGTH_LONG
                                 ).show()
-                                finish()
                             }
                         }
                     }
