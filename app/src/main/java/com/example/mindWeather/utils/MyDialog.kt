@@ -9,7 +9,7 @@ import com.example.mindWeather.R
 
 class MyDialog(context : Context) {
 
-    private val RESULT_OK = 101
+    private val RETURN_OK = 101
 
     private val dialog = Dialog(context)   //부모 액티비티의 context 가 들어감
     private lateinit var titleText : TextView
@@ -29,7 +29,7 @@ class MyDialog(context : Context) {
         okButton.setOnClickListener {
 
             //TODO: 부모 액티비티로 내용을 돌려주기 위해 작성할 코드
-            listener.onOKClicked(RESULT_OK)
+            listener.onOKClicked(RETURN_OK)
 
             dialog.dismiss()
         }

@@ -1,5 +1,7 @@
 package com.example.mindWeather.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -31,13 +33,44 @@ class UsernameChangeActivity : AppCompatActivity() {
                 Change_Username_POJO(newUsernameEdit.text.toString().trim())
             )?.enqueue(object : Callback<Void> {
                 override fun onFailure(call: Call<Void>, t: Throwable) {
-                    Log.d(Constants.TAG,"password - onFailed() called / t: ${t}")
+                    Log.d(Constants.TAG,"change username - onFailed() called / t: ${t}")
                 }
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when(response!!.code()) {
                         200 -> {
-                            Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 완료", Toast.LENGTH_LONG).show()
+                            val pref = applicationContext!!.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
+                            val editor = pref.edit()
+                            editor.clear()
+                            editor.putBoolean("runFirst", false)
+                            editor.commit()
+
+                            //로그아웃 시키기
+                            var chk = 1
+                            httpCall?.logout(token)?.enqueue(object : Callback<Void> {
+                                override fun onFailure(call: Call<Void>, t: Throwable) {
+                                    Log.d(Constants.TAG,"logout - onFailed() called / t: ${t}")
+                                }
+
+                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                    when (response!!.code()) {
+                                        200 -> {
+                                            val pref = applicationContext!!.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
+                                            val editor = pref.edit()
+                                            editor.clear()
+                                            editor.putBoolean("runFirst", false)
+                                            editor.commit()
+
+                                        }
+                                        400 -> {
+                                            Log.d(Constants.TAG,"닉네임 변경 후 logout - onFailed() called ")
+                                            chk=0
+                                        }
+                                    }
+                                }
+                            })
+                            if(chk==1) Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 완료. 변경된 닉네임으로 재로그인 해주세요.", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(applicationContext, LoginActivity::class.java))
                             finish()
                         }
                         400 -> {

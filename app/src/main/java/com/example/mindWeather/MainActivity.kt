@@ -223,10 +223,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 val dialog = MyDialog(this)
                 dialog.start("계정을 삭제 하시겠습니까?")
                 dialog.setOnOKClickedListener {
-                    val dialog2 = MyDialog(this)
-                    dialog2.start("모든 계정 정보가 삭제됩니다")
-                    dialog.setOnOKClickedListener {
-                        if(it == RETURN_OK) {
+                    if (it == RETURN_OK) {
+                        val dialog2 = MyDialog(this)
+                        dialog2.start("모든 계정 정보가 삭제됩니다")
+                        dialog2.setOnOKClickedListener {
 
                         }
                     }

@@ -21,29 +21,37 @@
 
     <Button
         android:id="@+id/changeRequestBtn"
-        android:fontFamily="@font/nanummyeongjo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/nanummyeongjo"
         android:text="변경신청"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
+        app:layout_constraintStart_toStartOf="@+id/newUsernameEdit"
         app:layout_constraintTop_toBottomOf="@+id/newUsernameEdit" />
 
     <Button
         android:id="@+id/goBackBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/nanummyeongjo"
+        android:text="돌아가기"
+        app:layout_constraintEnd_toEndOf="@+id/newUsernameEdit"
+        app:layout_constraintStart_toStartOf="@+id/centerGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/newUsernameEdit" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="돌아가기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/changeRequestBtn"
-        app:layout_constraintTop_toBottomOf="@+id/newUsernameEdit" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
