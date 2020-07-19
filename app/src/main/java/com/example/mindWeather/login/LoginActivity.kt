@@ -3,8 +3,6 @@ package com.example.mindWeather.login
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -47,15 +45,15 @@ class LoginActivity : AppCompatActivity() {
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
 
-        //비밀번호찾기 텍스트 밑줄 긋기
-        var spannableString = SpannableString("비밀번호찾기")
-        spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 1)
-        passwordChangeLinkText.text = spannableString
-
-        //비밀번호찾기 리스너
-        passwordChangeLinkText.setOnClickListener {
-
-        }
+//        //비밀번호찾기 텍스트 밑줄 긋기
+//        var spannableString = SpannableString("비밀번호찾기")
+//        spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 1)
+//        passwordChangeLinkText.text = spannableString
+//
+//        //비밀번호찾기 리스너
+//        passwordChangeLinkText.setOnClickListener {
+//
+//        }
 
         //자동 로그인
         if(pref.getBoolean("Auto_Login_enabled",false) && !runFirst) {

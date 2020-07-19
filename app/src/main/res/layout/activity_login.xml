@@ -80,30 +80,30 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/passwordChangeDescriptionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:fontFamily="@font/nanummyeongjo"
-        android:text="비밀번호를 잊으셨나요?"
-        android:textColor="@color/dimGreyColor"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginBtn" />
+<!--    <TextView-->
+<!--        android:id="@+id/passwordChangeDescriptionText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="80dp"-->
+<!--        android:fontFamily="@font/nanummyeongjo"-->
+<!--        android:text="비밀번호를 잊으셨나요?"-->
+<!--        android:textColor="@color/dimGreyColor"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/loginBtn" />-->
 
-    <TextView
-        android:id="@+id/passwordChangeLinkText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="80dp"
-        android:fontFamily="@font/nanummyeongjo"
-        android:text="비밀번호찾기"
-        android:textColor="@color/dimGreyColor"
-        android:textSize="9sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/passwordChangeDescriptionText" />
+<!--    <TextView-->
+<!--        android:id="@+id/passwordChangeLinkText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_marginBottom="80dp"-->
+<!--        android:fontFamily="@font/nanummyeongjo"-->
+<!--        android:text="비밀번호찾기"-->
+<!--        android:textColor="@color/dimGreyColor"-->
+<!--        android:textSize="9sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/passwordChangeDescriptionText" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

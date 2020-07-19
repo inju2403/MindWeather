@@ -69,9 +69,12 @@ class UsernameChangeActivity : AppCompatActivity() {
                                     }
                                 }
                             })
-                            if(chk==1) Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 완료. 변경된 닉네임으로 재로그인 해주세요.", Toast.LENGTH_LONG).show()
-                            startActivity(Intent(applicationContext, LoginActivity::class.java))
-                            finish()
+                            if(chk==1) {
+                                Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 완료. 변경된 닉네임으로 재로그인 해주세요.", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                                finish()
+                            }
+                            else Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 실패", Toast.LENGTH_LONG).show()
                         }
                         400 -> {
                             Toast.makeText(this@UsernameChangeActivity, "닉네임 변경 실패 : ${response.message()}", Toast.LENGTH_LONG).show()

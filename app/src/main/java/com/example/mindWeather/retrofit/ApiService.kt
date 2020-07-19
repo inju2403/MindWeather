@@ -23,6 +23,8 @@ interface ApiService {
     @PATCH("auth/user/") // 닉네임 변경
     fun changeUsername(@Header("Authorization") Authorization: String, @Body changeUsernamePOJO: Change_Username_POJO): Call<Void>
 
+    @GET("auth/delete/") // 계정 삭제
+    fun deleteUser(@Header("Authorization") Authorization: String): Call<Void>
 
     // 일기 리스트 받기, 일기 받기, 일기 수정, 일기 삭제
 

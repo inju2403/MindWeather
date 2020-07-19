@@ -69,6 +69,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         email = pref.getString("email", "").toString()
 
         Toast.makeText(this@MainActivity, "${username}님 반갑습니다 :)", Toast.LENGTH_LONG).show()
+        Log.d("토큰",token)
 
 
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
@@ -227,7 +228,32 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                         val dialog2 = MyDialog(this)
                         dialog2.start("모든 계정 정보가 삭제됩니다")
                         dialog2.setOnOKClickedListener {
+                            if (it == RETURN_OK) {
+                                val httpCall: ApiService? =
+                                    RetrofitClient.getClient(Constants.API_BASE_URL)!!.create(ApiService::class.java)
+                                httpCall?.deleteUser(token)?.enqueue(object : Callback<Void> {
+                                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                                        Log.d(Constants.TAG, "deleteUser - onFailed() called / t: ${t}")
+                                    }
 
+                                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                        when (response!!.code()) {
+                                            200 -> {
+                                                val pref =
+                                                    applicationContext!!.getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
+                                                val editor = pref.edit()
+                                                editor.clear()
+                                                editor.putBoolean("runFirst", false)
+                                                editor.commit()
+                                                Toast.makeText(applicationContext, "계정이 삭제되었습니다.", Toast.LENGTH_LONG).show()
+                                                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                                                finish()
+                                            }
+                                            401 -> Toast.makeText(applicationContext, "계정 삭제 실패 : ${response.message()}", Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+                                })
+                            }
                         }
                     }
                 }
