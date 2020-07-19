@@ -1,6 +1,6 @@
 # 마음의 날씨 (Android AI Diary App)    
 
-<div><img src="https://user-images.githubusercontent.com/56947879/87740677-be44ad00-c81d-11ea-9948-026051077fb9.png"  width="100%"></div>
+<div><img src="https://user-images.githubusercontent.com/56947879/87868697-a6168e80-c9d3-11ea-995e-e5dea2984364.png"  width="100%"></div>
 
 
 ## Project Description    
@@ -10,7 +10,7 @@
      
 '마음의 날씨'는?     
     
-딥러닝을 활용한 NLP를 사용하여 한글어 감정 분석을 통해 사용자가 작성한 일기를 분석하여 감정 상태를 분석, 도출한 뒤, 사용자에게 결과를 그래프로 시각화하여 제공하여 피드백을 줄 수 있는 일기 안드로이드 애플리케이션    
+딥러닝을 활용한 NLP를 사용하여 한글어 감정 분석을 통해 사용자가 작성한 일기의 내용을 분석하여 감정 상태를 분석, 도출한 뒤, 사용자에게 결과를 그래프로 시각화하여 제공하여 피드백을 줄 수 있는 일기 안드로이드 애플리케이션    
 
 
 ## Background    
@@ -28,6 +28,7 @@
  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)  (Observable data)
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
+ - [Gson](https://github.com/google/gson) (A Java library that can be used to convert Java Objects into their JSON representation)
  - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
  - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) (A powerful & easy to use chart library for Android)
  - [DiffUtil](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil) (A utility class that calculates the difference between two lists and outputs a list of update operations that converts the first list into the second one)    
