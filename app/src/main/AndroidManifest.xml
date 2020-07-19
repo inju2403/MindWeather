@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.mindWeather">
+    package="com.inju.mindWeather">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,7 @@
     <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MindWeatherApplication"
+        android:name="com.inju.mindWeather.MindWeatherApplication"
         tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:icon="@mipmap/ic_the_weather_of_mind_launcher"
@@ -23,16 +23,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WeatherDescriptionActivity"></activity>
-        <activity android:name=".login.UsernameChangeActivity" />
-        <activity android:name=".login.PasswordChangeActivity" />
-        <activity android:name=".login.SignUpActivity" />
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".diary.diaryDetail.DetailActivity" />
-        <activity android:name=".diary.diaryDetail.EditActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".tutorial.TutorialActivity" />
-        <activity android:name=".IntroActivity">
+        <activity android:name="com.inju.mindWeather.WeatherDescriptionActivity"></activity>
+        <activity android:name="com.inju.mindWeather.login.UsernameChangeActivity" />
+        <activity android:name="com.inju.mindWeather.login.PasswordChangeActivity" />
+        <activity android:name="com.inju.mindWeather.login.SignUpActivity" />
+        <activity android:name="com.inju.mindWeather.login.LoginActivity" />
+        <activity android:name="com.inju.mindWeather.diary.diaryDetail.DetailActivity" />
+        <activity android:name="com.inju.mindWeather.diary.diaryDetail.EditActivity" />
+        <activity android:name="com.inju.mindWeather.MainActivity" />
+        <activity android:name="com.inju.mindWeather.tutorial.TutorialActivity" />
+        <activity android:name="com.inju.mindWeather.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
