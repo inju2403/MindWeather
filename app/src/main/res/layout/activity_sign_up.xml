@@ -8,11 +8,11 @@
 
     <EditText
         android:id="@+id/usernameEdit"
-        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:ems="10"
+        android:ems="11"
+        android:fontFamily="@font/nanummyeongjo"
         android:hint="닉네임"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,11 +21,11 @@
 
     <EditText
         android:id="@+id/emailEdit"
-        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:ems="10"
+        android:ems="11"
+        android:fontFamily="@font/nanummyeongjo"
         android:hint="이메일"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,11 +34,11 @@
 
     <EditText
         android:id="@+id/password1Edit"
-        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:ems="10"
+        android:ems="11"
+        android:fontFamily="@font/nanummyeongjo"
         android:hint="비밀번호 확인 (8자리 이상)"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,16 +47,28 @@
 
     <EditText
         android:id="@+id/password2Edit"
-        android:fontFamily="@font/nanummyeongjo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:ems="10"
+        android:ems="11"
+        android:fontFamily="@font/nanummyeongjo"
         android:hint="비밀번호 (8자리 이상)"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEdit" />
+
+    <TextView
+        android:id="@+id/passwordExplainView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="※ 비밀번호는 숫자, 문자, 특수문자를\n\t\t조합하여 만들어주세요"
+        android:textColor="@color/liteGreyColor"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpRequestBtn" />
 
     <Button
         android:id="@+id/signUpRequestBtn"
