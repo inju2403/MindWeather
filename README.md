@@ -58,7 +58,7 @@ val diaryLiveData : MutableLiveData<Diary> by lazy {
     }
 }
 diary = repo.getData() // get data from API and/or DB
-
+diaryLiveData.value = diary // set LivaData
 ```
 
 ## Author
