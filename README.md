@@ -46,19 +46,15 @@ This AI Diary app uses MVVM architecture. There is also a Repository layer, whic
 ```kt
 
 // View
-viewModel!!.diaryLiveData.observe (this, Observer {
+viewModel!!.diaryList.observe (this, Observer {
     // TODO
 })
 
 // ViewModel
-var diary = Diary()
-val diaryLiveData : MutableLiveData<Diary> by lazy {
-    MutableLiveData<Diary>().apply {
-        value = diary
-    }
-}
-diary = repo.getData() // get data from API and/or DB
-diaryLiveData.value = diary // set LivaData
+private val diaryListState = MutableLiveData<List<Diary>>()
+val diaryList: LiveData<List<Diary>> get() = diaryListState
+
+diaryListState.value = repo.getDiarys() // get data from API and/or DB
 ```
 
 ## Author
