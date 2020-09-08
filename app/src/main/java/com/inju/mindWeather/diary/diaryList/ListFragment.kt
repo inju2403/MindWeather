@@ -24,8 +24,13 @@ import com.inju.mindWeather.model.Emotion
 import com.inju.mindWeather.model.pojo.Diary
 import com.inju.mindWeather.utils.Constants.TAG
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.coroutines.CoroutineContext
 
 class ListFragment : Fragment() {
 
@@ -113,6 +118,7 @@ class ListFragment : Fragment() {
         curTimeValue = curYear * (12 * 30) + curMonth * 30 + curDay
 
         setUpAdapter()
+        setLayoutManager()
         observeViewModel()
     }
 
@@ -152,28 +158,27 @@ class ListFragment : Fragment() {
                 viewModel!!.handleEvent(it)
             }
         )
+        diaryListView.adapter = listAdapter
+    }
+
+    private fun setLayoutManager() {
+        diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
     }
 
     private fun observeViewModel() {
 
-
         viewModel!!.let {
-            it.diaryListLiveData.value?.let {
-                diaryListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-                diaryListView.adapter = listAdapter
-            }
             it.editDiary.observe(
                 viewLifecycleOwner,
                 Observer {
                     val intent = Intent(activity, DetailActivity::class.java).apply {
                         putExtra("DIARY_ID", it)
-                        Log.d(TAG,"observer diary id: ${it}")
                     }
                     startActivity(intent)
                 }
             )
 
-            it.diaryListLiveData.observe(viewLifecycleOwner,
+            it.diaryList.observe(viewLifecycleOwner,
                 Observer {
                     listAdapter.submitList(it)
 

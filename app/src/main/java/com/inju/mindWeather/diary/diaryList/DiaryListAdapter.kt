@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.ListAdapter
 import com.inju.mindWeather.R
 import com.inju.mindWeather.diary.ItemViewHolder
@@ -70,4 +71,7 @@ class DiaryListAdapter (val event: MutableLiveData<DiaryListEvent> = MutableLive
         }
     }
 
+    override fun getItemCount(): Int {
+        return super.getItemCount()
+    }
 }

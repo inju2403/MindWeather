@@ -14,16 +14,21 @@ class ListViewModel(
     uiContext: CoroutineContext
 ) : BaseViewModel<DiaryListEvent>(uiContext) {
 
-    var diarys: MutableList<Diary> = mutableListOf()
-    val diaryListLiveData : MutableLiveData<MutableList<Diary>> by lazy {
-        MutableLiveData<MutableList<Diary>>().apply {
-            value = diarys
-        }
-    }
+//    var diarys: MutableList<Diary> = mutableListOf()
+//    val diaryListLiveData : MutableLiveData<MutableList<Diary>> by lazy {
+//        MutableLiveData<MutableList<Diary>>().apply {
+//            value = diarys
+//        }
+//    }
+
+    private val diaryListState = MutableLiveData<List<Diary>>()
+    val diaryList: LiveData<List<Diary>> get() = diaryListState
+
 
     fun getDiarys() = launch {
-        diarys = repo.getDiarys()
-        diaryListLiveData.value = diarys
+        diaryListState.value = repo.getDiarys()
+//        diarys = repo.getDiarys()
+//        diaryListLiveData.value = diarys
     }
 
     private val editDiaryState = MutableLiveData<String>()
