@@ -21,15 +21,20 @@ class ListViewModel(
 //        }
 //    }
 
+    private var itemCnt = 0
+
     private val diaryListState = MutableLiveData<List<Diary>>()
     val diaryList: LiveData<List<Diary>> get() = diaryListState
 
 
     fun getDiarys() = launch {
         diaryListState.value = repo.getDiarys()
+        itemCnt = diaryList.value?.size!!
 //        diarys = repo.getDiarys()
 //        diaryListLiveData.value = diarys
     }
+
+    fun getItemCnt() = itemCnt
 
     private val editDiaryState = MutableLiveData<String>()
     val editDiary: LiveData<String> get() = editDiaryState

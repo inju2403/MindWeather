@@ -32,7 +32,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), CoroutineScope {
+
+    private lateinit var job: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     private var curTimeValue: Int = 0
     private val yearDateFormat = SimpleDateFormat("YYYY")
@@ -87,6 +91,9 @@ class ListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
 
+        job = Job()
+        emptyStateText.visibility = View.INVISIBLE
+
         viewModel = activity!!.application!!.let {
             ViewModelProvider(activity!!.viewModelStore, DiaryListInjector(
                 requireActivity().application
@@ -139,9 +146,17 @@ class ListFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun checkEmptyList() = launch {
+        viewModel!!.getDiarys().join()
+        if(viewModel!!.getItemCnt() == 0) {
+            emptyStateText.visibility = View.VISIBLE
+        }
+        else emptyStateText.visibility = View.INVISIBLE
+    }
+
     override fun onResume() {
         super.onResume()
-        viewModel!!.getDiarys()
+        checkEmptyList()
     }
 
     override fun onDestroyView() {
