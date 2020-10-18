@@ -2,6 +2,9 @@
 
 <div><img src="https://user-images.githubusercontent.com/56947879/87868697-a6168e80-c9d3-11ea-995e-e5dea2984364.png"  width="100%"></div>
 
+    
+## Link    
+[MindWeather](https://play.google.com/store/apps/details?id=com.inju.mindWeather)    
 
 ## Project Description    
 
@@ -81,6 +84,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-## Link    
-[MindWeather](https://play.google.com/store/apps/details?id=com.inju.mindWeather)
