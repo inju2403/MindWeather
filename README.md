@@ -1,10 +1,11 @@
+## Link    
+[MindWeather](https://play.google.com/store/apps/details?id=com.inju.mindWeather)      
+
 # 마음의 날씨 (Android AI Diary App)    
 
 <div><img src="https://user-images.githubusercontent.com/56947879/87868697-a6168e80-c9d3-11ea-995e-e5dea2984364.png"  width="100%"></div>
 
-    
-## Link    
-[MindWeather](https://play.google.com/store/apps/details?id=com.inju.mindWeather)    
+
 
 ## Project Description    
 
