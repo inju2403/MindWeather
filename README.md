@@ -1,5 +1,5 @@
 ## Link    
-[MindWeather](https://play.google.com/store/apps/details?id=com.inju.mindWeather)      
+[Play Store](https://play.google.com/store/apps/details?id=com.inju.mindWeather)      
 
 # 마음의 날씨 (Android AI Diary App)    
 
