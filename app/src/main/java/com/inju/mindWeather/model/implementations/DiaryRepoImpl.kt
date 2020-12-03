@@ -23,19 +23,39 @@ class DiaryRepoImpl(
 
 
     override suspend fun getDiarys(): MutableList<Diary> {
-        return httpCall?.getDiarys(token)!!
+        try {
+            return httpCall?.getDiarys(token)!!
+        }catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
     }
 
     override suspend fun getDiaryById(context: Context, diaryId: String): Diary {
-        return httpCall?.getDiaryById(diaryId, token)!!
+        try {
+            return httpCall?.getDiaryById(diaryId, token)!!
+        }catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
     }
 
     override suspend fun deleteDiary(context: Context, diaryId: String) {
-        httpCall?.deleteDiary(diaryId, token)
+        try {
+            httpCall?.deleteDiary(diaryId, token)
+        }catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
     }
 
     override suspend fun updateDiary(context: Context, contentPOJO: ContentPOJO, diaryId: String) {
-        httpCall?.updateDiary(diaryId, contentPOJO, token)
+        try {
+            httpCall?.updateDiary(diaryId, contentPOJO, token)
+        }catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
     }
 
     //임시 업데이트
