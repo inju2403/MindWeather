@@ -1,6 +1,7 @@
 package com.inju.mindWeather.model.implementations
 
 import android.content.Context
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.inju.mindWeather.model.pojo.ContentPOJO
 import com.inju.mindWeather.model.pojo.Diary
@@ -27,17 +28,19 @@ class DiaryRepoImpl(
             return httpCall?.getDiarys(token)!!
         }catch (e: Exception) {
             e.printStackTrace()
-            throw e
+            Toast.makeText(context, "서버가 불안정합니다. 잠시 후에 다시 시도해주세요.", Toast.LENGTH_LONG).show()
         }
+        return mutableListOf()
     }
 
     override suspend fun getDiaryById(context: Context, diaryId: String): Diary {
         try {
-            return httpCall?.getDiaryById(diaryId, token)!!
+            return  httpCall?.getDiaryById(diaryId, token)!!
         }catch (e: Exception) {
             e.printStackTrace()
-            throw e
+            Toast.makeText(context, "서버가 불안정합니다. 잠시 후에 다시 시도해주세요.", Toast.LENGTH_LONG).show()
         }
+        return Diary()
     }
 
     override suspend fun deleteDiary(context: Context, diaryId: String) {
@@ -45,7 +48,7 @@ class DiaryRepoImpl(
             httpCall?.deleteDiary(diaryId, token)
         }catch (e: Exception) {
             e.printStackTrace()
-            throw e
+            Toast.makeText(context, "서버가 불안정합니다. 잠시 후에 다시 시도해주세요.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -54,7 +57,7 @@ class DiaryRepoImpl(
             httpCall?.updateDiary(diaryId, contentPOJO, token)
         }catch (e: Exception) {
             e.printStackTrace()
-            throw e
+            Toast.makeText(context, "서버가 불안정합니다. 잠시 후에 다시 시도해주세요.", Toast.LENGTH_LONG).show()
         }
     }
 
