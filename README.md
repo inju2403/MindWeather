@@ -1,6 +1,9 @@
 ## Link    
 [Play Store](https://play.google.com/store/apps/details?id=com.inju.mindWeather)      
 
+
+## Version 1.1.1    
+
 # 마음의 날씨 (Android AI Diary App)    
 
 <div><img src="https://user-images.githubusercontent.com/56947879/87868697-a6168e80-c9d3-11ea-995e-e5dea2984364.png"  width="100%"></div>
@@ -40,10 +43,7 @@
  - [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2?hl=ko) (Swipe views allow you to navigate between sibling screens, such as tabs, with a horizontal finger gesture, or swipe)    
  - [dotsindicator](https://github.com/tommybuonomo/dotsindicator) (This library makes it possible to represent View Pager Dots Indicator with 3 different awesome styles. It supports ViewPager and ViewPager2)     
 
-
-     
-## Version    
-version 1.1.1    
+    
 
 
 ## Architecture
