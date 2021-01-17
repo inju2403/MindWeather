@@ -7,6 +7,7 @@
 
 
 
+
 ## Project Description    
 
 '오늘, 내 마음의 날씨는 무엇일까?'    
@@ -39,6 +40,10 @@
  - [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2?hl=ko) (Swipe views allow you to navigate between sibling screens, such as tabs, with a horizontal finger gesture, or swipe)    
  - [dotsindicator](https://github.com/tommybuonomo/dotsindicator) (This library makes it possible to represent View Pager Dots Indicator with 3 different awesome styles. It supports ViewPager and ViewPager2)     
 
+
+     
+## Version    
+version 1.1.1    
 
 
 ## Architecture
